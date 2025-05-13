@@ -5,12 +5,12 @@ const Nav = () => {
     return (
         <nav>
             <ul className="nav">
-                <li>
+                <li className="nav__nav--logo">
                     <div className="nav-logo">
                         <img src={assets.logo} alt="" />
                     </div>
                 </li>
-                <li>
+                <li className="nav__nav--list">
                     <div className="nav-list">
                         <a href="#">Home</a>
                         <a href="#">Services</a>
@@ -18,7 +18,7 @@ const Nav = () => {
                         <a href="#">Team</a>
                     </div>
                 </li>
-                <li>
+                <li className="nav__nav--btn">
                     <div className="nav-btn">
                         <a href="#">Get in touch</a>
                     </div>
