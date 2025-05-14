@@ -1,0 +1,93 @@
+.home-con {
+  /* border: 2px solid red; */
+  display: flex;
+  padding: 5rem 2rem 0 2rem;
+  gap: 1rem;
+}
+
+.home-con--para {
+  /* border: 1px solid purple; */
+  flex: 2;
+}
+.home-con--para p {
+  /* border: 1px solid green; */
+  width: 90%;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #a6a6a6;
+}
+.home-con--para p:last-of-type {
+  color: #52489c;
+  font-size: 1.7rem;
+  margin-bottom: 0;
+}
+.home-con--links {
+  /* border: 1px solid red; */
+  flex: 1.35;
+  font-size: 1.3rem;
+}
+.home-con--link2,
+.home-con--link1 {
+  /* border: 1px solid blue; */
+  width: 90%;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #dbdada;
+}
+.home-con--link2 div,
+.home-con--link1 div {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  /* border: 1px solid green; */
+  margin-top: 0.5rem;
+}
+.home-con--links a {
+  background-color: #52489c;
+  color: white;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+/* QUERIES */
+@media screen and (width: 768px) {
+  .home-con {
+    padding: 5rem 1rem 0 1rem;
+    gap: 2rem;
+  }
+  .home-con--para p:last-of-type,
+  .home-con--para p {
+    font-size: 1.5rem;
+    width: 100%;
+  }
+  .home-con--link2,
+  .home-con--link1 {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+  .home-con--links a {
+    padding: 0.2rem 0.5rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .home-con {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .home-con--para p:last-of-type,
+  .home-con--para p {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+  .home-con--link2,
+  .home-con--link1 {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+}
