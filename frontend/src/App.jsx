@@ -1,11 +1,8 @@
-import Home from "./pages/Home/Home";
-import BouncingCircles from "./components/BouncingCircles";
-
+import Home from "./pages/home/Home";
 const App = () => {
   return (
     <div>
       <Home />
-      {/* <BouncingCircles /> */}
     </div>
   );
 };
