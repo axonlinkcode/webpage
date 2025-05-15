@@ -29,6 +29,8 @@ const Hero = () => {
                             playsInline
                             onEnded={handleIntroEnd}
                             className="video"
+                            preload="metadata"
+                            poster={assets.placeholder}
                         />
                     ) : (
                         <video
@@ -38,12 +40,14 @@ const Hero = () => {
                             autoPlay
                             playsInline
                             className="video"
+                            preload="metadata"
+                            poster={assets.placeholder}
                         />
                     )}
                 </div>
             </div>
         </div>
-                
+
     );
 };
 
