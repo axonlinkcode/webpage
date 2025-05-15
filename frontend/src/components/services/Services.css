@@ -42,24 +42,87 @@
   font-size: 1.2rem;
   transition: all 0.3s ease;
 }
-.services__top-content a:hover{
-    color: #91c499;
-    font-weight: 600;
+.services__top-content a:hover {
+  color: #91c499;
+  font-weight: 600;
+}
+.services__bottom {
+  margin: 2.5rem;
+}
+.services__bottom--list {
+  display: flex;
+  gap: 3rem;
+  list-style-type: none;
+}
+.services__bottom--list-item {
+  border: 1px solid #a6a6a6;
+  padding-bottom: 2rem;
+  flex: 1;
+  min-height: 500px;
+}
+.div__dot {
+  display: flex;
+  justify-content: end;
+}
+.div__content {
+  /* border: 1px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 0 2rem 1rem 2rem;
+  position: relative;
+}
 
+/* Animate image */
+.div__content img {
+  width: 6rem;
+  margin-bottom: 2rem;
+  transition: all 0.4s ease;
+  position: relative;
+  transform: translate(0, 0);
+ position: relative;
 }
-.services__bottom{
-    border: 2px solid green;
-    margin: 2.5rem;
+/* H3 underline animation */
+.div__content h3 {
+  cursor: pointer;
+  font-size: 1.5rem;
+  position: relative;
+}
 
+.div__content h3::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  height: 4px;
+  background-color: #52489c;
+  width: 0;
+  transition: width 0.4s ease;
 }
-.services__bottom--list{
-    display: flex;
-    gap: 0.5rem;
-    list-style-type: none;
+
+.div__content h3:hover::after {
+  width: 100%;
 }
-.services__bottom--list-item{
-    border: 1px solid red;
+
+/* Reveal <p> and animate <img> when h3 is hovered */
+.div__content:hover img {
+  transform: translate(-170px, -60px); /* Move top left */
 }
-.services__bottom--list-item{
-    
+
+.div__content h3:hover ~ p {
+  display: block;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+/* Initial state for p */
+.div__content p {
+  width: 100%;
+  font-size: 1.3rem;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+   padding-top: 1rem;
 }

@@ -16,10 +16,10 @@ const Services = () => {
       description: 'Unlock actionable insights from complex datasets to empower providers, researchers, and policymakers with predictive models and real-time decision support.'
     },
     {
-      dot:"#f18f01" ,
+      dot: "#f18f01",
       img: assets.Frame2,
       header: 'Software Development',
-      description: 'Tailored tools for care delivery, patient engagement, and trial management—designed to enhance care coordination, trial recruitment, and health literacy.Whether automating site monitoring for trials or connecting patients to specialists via AI-driven platforms, we turn challenges into opportunities.'
+      description: 'Tailored tools for care delivery, patient engagement, and trial management designed to enhance care coordination, trial recruitment, and health literacy.Whether automating site monitoring for trials or connecting patients to specialists via AI-driven platforms, we turn challenges into opportunities.'
     },
   ]
 
@@ -44,19 +44,23 @@ const Services = () => {
           {
             service.map((item, index) => (
               <li key={index} className='services__bottom--list-item'>
-                <div
-                  className='dot'
-                  style={{
-                    backgroundColor: item.dot,
-                    width: "18px",
-                    height: "18px",
-                    borderRadius: "50%",
-                    marginBottom: "1rem"
-                  }}
-                ></div>
-                <img src={item.img} alt="" />
-                <h3>{item.header}</h3>
-                <p>{item.description}</p>
+                <div className='div__dot'>
+                  <div
+                    className='dot'
+                    style={{
+                      backgroundColor: item.dot,
+                      width: "18px",
+                      height: "18px",
+                      borderRadius: "50%",
+                      marginBottom: "1rem"
+                    }}
+                  ></div>
+                </div>
+                <div className='div__content'>
+                  <img src={item.img} alt="" />
+                  <h3>{item.header}</h3>
+                  <p>{item.description}</p>
+                </div>
               </li>
             ))
           }
