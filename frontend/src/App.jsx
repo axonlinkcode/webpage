@@ -1,6 +1,8 @@
 import Home from "./pages/home/Home";
 import Nav from "./components/nav/Nav";
 import Services from "./components/services/Services";
+import Products from "./components/products/Products";
+
 const App = () => {
   return (
     <>
@@ -8,6 +10,7 @@ const App = () => {
       <div>
         <Home />
         <Services/>
+        {/* <Products /> */}
       </div>
     </>
   );
