@@ -4,13 +4,13 @@ import './Nav.css'
 const Nav = () => {
     return (
         <nav>
-            <ul className="nav">
-                <li className="nav__nav--logo">
+            <ul className="nav__container">
+                <li className="nav__container--logo">
                     <div className="nav-logo">
                         <img src={assets.logo} alt="" />
                     </div>
                 </li>
-                <li className="nav__nav--list">
+                <li className="nav__container--list">
                     <div className="nav-list">
                         <a href="#">Home</a>
                         <a href="#">Services</a>
@@ -18,7 +18,7 @@ const Nav = () => {
                         <a href="#">Team</a>
                     </div>
                 </li>
-                <li className="nav__nav--btn">
+                <li className="nav__container--btn">
                     <div className="nav-btn">
                         <a href="#">Get in touch</a>
                     </div>
