@@ -7,22 +7,27 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
 }
-.card-stack {
-  position: relative;
-  width: 300px;
-  height: 400px;
-  margin: 40px auto;
+.product-top-image{
+    /* border: 1px solid red; */
+    padding-left: 1rem;
+    flex:1
 }
-
-.card {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 16px;
-  background-size: cover;
-  background-position: center;
-  cursor: pointer;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s;
+.product-top-image img{
+    width: 5rem;
+}
+.product-top-image h3{
+    font-size: 1.5rem;
+}
+.product-top-image p{
+    color: #a6a6a6;
+    padding-top: 0.5rem;
+    font-size: 1.2rem;
+    text-align: justify;
+}
+.product-top-card{
+    /* border: 1px solid red; */
+    flex: 0.7;
+    margin: 0 auto;
 }

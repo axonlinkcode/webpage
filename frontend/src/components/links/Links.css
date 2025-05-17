@@ -1,0 +1,58 @@
+.home-con--links {
+  flex: 1.2;
+  font-size: 1.3rem;
+  padding-left: 1rem;
+}
+.home-con--links p {
+  font-size: 1rem;
+}
+.home-con--link2,
+.home-con--link1 {
+  width: 100%;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #dbdada;
+}
+.home-con--link2 div,
+.home-con--link1 div {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+.home-con--links a {
+  background-color: #52489c;
+  color: white;
+  padding: 0.3rem 0.7rem;
+  cursor: pointer;
+  border-radius: 3px;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+/* QUERIES */
+@media screen and (width: 768px) {
+  .home-con--links {
+    padding-left: 0rem;
+  }
+  .home-con--link2,
+  .home-con--link1 {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+  .home-con--links a {
+    padding: 0.2rem 0.5rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .home-con--links {
+    padding-left: 0rem;
+  }
+  .home-con--link2,
+  .home-con--link1 {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+}
