@@ -2,6 +2,7 @@ import Home from "./pages/home/Home";
 import Nav from "./components/nav/Nav";
 import Services from "./components/services/Services";
 import Products from "./components/products/Products";
+import Team from "./components/team/Team";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
         <Home />
         <Services/>
         <Products />
+        <Team />
       </div>
     </>
   );

@@ -30,7 +30,7 @@ const Products = () => {
                 </div>
             </div>
             <div className='product-bottom'>
-                <Links />
+               <Links className='product-links' />
             </div>
         </div>
     );

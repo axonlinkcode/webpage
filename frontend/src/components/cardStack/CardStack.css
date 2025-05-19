@@ -16,3 +16,12 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s;
 }
+
+/* QUERIES */
+@media (max-width: 425px) {
+  .card-stack {
+    width: 250px;
+     margin: 10px auto;
+  }
+
+}
