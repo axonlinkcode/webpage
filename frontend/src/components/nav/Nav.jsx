@@ -1,3 +1,4 @@
+import Scrollspy from 'react-scrollspy';
 import { assets } from "../../assets/assets";
 import './Nav.css'
 
@@ -11,12 +12,17 @@ const Nav = () => {
                     </div>
                 </li>
                 <li className="nav__container--list">
-                    <div className="nav-list">
-                        <a href="#">Home</a>
-                        <a href="#">Services</a>
-                        <a href="#">Products</a>
-                        <a href="#">Team</a>
-                    </div>
+                    <Scrollspy
+                        className="nav-list"
+                        items={['home', 'services', 'products', 'team']}
+                        currentClassName="active"
+                        offset={-100}
+                    >
+                        <a href="#home">Home</a>
+                        <a href="#services">Services</a>
+                        <a href="#products">Products</a>
+                        <a href="#team">Team</a>
+                    </Scrollspy>
                 </li>
                 <li className="nav__container--btn">
                     <div className="nav-btn">

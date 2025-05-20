@@ -1,6 +1,6 @@
 import './CardStack.css'
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 
 const cardsData = [
     { id: 1, image: "/Streamline.png" },
@@ -10,13 +10,17 @@ const cardsData = [
 
 const CardStack = () => {
     const [cards, setCards] = useState(cardsData);
-
-    const handleCardClick = () => {
-        const newCards = [...cards];
-        const topCard = newCards.shift(); // Remove first card
-        newCards.push(topCard); // Add it to the end
-        setCards(newCards);
-    };
+useEffect(()=>{
+    const interval = setInterval(()=>{
+        setCards(prev =>{
+            const newCards = [...prev];
+            const topCard = newCards.shift();
+            newCards.push(topCard);
+            return newCards;
+        })
+    },5000)
+    return ()=>clearInterval(interval)
+},[])
 
     return (
         <div className="card-stack">
@@ -34,7 +38,6 @@ const CardStack = () => {
                             backgroundImage: `url(${card.image})`,
                             zIndex: cards.length - index,
                         }}
-                        onClick={handleCardClick}
                     />
                 ))}
             </AnimatePresence>

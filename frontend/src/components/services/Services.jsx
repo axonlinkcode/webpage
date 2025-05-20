@@ -24,7 +24,7 @@ const Services = () => {
   ]
 
   return (
-    <div className="services">
+    <div className="services" id='services'>
       <div className="services__top">
         <div className='services__top-img'><img src={assets.consult} alt="consult" /></div>
         <div className='services__top-content'>
@@ -43,7 +43,7 @@ const Services = () => {
         <ul className='services__bottom--list'>
           {
             service.map((item, index) => (
-              <li key={index} className='services__bottom--list-item'>
+              <li key={index}  className={`services__bottom--list-item ${index === 2 ? 'long-description' : ''}`}>
                 <div className='div__dot'>
                   <div
                     className='dot'

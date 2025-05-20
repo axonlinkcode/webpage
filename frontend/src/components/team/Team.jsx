@@ -28,7 +28,7 @@ const teamMembers = [
 
 const Team = () => {
   return (
-    <div className='team__container'>
+    <div className='team__container' id='team'>
       <div className='team'>
         <div className='team__image'>
           <img src={assets.wheels} alt="" />

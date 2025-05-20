@@ -82,12 +82,13 @@
 }
 /* H3 underline animation */
 .div__content h3 {
-  cursor: pointer;
+  transition: color 0.3s ease;
   font-size: 1.5rem;
   position: relative;
 }
 
 .div__content h3::after {
+  transition: width 0.4s ease;
   content: "";
   position: absolute;
   bottom: -8px;
@@ -95,16 +96,16 @@
   height: 4px;
   background-color: #52489c;
   width: 0;
-  transition: width 0.4s ease;
 }
 
-.div__content h3:hover::after {
+.div__content:hover h3::after {
   width: 100%;
 }
 
 /* Reveal <p> and animate <img> when h3 is hovered */
 .div__content:hover img {
   transform: translate(-120px, -80px); /* Move top left */
+  transition: transform 0.4s ease;
 }
 
 .div__content h3:hover ~ p {
@@ -124,7 +125,23 @@
   font-size: 1rem;
   padding-left: 1rem;
 }
+.div__content:hover p {
+  opacity: 1;
+}
+/* Target only the third item */
+.long-description .div__content p {
+  max-height: 7em; /* Approx. 3 lines */
+  overflow: hidden;
+  position: relative;
+  transition: max-height 0.8s ease, opacity 0.8s ease;
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
 
+/* On hover: show full content */
+.long-description:hover .div__content p {
+  max-height: 1000px; /* reveal full text */
+  mask-image: none;
+}
 /* QUERIES */
 @media screen and (width: 768px) {
   .services__top {
@@ -208,8 +225,8 @@
     padding-bottom: 0rem;
     min-height: 350px;
   }
-  .div__content{
-    padding:  1rem ;
+  .div__content {
+    padding: 1rem;
   }
   .div__content:hover img {
     transform: translate(0px, 0px); /* Move top left */

@@ -8,7 +8,7 @@ import Links from '../links/Links';
 const Products = () => {
 
     return (
-        <div className='product'>
+        <div className='product' id='products'>
             <div className='product-top'>
                 <div className='product-top-image'>
                     <img src={link} alt="" />
