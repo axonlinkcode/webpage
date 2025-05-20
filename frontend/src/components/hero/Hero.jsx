@@ -4,6 +4,7 @@ import { assets } from '../../assets/assets';
 import HomeContent from '../homeContent/HomeContent';
 
 
+
 const Hero = () => {
     const introRef = useRef(null);
     const mainRef = useRef(null);
@@ -15,7 +16,7 @@ const Hero = () => {
     };
 
     return (
-        <div id="home">
+        <div name="home">
             <div className='hero'>
                 <div className='hero__content'>
                     <div className='hero__content-header'>

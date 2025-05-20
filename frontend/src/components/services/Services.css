@@ -1,5 +1,5 @@
 .services {
-  margin-top: 3rem;
+  margin-top: 8rem;
 }
 .services__top {
   background-color: #dbdada;
@@ -44,7 +44,8 @@
   text-decoration: underline;
 }
 .services__bottom {
-  margin: 2.5rem;
+  margin-top: 2.5rem;
+  padding: 0 3rem;
 }
 .services__bottom--list {
   display: flex;

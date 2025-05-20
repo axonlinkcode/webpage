@@ -3,24 +3,22 @@ import { assets } from "../../assets/assets";
 const Footer = () => {
     return (
         <footer className="footer">
-            <div className='footer__top'>
                 <ul className='footer__top-list'>
                     <li>
                         <div>
-                            <a href="#">Home</a>
-                            <a href="#">Services</a>
-                            <a href="#">Products</a>
-                            <a href="#">Team</a>
+                            <a href="#home">Home</a>
+                            <a href="#services">Services</a>
+                            <a href="#products">Products</a>
+                            <a href="#team">Team</a>
                         </div>
                     </li>
-                    <li className="footer__top-list-img">
-                        <img src={assets.logo} alt="" />
+                    <li>
+                        <img src={assets.logowhite} alt="" />
                     </li>
                 </ul>
-            </div>
             <div className="footer__bottom">
                 <div className="footer__bottom-left">
-                    <p>© 2023 All rights reserved</p>
+                    <p>© 2025 axonlink. All rights reserved</p>
                 </div>
                 <div className="footer__bottom-right">
                     <a href="#">Privacy Policy</a>

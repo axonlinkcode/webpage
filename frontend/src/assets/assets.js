@@ -10,6 +10,7 @@ import wheels from './wheels.png'
 import passport from './passport.jpg'
 import x from './x.png'
 import linkedin from './linkedin.png'
+import logowhite from './logo white.png'
 
 export const assets = {
     logo,
@@ -23,5 +24,6 @@ export const assets = {
     wheels,
     passport,
     x,
-    linkedin
+    linkedin,
+    logowhite
 }

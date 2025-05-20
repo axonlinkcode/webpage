@@ -1,6 +1,7 @@
 .team {
   /* border: 1px solid orange; */
-  padding: 2rem;
+    margin-top: 4rem;
+  padding:0 3rem;
   display: flex;
   gap: 1rem;
 }
@@ -45,14 +46,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
-  padding: 1rem 3rem;
-  margin: 0;
-  /* background-color: #f9f9f9; */
+  margin: 2rem 3rem;
 }
 
 .team__member {
-  /* background-color: #fff; */
-  border-radius: 12px;
+  background-color: #fff;
   height: 500px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -98,7 +96,7 @@
   border-radius: 50%;
 }
 .team__contact{
-    margin: 0 auto;
+    margin: 1rem auto;
     width: 40%;
     text-align: center;
     color: #a6a6a6;

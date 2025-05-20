@@ -1,32 +1,68 @@
-import Scrollspy from 'react-scrollspy';
+import { Link } from "react-scroll";
 import { assets } from "../../assets/assets";
-import './Nav.css'
+import './Nav.css';
 
 const Nav = () => {
     return (
         <nav>
             <ul className="nav__container">
+                {/* Logo */}
                 <li className="nav__container--logo">
                     <div className="nav-logo">
-                        <img src={assets.logo} alt="" />
+                        <img src={assets.logo} alt="Logo" />
                     </div>
                 </li>
+
+                {/* Nav Links */}
                 <li className="nav__container--list">
-                    <Scrollspy
-                        className="nav-list"
-                        items={['home', 'services', 'products', 'team']}
-                        currentClassName="active"
-                        offset={-100}
-                    >
-                        <a href="#home">Home</a>
-                        <a href="#services">Services</a>
-                        <a href="#products">Products</a>
-                        <a href="#team">Team</a>
-                    </Scrollspy>
+                    <div className="nav-list">
+                        <Link
+                            to="home"
+                            smooth={true}
+                            duration={500}
+                            offset={-100}
+                            activeClass="active"
+                            spy={true}
+                        >
+                            Home
+                        </Link>
+                        <Link
+                            to="services"
+                            smooth={true}
+                            duration={500}
+                            offset={-100}
+                            activeClass="active"
+                            spy={true}
+                        >
+                            Services
+                        </Link>
+                        <Link
+                            to="products"
+                            smooth={true}
+                            duration={500}
+                            offset={-100}
+                            activeClass="active"
+                            spy={true}
+                        >
+                            Products
+                        </Link>
+                        <Link
+                            to="team"
+                            smooth={true}
+                            duration={500}
+                            offset={-100}
+                            activeClass="active"
+                            spy={true}
+                        >
+                            Team
+                        </Link>
+                    </div>
                 </li>
+
+                {/* Contact Button */}
                 <li className="nav__container--btn">
                     <div className="nav-btn">
-                        <a href="#">Get in touch</a>
+                        <a href="#contact">Get in touch</a>
                     </div>
                 </li>
             </ul>

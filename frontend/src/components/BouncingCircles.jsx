@@ -36,6 +36,7 @@ const BouncingCircles = ({className=''}) => {
         height: "30px",
         width:'100%',
         gap: "0.5rem",
+
       }}
       variants={container}
       initial="hidden"
