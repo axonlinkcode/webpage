@@ -61,6 +61,12 @@ const Team = () => {
           ))
         }
       </ul>
+    <div className="team__contact">
+        <p>
+        With deep industry insight and a collaborative spirit, we’re building the future of health—one solution at a time.
+        <br/><a href="#">Join Us</a>
+      </p>
+    </div>
     </div>
   );
 };

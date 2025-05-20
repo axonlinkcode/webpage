@@ -8,6 +8,8 @@ import Frame1 from './Frame (1).png'
 import Frame2 from './Frame (2).png'
 import wheels from './wheels.png'
 import passport from './passport.jpg'
+import x from './x.png'
+import linkedin from './linkedin.png'
 
 export const assets = {
     logo,
@@ -19,5 +21,7 @@ export const assets = {
     Frame1,
     Frame2,
     wheels,
-    passport
+    passport,
+    x,
+    linkedin
 }

@@ -3,6 +3,7 @@ import Nav from "./components/nav/Nav";
 import Services from "./components/services/Services";
 import Products from "./components/products/Products";
 import Team from "./components/team/Team";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Products />
         <Team />
       </div>
+      <Footer/>
     </>
   );
 };
