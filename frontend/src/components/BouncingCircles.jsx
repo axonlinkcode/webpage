@@ -23,12 +23,12 @@ const dot = {
   },
 };
 
-const BouncingCircles = () => {
+const BouncingCircles = ({className=''}) => {
   const colors = ["#52489c", "#a5d8ff", "#91c499", "#a6a6a6","#f18f01"];
 
   return (
     <motion.div
-      className='container'
+      className={`container ${className}`}
       style={{
         display: "flex",
         justifyContent: "start",
