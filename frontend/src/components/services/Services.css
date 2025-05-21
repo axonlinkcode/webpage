@@ -145,6 +145,9 @@
 }
 /* QUERIES */
 @media screen and (width: 768px) {
+  .services {
+    margin-top: 3rem;
+  }
   .services__top {
     padding: 1.5rem;
     gap: 1rem;

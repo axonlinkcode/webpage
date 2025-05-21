@@ -1,13 +1,12 @@
 .team {
   /* border: 1px solid orange; */
-    margin-top: 4rem;
-  padding:0 3rem;
+  margin-top: 4rem;
+  padding: 0 3rem;
   display: flex;
   gap: 1rem;
 }
 .team__image {
   flex: 2;
-  /* border: 1px solid red; */
   position: relative;
 }
 .team__image img {
@@ -26,15 +25,15 @@
 }
 .team__content h2 {
   font-size: 1.5rem;
-  color: #52489C;
+  color: #52489c;
   margin-bottom: 0.5rem;
 }
 .team__content p {
   font-size: 1rem;
   margin-bottom: 1rem;
 }
-.team__content:last-child{
-    margin-bottom: 0;
+.team__content:last-child {
+  margin-bottom: 0;
 }
 .team__bounce {
   position: absolute;
@@ -78,16 +77,16 @@
   margin-bottom: 0.3rem;
   color: #333;
 }
-.team__member-info > p{
-    font-size: 0.95rem;
-    margin: 0.25rem 0;
-    color: #52489C;
+.team__member-info > p {
+  font-size: 0.95rem;
+  margin: 0.25rem 0;
+  color: #52489c;
 }
 
-.team__member-details{
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
+.team__member-details {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 .team__dot {
   width: 15px;
@@ -95,12 +94,32 @@
   display: inline-block;
   border-radius: 50%;
 }
-.team__contact{
-    margin: 1rem auto;
-    width: 40%;
-    text-align: center;
-    color: #a6a6a6;
+.team__contact {
+  margin: 1rem auto;
+  width: 40%;
+  text-align: center;
+  color: #a6a6a6;
 }
-.team__contact a{
-    text-decoration: none;
+.team__contact a {
+  text-decoration: none;
+}
+
+/* QUERIES */
+@media (width: 768px) {
+  .team {
+    padding: 0 1.5rem;
+  }
+  .team__image {
+    flex: 1;
+  }
+  .team__image img {
+    object-fit: fill;
+  }
+  .team__content {
+    flex: 1;
+    padding:  1rem;
+  }
+  .team__bounce {
+  left: 59%;
+}
 }

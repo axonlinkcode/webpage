@@ -40,6 +40,7 @@
 /* QUERIES */
 @media (width: 768px) {
   .product {
+    margin-top: 1rem;
     padding: 0 1.5rem;
   }
   .product-top-image {
