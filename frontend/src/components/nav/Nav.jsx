@@ -4,13 +4,13 @@ import './Nav.css';
 
 const Nav = () => {
     return (
-        <nav>
+        <nav className="nav">
             <ul className="nav__container">
                 {/* Logo */}
                 <li className="nav__container--logo">
-                    <div className="nav-logo">
+                    {/* <div className="nav-logo"> */}
                         <img src={assets.logo} alt="Logo" />
-                    </div>
+                    {/* </div> */}
                 </li>
 
                 {/* Nav Links */}
