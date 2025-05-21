@@ -13,7 +13,7 @@ const Footer = () => {
                         </div>
                     </li>
                     <li>
-                        <img src={assets.logowhite} alt="" />
+                        <img src={assets.logowhite} alt="logo"/>
                     </li>
                 </ul>
             <div className="footer__bottom">

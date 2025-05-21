@@ -1,6 +1,6 @@
 nav {
   position: fixed;
-  top: -100;
+  top: -10px;
   width: 100%;
   background-color: white;
   z-index: 1000;
@@ -83,11 +83,14 @@ nav {
 }
 
 @media screen and (max-width: 425px) {
-  .nav__container--list {
-    display: none;
-  }
   .nav {
     padding: 0rem;
+  }
+  .nav__container{
+    border: 1px solid #52489c;
+  }
+  .nav__container--list {
+    display: none;
   }
   .nav-logo img {
     width: 80%;

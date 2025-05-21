@@ -58,7 +58,26 @@
   width: 30px;
   height: 30px;
 }
-.footer__bottom-right{
-    display: flex;
+.footer__bottom-right {
+  display: flex;
+  gap: 1rem;
+}
+
+/* QUERIES */
+@media (max-width: 425px) {
+  .footer {
+    margin-top: 4rem;
+    padding: 1rem;
+  }
+  .footer__bottom {
+    flex-direction: column;
+    align-self: start;
     gap: 1rem;
+  }
+  .footer__top-list li div {
+    width: 100%;
+  }
+  .footer__top-list img {
+    display: none;
+  }
 }

@@ -123,3 +123,29 @@
   left: 59%;
 }
 }
+
+@media (max-width:425px){
+  .team {
+  margin-top: 2rem;
+  padding: 0 1.5rem;
+  gap: 1rem;
+  flex-direction: column;
+  }
+}
+ .team__image {
+    flex: 1;
+  }
+  .team__image img {
+    object-fit: fill;
+  }
+  .team__content {
+    flex: 1;
+    padding:  1rem;
+  }
+  .team__bounce {
+  left: 63%;
+}
+  .team__contact {
+      width: 80%;
+  }
+
