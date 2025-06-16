@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { assets } from '../../assets/assets';
-import './home.css'
+import './house.css'
 import HomeContent from './HomeContent';
 
 const Home = () => {

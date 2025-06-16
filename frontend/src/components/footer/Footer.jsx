@@ -1,4 +1,4 @@
-import './bottom.css'
+import './footer.css'
 import { assets } from "../../assets/assets";
 const Footer = () => {
     return (
