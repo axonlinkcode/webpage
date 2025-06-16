@@ -1,0 +1,40 @@
+.app {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+  font-family: sans-serif;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.form label {
+  display: block;
+  margin-top: 1rem;
+}
+
+.form input[type="text"],
+.form select,
+.form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+button {
+  margin-top: 2rem;
+  padding: 0.6rem 1.2rem;
+  background-color: teal;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.selector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+

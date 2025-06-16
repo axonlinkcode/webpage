@@ -62,7 +62,7 @@ const Nav = () => {
                 {/* Contact Button */}
                 <li className="nav__container--btn">
                     <div className="nav-btn">
-                        <a href="#contact">Get in touch</a>
+                        <a href="/form">Get in touch</a>
                     </div>
                 </li>
             </ul>

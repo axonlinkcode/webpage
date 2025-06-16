@@ -1,4 +1,4 @@
-import './Links.css'
+import './links.css'
 
 const Links = ({ className = '' }) => {
   return (

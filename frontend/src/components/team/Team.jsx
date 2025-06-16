@@ -1,4 +1,4 @@
-import './Team.css';
+import './team.css';
 import { assets } from '../../assets/assets';
 import BouncingCircles from '../BouncingCircles'
 

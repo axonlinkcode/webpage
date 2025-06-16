@@ -1,4 +1,4 @@
-import './CardStack.css'
+import './cardStack.css'
 import { motion, AnimatePresence } from "framer-motion";
 import { useState,useEffect } from 'react';
 
