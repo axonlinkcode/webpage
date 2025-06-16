@@ -19,9 +19,7 @@ const Form = () => {
             <h1>form</h1>
             <Link to='/'>back to home</Link>
             <Link to='/form'>back to forms</Link>
-
             {renderForm()}
-
         </div>
     )
 }
