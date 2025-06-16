@@ -1,4 +1,4 @@
-import './products.css'
+import './things.css'
 import CardStack from '../cardStack/CardStack';
 import link from '../../assets/link logo.png'
 import Links from '../links/Links';
