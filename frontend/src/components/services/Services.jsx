@@ -1,4 +1,4 @@
-import './services.css'
+import './service.css'
 import { assets } from '../../assets/assets.js'
 
 const Services = () => {
