@@ -1,4 +1,4 @@
-import './links.css'
+import './link.css'
 import { Link } from 'react-router-dom';
 
 const Links = ({ className = '' }) => {
