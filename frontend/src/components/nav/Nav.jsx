@@ -4,67 +4,40 @@ import Button from "../buttons/Button";
 import './Nav.css';
 
 const Nav = () => {
-    return (
-        // <nav>
-            <ul className="nav__container">
-                <li className="nav__container--logo">
-                    <img src={assets.logo} alt="Logo" />
-                    <Button name="Get in touch" link="/forms" className='btn__component' />
-                </li>
+  return (
+    <nav className="nav__container">
+      <div className="nav-inner">
+        {/* Logo + Button (mobile only) */}
+        <div className="nav__container--logo">
+          <img src={assets.logo} alt="Logo" />
+          <Button name="Get in touch" link="/forms" className="btn__component" />
+        </div>
 
-                {/* Nav Links */}
-                <li className="nav__container--list">
-                    <div className="nav-list">
-                        <Link
-                            to="home"
-                            smooth={true}
-                            duration={500}
-                            offset={-200}
-                            activeClass="active"
-                            spy={true}
-                        >
-                            Home
-                        </Link>
-                        <Link
-                            to="services"
-                            smooth={true}
-                            duration={500}
-                            offset={-200}
-                            activeClass="active"
-                            spy={true}
-                        >
-                            Services
-                        </Link>
-                        <Link
-                            to="products"
-                            smooth={true}
-                            duration={500}
-                            offset={-100}
-                            activeClass="active"
-                            spy={true}
-                        >
-                            Products
-                        </Link>
-                        <Link
-                            to="team"
-                            smooth={true}
-                            duration={500}
-                            offset={-100}
-                            activeClass="active"
-                            spy={true}
-                        >
-                            Team
-                        </Link>
-                    </div>
-                </li>
+        {/* Nav Links */}
+        <div className="nav__container--list">
+          <div className="nav-list">
+            <Link to="home" smooth={true} duration={500} offset={-100} activeClass="active" spy={true}>
+              Home
+            </Link>
+            <Link to="services" smooth={true} duration={500} offset={-100} activeClass="active" spy={true}>
+              Services
+            </Link>
+            <Link to="products" smooth={true} duration={500} offset={-100} activeClass="active" spy={true}>
+              Products
+            </Link>
+            <Link to="team" smooth={true} duration={500} offset={-100} activeClass="active" spy={true}>
+              Team
+            </Link>
+          </div>
+        </div>
 
-                {/* Contact Button */}
-                <li className="nav__container--btn">
-                    <Button name="Get in touch" link="/forms" className='btn__component-list' />
-                </li>
-            </ul>
-        // </nav>
-    );
+        {/* Button (desktop only) */}
+        <div className="nav__container--btn">
+          <Button name="Get in touch" link="/forms" className="btn__component-list" />
+        </div>
+      </div>
+    </nav>
+  );
 };
 
 export default Nav;
