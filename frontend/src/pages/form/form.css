@@ -1,0 +1,146 @@
+/* form.css */
+
+.form-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: #343a40;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.back-link:hover {
+  color: #f8f9fa;
+  background-color: #A5D8FF;
+  text-decoration: none;
+}
+
+.form-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+   color: #343a40;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.intro-text {
+   color: #6c757d;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.form-btn {
+  display: flex;
+  flex-direction: column;
+  padding: 1.8rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.form-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.btn-icon {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.btn-text {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.btn-desc {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+}
+
+/* Patient Button */
+.patient-btn {
+  background: linear-gradient(135deg,#837AC1, #52489C);
+}
+
+/* Clinician Button */
+.clinician-btn {
+  background: linear-gradient(135deg,#91C499, #5A8F66);
+}
+
+/* CRO Button */
+.cro-btn {
+  background: linear-gradient(135deg, #A5D8FF, #4A90C4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 1rem;
+  }
+  
+  .form-card {
+    padding: 1.5rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .intro-text {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .form-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-card {
+    padding: 1.2rem;
+  }
+  
+  .form-btn {
+    padding: 1.5rem;
+  }
+  
+  .btn-text {
+    font-size: 1.2rem;
+  }
+}

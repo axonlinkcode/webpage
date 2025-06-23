@@ -1,4 +1,5 @@
 import './links.css'
+import { Link } from 'react-router-dom';
 
 const Links = ({ className = '' }) => {
   return (
@@ -12,7 +13,9 @@ const Links = ({ className = '' }) => {
       <div className='home-con--link2'>
         <p>Join our waiting list to get early access to our upcoming products and features.</p>
         <div>
-          <a href="#">Join waiting list</a>
+          <Link to="/forms/waitingList">
+            Join waiting list
+          </Link>
         </div>
       </div>
     </div>

@@ -1,133 +1,133 @@
-.nav {
-    position: fixed;
-    width: 100%;
-    background-color: white;
-    z-index: 1000;
-    padding: 0.5rem 1.3rem 0.5rem 0;
-    border-bottom: 0.5px solid #a6a6a6;
-}
-
-.nav__container {
-    display: flex;
-    align-items: center;
-    list-style-type: none;
-}
-
-.nav__container--logo,
-.nav__container--btn {
-    flex: 1;
-}
-
-.nav__container--list {
-    flex: 1.5;
-}
-
-.nav-list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.3rem;
-}
-
-.nav-list .active {
-    color: #52489c !important;
-    border-bottom: 2px solid #52489c;
-}
-
-.nav-list a {
-    font-size: 1.2rem;
-    color: #a6a6a6;
+/* Btn Component */
+.btn__component,
+.btn__component-list {
+    padding: 6px 12px;
     text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-}
-
-.nav-list a:hover {
-    color: #52489c;
-    border-bottom: 1px solid #a6a6a6;
-    cursor: pointer;
-}
-
-.nav-btn {
-    text-align: end;
-}
-
-.nav-btn a {
-    padding: 0.5rem 2rem;
-    text-decoration: none;
-    display: inline-block;
+    font-size: 10px;
     color: white;
     background-color: #52489c;
-    border-radius: 4px;
+    border-radius: 2px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.nav-btn a:hover {
+.btn__component-list:hover,
+.btn__component:hover {
     background-color: #91c499;
     color: #52489c;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
 
-/* QUERIES */
-@media screen and (min-width: 768px) and (max-width: 768px) {
-    .nav {
-        padding: 0rem;
-    }
-
-    .nav-btn {
-        text-align: center;
-    }
-
-    .nav-list {
-        gap: 0.5rem;
-    }
-
-    .nav-list a {
-        font-size: 1rem;
-    }
-
-    .nav-btn a {
-        padding: 0.5rem 1rem;
-    }
-
-    .nav-logo img {
-        width: 80%;
-        margin-top: 0.5rem;
-    }
+.nav__container{
+    list-style-type: none;
+    border-bottom: 0.5px solid #a6a6a6;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    width: 100%;
+}
+.nav-list .active {
+    color: #52489c !important;
+    border-bottom: 2px solid #52489c;
+    font-weight: 700;
 }
 
+.nav-list a {
+    text-decoration: none;
+       color: #a6a6a6;
+    border-bottom: 1px solid transparent;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.nav-list a:hover {
+    color: #52489c;
+    /* border-bottom: 1px solid #a6a6a6; */
+    cursor: pointer;
+}
+
+
+
+/*---------------- */
+
+
 @media screen and (max-width: 767px) {
-    .nav {
-        padding: 0;
+    /* Small Screen */
+    .btn__component{
+        margin-right: 5px;
     }
+.nav__container {
+    padding: 5px 0;
+    border: 2px solid yellow;
+}
 
+.nav__container--logo {
+    padding-right: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.nav__container--logo img {
+    width: 20%;
+}
+
+.nav__container--btn {
+    display: none;
+}
+
+.nav-list {
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 1px solid red; */
+    width: 70%;
+}
+
+
+
+}
+
+
+@media screen and (min-width: 768px) {
+    /* Large Screen */
     .nav__container {
-        flex-direction: column;
-        align-items: start;
+        border: 2px solid green;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
     }
 
-    .nav__container--logo img {
-        width: 50%;
-    }
-
-    .nav__container--btn {
+    .btn__component {
         display: none;
     }
 
-    .nav__container--logo,
-    .nav__container--list {
+    .nav__container--logo {
         flex: 1;
     }
 
-    .nav-list {
-        gap: 1rem;
-        justify-content: start;
-        padding: 0 1rem;
+    .nav__container--logo img {
+        width: 45%;
     }
 
-    .nav-list a {
-        font-size: 1rem;
+    .nav__container--list {
+        flex: 2.5;
+    }
+    .nav-list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.3rem;
+    }
+
+    .nav__container--btn {
+        display: block;
+        flex: 0.6;
     }
 
 

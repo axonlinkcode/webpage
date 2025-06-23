@@ -3,7 +3,10 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import FormLayout from "./components/layout/FormLayout";
 import PatientForm from "./components/form/PatientForm";
+import ClinicianForm from "./components/form/ClinicianForm";
+import CROForm from "./components/form/CROForm";
 import Form from "./pages/form/Form";
+import WaitingListForm from './components/waitingList/Forms'
 
 const App = () => {
   return (
@@ -13,9 +16,13 @@ const App = () => {
       </Route>
 
       {/* <Route path="/form" element={<FormLayout />}> */}
-        <Route path="/form" element={<Form />} />
-        <Route path="/patient" element={<PatientForm />} />
-      {/* </Route> */}
+      <Route path="/forms" element={<FormLayout />} >
+        <Route index element={<Form />} />
+        <Route path="patient" element={<PatientForm />} />
+        <Route path="clinician" element={<ClinicianForm />} />
+        <Route path="cro" element={<CROForm />} />
+        <Route path="waitingList" element={<WaitingListForm />} />
+      </Route>
     </Routes>
   );
 };

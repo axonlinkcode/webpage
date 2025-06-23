@@ -1,40 +1,247 @@
-.app {
-  max-width: 600px;
-  margin: auto;
-  padding: 2rem;
-  font-family: sans-serif;
+/* SurveyForm.css */
+
+.survey-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
 }
 
-h1, h2 {
-  text-align: center;
-}
-
-.form label {
-  display: block;
-  margin-top: 1rem;
-}
-
-.form input[type="text"],
-.form select,
-.form textarea {
-  width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-button {
-  margin-top: 2rem;
-  padding: 0.6rem 1.2rem;
-  background-color: teal;
+.survey-header {
+  background-color: #52489C;
   color: white;
-  border: none;
-  cursor: pointer;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 30px;
 }
 
-.selector {
+.survey-header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+div.survey-header>p.intro-text {
+  margin: 15px 0;
+  line-height: 1.6;
+  color: white;
+}
+
+.confidential-text {
+  font-style: italic;
+  font-size: 0.9em;
+  opacity: 0.9;
+}
+
+.survey-section {
+  background-color: white;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.survey-section h2 {
+  color: #343a40;
+  border-bottom: 2px solid #eaeaea;
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+
+input[type="radio"],
+input[type="checkbox"],
+select {
+  accent-color: #f18f01;
+}
+
+
+.radio-group,
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.radio-option,
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.radio-option input[type="radio"],
+.checkbox-option input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+.scale-options,
+.radio-option,
+.ranking-options,
+.checkbox-option{
+  color: #6c757d;
+}
+
+.scale-group {
+  margin-top: 15px;
+}
+
+.scale-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85em;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.scale-options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.scale-option {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
 }
 
+.scale-option input[type="radio"] {
+  margin-bottom: 5px;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.other-specify {
+  margin-left: 30px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: calc(100% - 30px);
+  margin-top: 5px;
+}
+
+.ranking-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.ranking-option {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.ranking-option label {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.ranking-option select  {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid rgb(209, 209, 209);
+  min-width: 80px;
+   accent-color: #f18f01;
+}
+
+
+/* .ranking-instructions {
+  font-size: 0.9em;
+  color: #666;
+  color: red;
+  margin-bottom: 15px;
+} */
+
+.form-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.submit-button {
+  background-color: #91C499;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  align-self: center;
+}
+
+.submit-button:hover {
+  background-color: #5A8F66;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: #343a40;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.back-link:hover {
+  color: #f8f9fa;
+  background-color: #A5D8FF;
+  text-decoration: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .survey-container {
+    padding: 15px;
+  }
+
+  .waiting-list-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .scale-options {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .scale-option {
+    flex: 1 0 40%;
+  }
+}
+
+@media (max-width: 480px) {
+  .survey-header {
+    padding: 15px;
+  }
+
+  .survey-section {
+    padding: 15px;
+  }
+
+  .form-group label {
+    font-size: 0.95em;
+  }
+}

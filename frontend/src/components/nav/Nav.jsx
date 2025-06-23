@@ -1,16 +1,15 @@
 import { Link } from "react-scroll";
 import { assets } from "../../assets/assets";
+import Button from "../buttons/Button";
 import './Nav.css';
 
 const Nav = () => {
     return (
-        <nav className="nav">
+        // <nav>
             <ul className="nav__container">
-                {/* Logo */}
                 <li className="nav__container--logo">
-                    {/* <div className="nav-logo"> */}
-                        <img src={assets.logo} alt="Logo" />
-                    {/* </div> */}
+                    <img src={assets.logo} alt="Logo" />
+                    <Button name="Get in touch" link="/forms" className='btn__component' />
                 </li>
 
                 {/* Nav Links */}
@@ -20,7 +19,7 @@ const Nav = () => {
                             to="home"
                             smooth={true}
                             duration={500}
-                            offset={-100}
+                            offset={-200}
                             activeClass="active"
                             spy={true}
                         >
@@ -30,7 +29,7 @@ const Nav = () => {
                             to="services"
                             smooth={true}
                             duration={500}
-                            offset={-100}
+                            offset={-200}
                             activeClass="active"
                             spy={true}
                         >
@@ -61,12 +60,10 @@ const Nav = () => {
 
                 {/* Contact Button */}
                 <li className="nav__container--btn">
-                    <div className="nav-btn">
-                        <a href="/form">Get in touch</a>
-                    </div>
+                    <Button name="Get in touch" link="/forms" className='btn__component-list' />
                 </li>
             </ul>
-        </nav>
+        // </nav>
     );
 };
 

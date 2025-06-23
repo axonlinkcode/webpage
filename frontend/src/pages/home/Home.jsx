@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { assets } from '../../assets/assets';
-import './house.css'
+import './home.css'
 import HomeContent from './HomeContent';
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
 
     const handleIntroEnd = () => {
         setShowMainVideo(true);
-        mainRef.current?.play();
+        
     };
 
     return (

@@ -1,0 +1,20 @@
+/* .button {
+    text-align: end;
+} */
+
+.button {
+    padding: 6px 12px;
+    text-decoration: none;
+    font-size: 10px;
+    color: white;
+    background-color: #52489c;
+    border-radius: 2px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #91c499;
+    color: #52489c;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
