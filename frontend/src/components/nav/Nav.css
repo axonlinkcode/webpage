@@ -1,7 +1,7 @@
 /* NAV CONTAINER */
 .nav__container {
     width: 100%;
-    position: fixed;
+    position: sticky;
     top: 0;
     z-index: 1000;
     background-color: transparent;
