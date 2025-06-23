@@ -1,144 +1,153 @@
 /* NAV CONTAINER */
 .nav__container {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-  background-color: transparent;
-  backdrop-filter: blur(5px);
-  border-bottom: 0.5px solid #a6a6a6;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    border-bottom: 0.5px solid #a6a6a6;
 }
 
 /* INNER FLEX WRAPPER */
 .nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px 1rem;
-  gap: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 1rem;
+    gap: 1rem;
 }
 
 /* LOGO SECTION */
 .nav__container--logo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
 
 .nav__container--logo img {
-  width: 120px;
+    width: 120px;
 }
 
 /* NAV LINKS */
 .nav__container--list {
-  flex: 1;
+    flex: 1;
 }
 
 .nav-list {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.3rem;
-  flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.3rem;
+    flex-wrap: wrap;
 }
 
 .nav-list a {
-  text-decoration: none;
-  color: #a6a6a6;
-  transition: color 0.3s ease, border-bottom 0.3s ease;
+    text-decoration: none;
+    color: #a6a6a6;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
 }
 
 .nav-list a:hover {
-  color: #52489c;
-  cursor: pointer;
+    color: #52489c;
+    cursor: pointer;
 }
 
 .nav-list .active {
-  color: #52489c !important;
-  border-bottom: 2px solid #52489c;
-  font-weight: 700;
+    color: #52489c !important;
+    border-bottom: 2px solid #52489c;
+    font-weight: 700;
 }
 
 /* BUTTON STYLES */
 .btn__component,
 .btn__component-list {
-  padding: 6px 12px;
-  text-decoration: none;
-  font-size: 10px;
-  color: white;
-  background-color: #52489c;
-  border-radius: 2px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 6px 12px;
+    text-decoration: none;
+    font-size: 10px;
+    color: white;
+    background-color: #52489c;
+    border-radius: 2px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn__component:hover,
 .btn__component-list:hover {
-  background-color: #91c499;
-  color: #52489c;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
+    background-color: #91c499;
+    color: #52489c;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 /* DESKTOP ONLY BUTTON */
 .btn__component {
-  display: none;
+    display: none;
 }
 
 /* DESKTOP BUTTON */
 .nav__container--btn {
-  display: block;
+    display: block;
 }
+
 
 /* ----------------------------------
    MOBILE STYLES
 ---------------------------------- */
 @media screen and (max-width: 767px) {
-  .nav-inner {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
+    .nav-inner {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0.5rem;
+        gap: 10px;
+        margin: 0;
+    }
 
-  .nav__container--logo {
-    width: 100%;
-    justify-content: space-between;
-  }
+    .nav__container--logo {
+        width: 100%;
+        justify-content: space-between;
+        gap: 5px;
 
-  .nav__container--logo img {
-    width: 100px;
-  }
+    }
 
-  .nav-list {
-    width: 100%;
-    justify-content: space-around;
-  }
+    .nav__container--logo img {
+        width: 100px;
+    }
+    .nav__container--list {
+        display: flex;
+        justify-content: center;
+    }
 
-  .btn__component {
-    display: inline-block;
-  }
+    .nav-list {
+        width: 100%;
+        justify-content: space-around;
+    }
 
-  .nav__container--btn {
-    display: none;
-  }
+    .btn__component {
+        display: inline-block;
+    }
+
+    .nav__container--btn {
+        display: none;
+    }
 }
 
 /* ----------------------------------
    DESKTOP STYLES
 ---------------------------------- */
 @media screen and (min-width: 768px) {
-  .btn__component {
-    display: none;
-  }
+    .btn__component {
+        display: none;
+    }
 
-  .nav__container--btn {
-    display: block;
-  }
+    .nav__container--btn {
+        display: block;
+    }
 
-  .nav__container--logo img {
-    width: 150px;
-  }
+    .nav__container--logo img {
+        width: 150px;
+    }
 }
