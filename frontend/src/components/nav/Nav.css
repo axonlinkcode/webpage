@@ -1,7 +1,7 @@
 /* NAV CONTAINER */
 .nav__container {
     width: 100%;
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 1000;
     background-color: transparent;
@@ -108,7 +108,8 @@
 
   .nav__container--logo {
     /* padding-bottom: 8px; */
-    border:1px solid blue;
+    border:1px solid red;
+    width: 100%;
     justify-content: space-between;
     /* align-items: center;
      */
