@@ -100,22 +100,29 @@
 @media screen and (max-width: 767px) {
   .nav-inner {
     flex-direction: column;
-    align-items: stretch;
-    padding: 10px 1rem;
+    align-items: start;
+    justify-content: center;
+    padding: 10px 0rem;
+    /* border: 1px solid yellow; */
   }
 
   .nav__container--logo {
-    padding-bottom: 8px;
+    /* padding-bottom: 8px; */
+    border:1px solid blue;
+    justify-content: space-between;
+    /* align-items: center;
+     */
   }
 
   .nav__container--list {
     display: flex;
-    justify-content: center;
+    justify-content: start;
+    /* border: 1px solid red; */
+    padding-left: 1rem;
   }
 
   .btn__component {
     display: inline-block;
-    margin-top: 10px;
   }
 
   .nav__container--btn {
