@@ -98,41 +98,29 @@
    MOBILE STYLES
 ---------------------------------- */
 @media screen and (max-width: 767px) {
-    .nav-inner {
-        flex-direction: column;
-        align-items: center;
-        padding: 10px 0.5rem;
-        gap: 10px;
-        margin: 0;
-    }
+  .nav-inner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px 1rem;
+  }
 
-    .nav__container--logo {
-        width: 100%;
-        justify-content: space-between;
-        gap: 5px;
+  .nav__container--logo {
+    padding-bottom: 8px;
+  }
 
-    }
+  .nav__container--list {
+    display: flex;
+    justify-content: center;
+  }
 
-    .nav__container--logo img {
-        width: 100px;
-    }
-    .nav__container--list {
-        display: flex;
-        justify-content: center;
-    }
+  .btn__component {
+    display: inline-block;
+    margin-top: 10px;
+  }
 
-    .nav-list {
-        width: 100%;
-        justify-content: space-around;
-    }
-
-    .btn__component {
-        display: inline-block;
-    }
-
-    .nav__container--btn {
-        display: none;
-    }
+  .nav__container--btn {
+    display: none;
+  }
 }
 
 /* ----------------------------------
