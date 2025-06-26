@@ -1,51 +1,16 @@
-import { useState, useRef } from 'react';
-import { assets } from '../../assets/assets';
 import './home.css'
+import Video from '../../components/videos/Video';
 import HomeContent from './HomeContent';
 
 const Home = () => {
-    const introRef = useRef(null);
-    const mainRef = useRef(null);
-    const [showMainVideo, setShowMainVideo] = useState(false)
-
-    const handleIntroEnd = () => {
-        setShowMainVideo(true);
-        
-    };
-
     return (
-        <div name="home">
+        <div name="home" id='home'>
             <div className='hero'>
                 <div className='hero__content'>
                     <div className='hero__content-header'>
                         <h1>Transforming Patient care through technological <span>innovation</span></h1>
                     </div>
-                    <div className='hero__content-video'>
-                        {!showMainVideo ? (
-                            <video
-                                ref={introRef}
-                                src={assets.links}
-                                autoPlay
-                                muted
-                                playsInline
-                                onEnded={handleIntroEnd}
-                                className="video"
-                                preload="metadata"
-                                poster={assets.placeholder}
-                            />
-                        ) : (
-                            <video
-                                ref={mainRef}
-                                src={assets.meds}
-                                muted
-                                autoPlay
-                                playsInline
-                                className="video"
-                                preload="metadata"
-                                poster={assets.placeholder}
-                            />
-                        )}
-                    </div>
+                   <Video className='hero__content-video'/>
                 </div>
             </div>
             <HomeContent />

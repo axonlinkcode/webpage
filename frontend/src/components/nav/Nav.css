@@ -64,7 +64,7 @@
 }
 
 /* BUTTON STYLES */
-.btn__component,
+/* .btn__component,
 .btn__component-list {
     padding: 6px 12px;
     text-decoration: none;
@@ -81,7 +81,7 @@
     color: #52489c;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-}
+} */
 
 /* DESKTOP ONLY BUTTON */
 .btn__component {
@@ -98,37 +98,32 @@
    MOBILE STYLES
 ---------------------------------- */
 @media screen and (max-width: 767px) {
-  .nav-inner {
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
-    padding: 10px 0rem;
-    /* border: 1px solid yellow; */
-  }
+    .nav-inner {
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        padding: 10px 0rem;
+        /* border: 1px solid yellow; */
+    }
 
-  .nav__container--logo {
-    /* padding-bottom: 8px; */
-    border:1px solid red;
-    width: 100%;
-    justify-content: space-between;
-    /* align-items: center;
-     */
-  }
+    .nav__container--logo {
+        width: 100%;
+        justify-content: space-between;
+    }
 
-  .nav__container--list {
-    display: flex;
-    justify-content: start;
-    /* border: 1px solid red; */
-    padding-left: 1rem;
-  }
+    .nav__container--list {
+        display: flex;
+        justify-content: start;
+        padding-left: 1rem;
+    }
 
-  .btn__component {
-    display: inline-block;
-  }
+    .btn__component {
+        display: inline-block;
+    }
 
-  .nav__container--btn {
-    display: none;
-  }
+    .nav__container--btn {
+        display: none;
+    }
 }
 
 /* ----------------------------------
@@ -145,5 +140,18 @@
 
     .nav__container--logo img {
         width: 150px;
+    }
+
+    .nav-list{
+         justify-content: space-around;
+    }
+
+    .nav-list a {
+        font-size: 1.5rem;
+    }
+
+    .btn__component-list {
+        padding: 0.5rem 2rem;
+        font-size: 1rem;
     }
 }

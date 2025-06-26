@@ -1,82 +1,79 @@
 .hero {
   background: #a5d8ff;
-  background: linear-gradient(
-    50deg,
-    rgba(165, 216, 255, 1) 70%,
-    rgba(176, 176, 176, 1) 100%
-  );
+  background: linear-gradient(50deg,
+      rgba(165, 216, 255, 1) 70%,
+      rgba(176, 176, 176, 1) 100%);
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 2rem;
-  padding-top: 20rem;
-  /* border: 1px solid red; */
-  margin-top: 7rem;
-
+  margin-top: 4.7rem;
 }
+
 .hero__content {
   width: 100%;
   display: flex;
   gap: 1rem;
 }
+
 .hero__content-header {
   flex: 2;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .hero__content-header h1 {
   font-size: 2.5rem;
   text-align: center;
-  font-weight: 500;
-  width: 75%;
+   font-weight: 600;
+  width: 100%;
+  /* width: 75%; */
 }
+
 .hero__content-header h1 span {
   color: #52489c;
 }
-.hero__content-video {
-  flex: 1.5;
-  position: relative;
-  height: 400px;
-}
-.hero__content-video .video {
-  /* border: 1px solid #a5d8ff; */
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  position: absolute;
-  top: 100px;
-  left: 0;
-  object-fit: cover;
-}
+
+
+
 
 /* QUERIES */
-@media screen and (width: 768px) {
+/* -----------------------
+    LARGE STYLES
+    -------------------------
+*/
+@media screen and (min-width: 768px) {
   .hero {
-    padding-top: 7rem;
+    padding:2rem;
+
   }
-  .hero__content-header h1 {
-    font-size: 2.3rem;
-    width: 100%;
-  }
-  
+
   .hero__content-video {
     height: 300px;
   }
+
   .hero__content-video .video {
     top: 60px;
   }
 }
 
-@media screen and (max-width: 425px) {
-  .hero {
-    padding: 7rem 1rem 1rem 1rem;
+/* -----------------------
+    MOBILE STYLES
+    -------------------------
+*/
+@media screen and (max-width: 767px){
+.hero{
+  margin-top: 6.25rem;
+    padding: 1rem;
   }
-  .hero__content-header h1 {
-    font-size: 2.2rem;
-    width: 100%;
+    .hero__content-header h1 {
+    font-size: 1.6rem;
   }
-  .hero__content-video {
+}
+
+@media screen and (max-width: 425px){
+
+  .hero__content-video{
     display: none;
   }
 }

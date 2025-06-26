@@ -1,12 +1,14 @@
 import { motion } from 'framer-motion';
+import { useState, useEffect } from "react";
+
 
 const container = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 1 },
   visible: {
     opacity: 1,
     transition: {
-      delayChildren: 0.3,       // delay before children start animating
-      staggerChildren: 0.3,     // delay between each dot's animation
+      delayChildren: 0.1,       // delay before children start animating
+      staggerChildren: 0.15,     // delay between each dot's animation
     },
   },
 };
@@ -23,19 +25,30 @@ const dot = {
   },
 };
 
-const BouncingCircles = ({className=''}) => {
-  const colors = ["#52489c", "#a5d8ff", "#91c499", "#a6a6a6","#f18f01"];
+const BouncingCircles = ({ className = '' }) => {
+  const colors = ["#52489c", "#a5d8ff", "#91c499", "#a6a6a6", "#f18f01"];
+
+  const [trigger, setTrigger] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTrigger(prev => prev + 1); // trigger re-animation
+    }, 15000); // every 2 minutes
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <motion.div
+    key={trigger} // trigger re-animation by changing the key
       className={`container ${className}`}
       style={{
         display: "flex",
         justifyContent: "start",
         alignItems: "center",
         height: "30px",
-        width:'100%',
-        gap: "0.5rem",
+        width: '100%',
+        gap: "2px",
 
       }}
       variants={container}
@@ -47,8 +60,8 @@ const BouncingCircles = ({className=''}) => {
           key={index}
           className="dot"
           style={{
-            width: "20px",
-            height: "20px",
+            width: "15px",
+            height: "15px",
             backgroundColor: color,
             borderRadius: "50%",
           }}

@@ -11,6 +11,7 @@
   margin: 1rem 0;
   padding: 1rem ;
   background-color: #dbdada;
+  border-radius: 4px;
 }
 .home-con--link2 div,
 .home-con--link1 div {
@@ -19,15 +20,7 @@
   align-items: center;
   margin-top: 0.5rem;
 }
-.home-con--links a {
-  background-color: #52489c;
-  color: white;
-  padding: 0.3rem 0.7rem;
-  cursor: pointer;
-  border-radius: 3px;
-  text-decoration: none;
-  font-size: 1rem;
-}
+
 
 /* QUERIES */
 @media screen and (width: 768px) {

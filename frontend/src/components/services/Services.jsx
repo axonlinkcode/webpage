@@ -28,7 +28,9 @@ const Services = () => {
       <div className="services__top">
         <div className='services__top-img'><img src={assets.consult} alt="consult" /></div>
         <div className='services__top-content'>
-          <h2>Digital Solutions for Smarter Healthcare</h2>
+          <div>
+            <h2>Digital Solutions for Smarter Healthcare</h2>
+          </div>
           <p>Our services span custom software development, healthcare analytics,
             and digital transformation strategy designed
             specifically for clinical research teams, healthcare providers,
@@ -49,15 +51,12 @@ const Services = () => {
                     className='dot'
                     style={{
                       backgroundColor: item.dot,
-                      width: "18px",
-                      height: "18px",
-                      borderRadius: "50%",
-                      marginBottom: "1rem"
+                      
                     }}
                   ></div>
                 </div>
                 <div className='div__content'>
-                  <img src={item.img} alt="" />
+                   <img src={item.img} alt="" />
                   <h3>{item.header}</h3>
                   <p>{item.description}</p>
                 </div>
@@ -65,8 +64,6 @@ const Services = () => {
             ))
           }
         </ul>
-
-
       </div>
     </div>
   );
