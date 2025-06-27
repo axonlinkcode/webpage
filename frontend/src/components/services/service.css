@@ -330,7 +330,9 @@
 
   .services__bottom--list {
     flex-direction: column;
+    gap: 1rem;
   }
+
 
   .services__bottom--list-item {
     padding-bottom: 0rem;

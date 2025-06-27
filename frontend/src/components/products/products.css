@@ -83,7 +83,7 @@
   }
 
   .product-top-image img {
-    width: 15rem;
+    width: 13rem;
   }
 
   .product-top-image h3 {
@@ -91,11 +91,17 @@
   }
 
   .product-bottom {
-    border: 1px solid green;
     margin-top: 2rem;
   }
 
   .product-top-image p {
     font-size: 1rem;
   }
+
+  .product-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
 }

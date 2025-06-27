@@ -68,8 +68,8 @@
   .home-con {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
+    padding: 0.5rem;
+    gap: 0.5rem;
   }
 
   .home-con--para p {
