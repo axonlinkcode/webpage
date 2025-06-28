@@ -31,14 +31,14 @@
   flex: 0.9;
 }
 
-.product-bottom {
+/* .product-bottom {
   display: flex;
-}
+} */
 
-.product-links {
+/* .product-links {
   display: flex;
   gap: 1rem;
-}
+} */
 
 /* QUERIES */
 @media (width: 768px) {

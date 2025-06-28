@@ -10,7 +10,7 @@ const Nav = () => {
         {/* Logo + Button (mobile only) */}
         <div className="nav__container--logo">
           <img src={assets.logo} alt="Logo" />
-          <Button name="Get in touch" link="/forms" className="btn__component" />
+          <Button name="Get in touch" link="" className="btn__component" />
         </div>
 
         {/* Nav Links */}
@@ -33,7 +33,7 @@ const Nav = () => {
 
         {/* Button (desktop only) */}
         <div className="nav__container--btn">
-          <Button name="Get in touch" link="/forms" className="btn__component-list" />
+          <Button name="Get in touch" link="" className="btn__component-list" />
         </div>
       </div>
     </nav>

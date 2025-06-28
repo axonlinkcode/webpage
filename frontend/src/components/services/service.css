@@ -17,9 +17,9 @@
 }
 
 .consult__logo {
-  width: 5rem;
+  width: 1rem;
   position: absolute;
-  top: 85rem;
+  top: 65rem;
   right: 15px;
 }
 
@@ -364,42 +364,47 @@
   }
 }
 
-/* -----CONSULT LOGO */
-@media screen and (max-width:320px) {
+
+@media screen and (max-width: 320px) {
   .consult__logo {
     top: 87.5rem;
     right: 15px;
   }
 }
-@media screen and (min-width:321px) and (max-width:375px) {
+
+@media screen and (min-width: 321px) and (max-width: 375px) {
   .consult__logo {
     top: 84rem;
     right: 15px;
     width: 5.5rem;
   }
 }
-@media screen and (min-width:376px) and (max-width:425px) {
+
+@media screen and (min-width: 376px) and (max-width: 425px) {
   .consult__logo {
     top: 85.5rem;
     right: 17px;
     width: 5.8rem;
   }
 }
-@media screen and (min-width:426px) and (width:768px) {
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
   .consult__logo {
     top: 73rem;
     left: 17.5rem;
     width: 5rem;
   }
 }
-@media screen and (min-width:1024px) {
+
+@media screen and (min-width: 1024px) {
   .consult__logo {
     top: 75rem;
     left: 24rem;
     width: 5.8rem;
   }
 }
-@media screen and (width:1440px) {
+
+@media screen and (width: 1440px) {
   .consult__logo {
     top: 81rem;
     left: 37rem;

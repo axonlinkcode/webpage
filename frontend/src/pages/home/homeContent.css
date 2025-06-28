@@ -70,6 +70,7 @@
     flex-direction: column;
     padding: 0.5rem;
     gap: 0.5rem;
+        border: 5px solid yellow;
   }
 
   .home-con--para p {
@@ -81,15 +82,17 @@
     font-size: 1.1rem;
   }
 
-  .home-con--links {
+  .home-content {
     padding-left: 0rem;
+    border: 5px solid red;
   }
 
-  .home-con--link2,
-  .home-con--link1 {
+  /* .link2,
+  .link1 {
     font-size: 1rem;
     padding: 0.5rem;
-  }
+       border: 5px solid green;
+  } */
 
   .video__mobile {
     display: block;

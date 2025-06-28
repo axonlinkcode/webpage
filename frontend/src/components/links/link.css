@@ -1,49 +1,60 @@
-.home-con--links {
-  flex: 1.2;
-  font-size: 1.3rem;
+.links {
+  gap: 1rem;
+  display: flex;
+  border: 1px solid red;
 }
-.home-con--links p {
-  font-size: 1rem;
+
+.links p {
+  font-size: 1.2rem;
 }
-.home-con--link2,
-.home-con--link1 {
-  width: 100%;
-  margin: 1rem 0;
-  padding: 1rem ;
+
+.link2,
+.link1 {
+  flex: 1;
+  padding: 1rem;
   background-color: #dbdada;
   border-radius: 4px;
 }
-.home-con--link2 div,
-.home-con--link1 div {
+
+.link2,
+.link1 {
   display: flex;
-  justify-content: end;
-  align-items: center;
-  margin-top: 0.5rem;
+  gap: 12px;
+  align-items: start;
 }
 
 /* QUERIES */
 @media screen and (width: 768px) {
-  .home-con--links {
-    padding-left: 0rem;
+  .links {
+    flex-direction: column;
   }
-  .home-con--link2,
-  .home-con--link1 {
+
+  .link2,
+  .link1 {
     width: 100%;
     font-size: 1rem;
     padding: 0.5rem;
   }
-  .home-con--links a {
+
+  .links a {
     padding: 0.2rem 0.5rem;
   }
 }
 
 @media screen and (max-width: 425px) {
-  .home-con--links {
+  .links {
     padding-left: 0rem;
+    flex-direction: column;
   }
-  .home-con--link2,
-  .home-con--link1 {
-    font-size: 1rem;
-    padding: 0.5rem;
+
+  .link2,
+  .link1 {
+    align-items: center;
+  }
+
+  .link2 p,
+  .link1 p {
+    font-size: 0.5rem;
+    align-items: center;
   }
 }

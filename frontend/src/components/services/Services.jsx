@@ -28,8 +28,8 @@ const Services = () => {
       <div className="services__top">
         <div className='services__top-img'>
           <img src={assets.consult} alt="consult" />
-        </div>
           <img src={assets.consult_logo} alt="consult logo" className='consult__logo' />
+        </div>
         <div className='services__top-content'>
           <div>
             <h2>Digital Solutions for Smarter Healthcare</h2>

@@ -13,7 +13,7 @@ const HomeContent = () => {
                 <p>Join us in building a smarter, more connected future for healthcare.</p>
                 
             </div>
-            <div className='home-con--links'>
+            <div className='home-content'>
                 <BouncingCircles />
                 <Video  className='video__mobile'/>
                 <Links />
