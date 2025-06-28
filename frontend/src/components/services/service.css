@@ -8,12 +8,21 @@
 
 .services__top-img {
   flex: 1;
+  position: relative;
 }
 
 .services__top-img img {
   width: 100%;
   vertical-align: top;
 }
+
+.consult__logo {
+  width: 5rem;
+  position: absolute;
+  top: 85rem;
+  right: 15px;
+}
+
 
 .services__top-content {
   flex: 1;
@@ -220,6 +229,7 @@
 }
 
 
+
 /* ------TABLET---------- */
 @media screen and (width:768px) {
   .services__top {
@@ -351,5 +361,48 @@
   .div__content:hover h3 {
     transform: translate(-15px, -10px);
     transition: transform 0.4s ease;
+  }
+}
+
+/* -----CONSULT LOGO */
+@media screen and (max-width:320px) {
+  .consult__logo {
+    top: 87.5rem;
+    right: 15px;
+  }
+}
+@media screen and (min-width:321px) and (max-width:375px) {
+  .consult__logo {
+    top: 84rem;
+    right: 15px;
+    width: 5.5rem;
+  }
+}
+@media screen and (min-width:376px) and (max-width:425px) {
+  .consult__logo {
+    top: 85.5rem;
+    right: 17px;
+    width: 5.8rem;
+  }
+}
+@media screen and (min-width:426px) and (width:768px) {
+  .consult__logo {
+    top: 73rem;
+    left: 17.5rem;
+    width: 5rem;
+  }
+}
+@media screen and (min-width:1024px) {
+  .consult__logo {
+    top: 75rem;
+    left: 24rem;
+    width: 5.8rem;
+  }
+}
+@media screen and (width:1440px) {
+  .consult__logo {
+    top: 81rem;
+    left: 37rem;
+    width: 6rem;
   }
 }

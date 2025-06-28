@@ -26,7 +26,10 @@ const Services = () => {
   return (
     <div className="services" id='services'>
       <div className="services__top">
-        <div className='services__top-img'><img src={assets.consult} alt="consult" /></div>
+        <div className='services__top-img'>
+          <img src={assets.consult} alt="consult" />
+        </div>
+          <img src={assets.consult_logo} alt="consult logo" className='consult__logo' />
         <div className='services__top-content'>
           <div>
             <h2>Digital Solutions for Smarter Healthcare</h2>
@@ -45,18 +48,18 @@ const Services = () => {
         <ul className='services__bottom--list'>
           {
             service.map((item, index) => (
-              <li key={index}  className={`services__bottom--list-item ${index === 2 ? 'long-description' : ''}`}>
+              <li key={index} className={`services__bottom--list-item ${index === 2 ? 'long-description' : ''}`}>
                 <div className='div__dot'>
                   <div
                     className='dot'
                     style={{
                       backgroundColor: item.dot,
-                      
+
                     }}
                   ></div>
                 </div>
                 <div className='div__content'>
-                   <img src={item.img} alt="" />
+                  <img src={item.img} alt="" />
                   <h3>{item.header}</h3>
                   <p>{item.description}</p>
                 </div>
