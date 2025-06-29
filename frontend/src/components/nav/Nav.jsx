@@ -9,7 +9,9 @@ const Nav = () => {
       <div className="nav-inner">
         {/* Logo + Button (mobile only) */}
         <div className="nav__container--logo">
-          <img src={assets.logo} alt="Logo" />
+          <a href="/">
+            <img src={assets.logo} alt="Logo" />
+          </a>
           <Button name="Get in touch" link="" className="btn__component" />
         </div>
 

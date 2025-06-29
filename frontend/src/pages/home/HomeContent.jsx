@@ -10,13 +10,12 @@ const HomeContent = () => {
             <div className='home-con--para'>
                 <p>We drive digital transformation in healthcare by merging cutting-edge technology with human-centric design.</p>
                 <p>From accelerating clinical trials to enabling data-driven healthcare solutions, our IT innovations redefine efficiency, accessibility, and patient outcomes.</p>
-                <p>Join us in building a smarter, more connected future for healthcare.</p>
-                
+                <p>Join us in building a smarter, more connected future for healthcare.</p>          
             </div>
             <div className='home-content'>
                 <BouncingCircles />
                 <Video  className='video__mobile'/>
-                <Links />
+                <Links  className='home__content-link'/>
             </div>
         </div>
     );

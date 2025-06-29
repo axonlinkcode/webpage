@@ -1,11 +1,11 @@
 .links {
   gap: 1rem;
   display: flex;
-  border: 1px solid red;
 }
 
 .links p {
   font-size: 1.2rem;
+  margin-bottom: 0.7rem;
 }
 
 .link2,
@@ -16,11 +16,9 @@
   border-radius: 4px;
 }
 
-.link2,
-.link1 {
-  display: flex;
-  gap: 12px;
-  align-items: start;
+/* ---HOME CONTENT--- */
+.home__content-link{
+flex-direction: column;
 }
 
 /* QUERIES */
@@ -29,16 +27,10 @@
     flex-direction: column;
   }
 
-  .link2,
-  .link1 {
-    width: 100%;
-    font-size: 1rem;
-    padding: 0.5rem;
-  }
+  .links p {
+  font-size: 1rem;
+}
 
-  .links a {
-    padding: 0.2rem 0.5rem;
-  }
 }
 
 @media screen and (max-width: 425px) {
