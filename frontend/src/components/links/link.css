@@ -1,6 +1,7 @@
 .links {
   gap: 1rem;
   display: flex;
+  margin-top: 1rem;
 }
 
 .links p {
@@ -46,7 +47,7 @@ flex-direction: column;
 
   .link2 p,
   .link1 p {
-    font-size: 0.5rem;
+    font-size: 1rem;
     align-items: center;
   }
 }
