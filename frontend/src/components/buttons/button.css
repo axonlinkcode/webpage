@@ -1,5 +1,7 @@
 .button {
-    padding: 6px 24px;
+    padding: 6px 0;
+    display: inline-block;
+    width: 200px;
     text-decoration: none;
     font-size: 1.2rem;
     color: white;
@@ -7,7 +9,7 @@
     border-radius: 2px;
     transition: background-color 0.3s ease, color 0.3s ease;
     font-weight: 400;
-    margin-top:1rem ;
+    text-align: center;
 }
 
 .button:hover {
@@ -18,10 +20,28 @@
 }
 
 /* QUERIES */
-@media screen and (width: 768px) {
-.button {
-    font-size: 0.9rem;
-     padding: 5px 20px;
+
+/* ----------------------------------
+   MOBILE STYLES
+---------------------------------- */
+@media screen and (max-width: 425px) {
+    .button {
+        font-size: 1rem;
+        padding: 4px 0px;
+        width: 150px;
+    }
 }
 
+/* ----------------------------------
+   TABLET STYLES
+---------------------------------- */
+@media screen and (width: 768px) {
+    .button {
+        font-size: 0.9rem;
+        /* padding: 5px 20px; */
+    }
 }
+
+/* ----------------------------------
+   DESKTOP STYLES
+---------------------------------- */

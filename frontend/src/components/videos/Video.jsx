@@ -23,6 +23,7 @@ const Video = ({className}) => {
                                 onEnded={handleIntroEnd}
                                 className="video"
                                 preload="metadata"
+                                // loop
                             />
                         ) : (
                             <video
@@ -33,6 +34,7 @@ const Video = ({className}) => {
                                 playsInline
                                 className="video"
                                 preload="metadata"
+                                // loop
                             />
                         )}
                     </div>

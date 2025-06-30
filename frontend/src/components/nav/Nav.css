@@ -64,31 +64,20 @@
 }
 
 
-/* DESKTOP ONLY BUTTON */
-.btn__component {
-    display: none;
-}
-
-/* DESKTOP BUTTON */
-.nav__container--btn {
-    display: block;
-}
-
 
 /* ----------------------------------
    MOBILE STYLES
 ---------------------------------- */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 425px) {
     .nav-inner {
         flex-direction: column;
-        align-items: start;
-        justify-content: center;
-        padding: 10px 5px 10px 0 ;
+        padding: 10px 5px 10px 0;
     }
 
     .nav__container--logo {
         width: 100%;
         justify-content: space-between;
+        
     }
 
     .nav__container--list {
@@ -98,11 +87,39 @@
     }
 
     .btn__component {
-        display: inline-block;
+        display: block;
+    }
+
+    .btn__component-list {
+        display: none;
+    }
+}
+
+/* ----------------------------------
+   TABLET STYLES
+---------------------------------- */
+@media screen and (min-width: 426px) and (max-width: 767px) {
+    .nav-inner {
+        flex-direction: column;
+        padding: 10px 5px 10px 0;
+        gap: 10px;
+    }
+
+    .nav__container--logo {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .nav-list {
+        justify-content: space-between;
+    }
+
+    .btn__component-list {
+        display: none;
     }
 
     .nav__container--btn {
-        display: none;
+        display: block;
     }
 }
 
@@ -110,11 +127,16 @@
    DESKTOP STYLES
 ---------------------------------- */
 @media screen and (min-width: 768px) {
+    .nav-inner {
+        padding: 10px 0.5rem;
+        gap: 10px;
+    }
+
     .btn__component {
         display: none;
     }
 
-    .nav__container--btn {
+    .nav__container-list {
         display: block;
     }
 
@@ -122,16 +144,13 @@
         width: 150px;
     }
 
-    .nav-list{
-         justify-content: space-around;
+    .nav-list {
+        justify-content: space-around;
     }
 
     .nav-list a {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
-    .btn__component-list {
-        padding: 0.5rem 2rem;
-        font-size: 1rem;
-    }
+
 }

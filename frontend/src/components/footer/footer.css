@@ -43,6 +43,9 @@
 }
 .footer__bottom-left {
   color: whitesmoke;
+  display: flex;
+  font-size: 10px;
+  gap: 10px;
 }
 .footer__bottom-social {
   display: flex;

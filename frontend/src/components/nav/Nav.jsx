@@ -34,9 +34,9 @@ const Nav = () => {
         </div>
 
         {/* Button (desktop only) */}
-        <div className="nav__container--btn">
+        {/* <div className="nav__container--btn"> */}
           <Button name="Get in touch" link="" className="btn__component-list" />
-        </div>
+        {/* </div> */}
       </div>
     </nav>
   );
