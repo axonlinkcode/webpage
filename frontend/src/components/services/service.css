@@ -387,7 +387,10 @@
   }
 }
 
-/* cards for 320px */
+
+
+
+/* CARDS for 320px */
 @media screen and (max-width:320px){
   .div__content img {
     width: 4rem;

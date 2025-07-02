@@ -7,14 +7,14 @@ const teamMembers = [
     name: 'Olusola Solanke',
     role: 'Co-founder',
     position: 'Chief Executive Officer',
-    image: assets.johnDoe,
+    image: assets.sola,
     dot: 'a5d8ff'
   },
   {
     name: 'Anavami Sadiq',
     role: 'Co-founder',
     position: 'Chief Operations Officer',
-    image: assets.janeSmith,
+    image: assets.ami,
     dot: '91c499'
   },
   {
@@ -48,7 +48,7 @@ const Team = () => {
         {
           teamMembers.map((member, index) => (
             <li key={index} className='team__member'>
-              <img src={assets.passport} alt={member.name} />
+              <img src={member.image} alt={member.name} />
               <div className='team__member-info'>
                 <h3>{member.name}</h3>
                 <p>{member.role}</p>

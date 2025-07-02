@@ -31,14 +31,6 @@
   flex: 0.9;
 }
 
-/* .product-bottom {
-  display: flex;
-} */
-
-/* .product-links {
-  display: flex;
-  gap: 1rem;
-} */
 
 /* QUERIES */
 @media (width: 768px) {
@@ -104,4 +96,14 @@
     gap: 0;
   }
 
+}
+
+@media screen and (min-width:426px) and (max-width:767px) {
+  .product{
+    padding: 0 2rem;
+  }
+  
+  .product-top {
+  flex-direction: column;
+}
 }

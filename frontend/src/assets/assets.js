@@ -11,6 +11,8 @@ import passport from './passport.jpg'
 import x from './x.png'
 import linkedin from './linkedin.png'
 import logowhite from './logo white.png'
+import ami from './Ami.png'
+import sola from './sola.png'
 
 export const assets = {
     logo,
@@ -25,5 +27,7 @@ export const assets = {
     passport,
     x,
     linkedin,
-    logowhite
+    logowhite,
+    ami,
+    sola
 }
