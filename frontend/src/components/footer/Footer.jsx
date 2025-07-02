@@ -3,37 +3,37 @@ import { assets } from "../../assets/assets";
 const Footer = () => {
     return (
         <footer className="footer">
-            <ul className='footer__top'>
-                <li>
-                    <a href="#home">Home</a>
-                    <a href="#services">Services</a>
-                    <a href="#products">Products</a>
-                    <a href="#team">Team</a>
-                </li>
-                <li className='footer__logo' >
-                    <img src={assets.logowhite} alt="logo" />
-                </li>
-            </ul>
+            <div className='footer__top'>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#team">Team</a></li>
+                </ul>
+                <img src={assets.logowhite} alt="logo" />
+            </div>
+
             <ul className="footer__bottom">
-                <li className='footer__bottom-social'>
-                    <a href="#"
-                        type='email'>
-                        axonlink@axonlink.ai
-                    </a>
+                <li className="footer__bottom-social">
+                    <a href="mailto:axonlink@axonlink.ai">axonlink@axonlink.ai</a>
+                </li>
+                <li className="footer__bottom-social">
                     <a href="#">
-                        <img src={assets.linkedin} alt="" />
-                    </a>
-                    <a href="#">
-                        <img src={assets.x} alt="" />
+                        <img src={assets.linkedin} alt="LinkedIn" />
                     </a>
                 </li>
-            </ul>
-            <ul className="footer__bottom-policy">
-                <a>© 2025 axonlink. All rights reserved</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
+                <li className="footer__bottom-social">
+                    <a href="#">
+                        <img src={assets.x} alt="X (formerly Twitter)" />
+                    </a>
+                </li>
             </ul>
 
+            <ul className="footer__bottom-policy">
+                <li>© 2025 axonlink. All rights reserved</li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
         </footer>
     );
 };
