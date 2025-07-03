@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import './form.css'
 import "remixicon/fonts/remixicon.css";
+import { assets } from '../../assets/assets';
 
 
 const Form = () => {
@@ -19,14 +20,16 @@ const Form = () => {
 
                 <div className='form-options'>
                     <Link to='/forms/patient' className="form-btn patient-btn">
-                        <span className="btn-icon">👩‍⚕️</span>
+                        <span className="btn-icon">
+                                <i className="ri-user-heart-fill"></i>
+                        </span>
                         <span className="btn-text">Patient Survey</span>
                         <span className="btn-desc">For patients seeking care or trials</span>
                     </Link>
                     
                     <Link to='/forms/clinician' className="form-btn clinician-btn">
                         <span className="btn-icon">
-                            <i class="ri-stethoscope-line"></i>
+                               <i className="ri-stethoscope-fill"></i>
                         </span>
                         <span className="btn-text">Clinician Survey</span>
                         <span className="btn-desc">For doctors and healthcare providers</span>
@@ -34,7 +37,7 @@ const Form = () => {
                     
                     <Link to='/forms/CRO' className="form-btn cro-btn">
                         <span className="btn-icon">
-                           <i className="ri-hospital-line"></i>
+                              <i className="ri-flask-fill"></i>
                         </span>
                         <span className="btn-text">Research Survey</span>
                         <span className="btn-desc">For clinical research organizations</span>

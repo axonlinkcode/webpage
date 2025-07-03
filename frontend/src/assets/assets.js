@@ -13,6 +13,9 @@ import linkedin from './linkedin.png'
 import logowhite from './logo white.png'
 import ami from './Ami.png'
 import sola from './sola.png'
+import clinical from './Clinical Icon.png'
+import patient from './Patients.png'
+import research from './Research Icon.png'
 
 export const assets = {
     logo,
@@ -29,5 +32,8 @@ export const assets = {
     linkedin,
     logowhite,
     ami,
-    sola
+    sola,
+    clinical,
+    patient,
+    research
 }
