@@ -9,11 +9,14 @@ const Nav = () => {
       <div className="nav-inner">
         {/* Logo + Button (mobile only) */}
         <div className="nav__container--logo">
-          <a href="/">
             <img src={assets.logo} alt="Logo" />
-          </a>
-          <Button name="Get in touch" link="" className="btn__component" />
-        </div>
+          <Button
+            name="Get in touch"
+            link="mailto:axonlink@axonlink.ai"
+            className="btn__component"
+            />
+            </div>
+
 
         {/* Nav Links */}
         <div className="nav__container--list">
@@ -35,7 +38,7 @@ const Nav = () => {
 
         {/* Button (desktop only) */}
         {/* <div className="nav__container--btn"> */}
-          <Button name="Get in touch" link="" className="btn__component-list" />
+        <Button name="Get in touch" link="mailto:axonlink@axonlink.ai" className="btn__component-list" />
         {/* </div> */}
       </div>
     </nav>
