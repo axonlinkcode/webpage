@@ -195,6 +195,17 @@
 }
 
 
+/* REQUIRED */
+.required-note{
+  margin-top: 12px;
+  color: #91c499;
+  font-size: 12px;
+  transition: color 0.3s ease;
+}
+.required-note.error {
+  color: #dc3545; /* Red color for error state */
+}
+
 @media (max-width: 500px) {
   .survey-container {
     padding: 1rem;

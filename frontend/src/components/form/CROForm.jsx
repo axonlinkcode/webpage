@@ -8,6 +8,7 @@ import axios from 'axios';
 const CROForm = () => {
   const [formData, setFormData] = useState({
     primaryRole: '',
+    primaryRoleOther: '',
     orgType: '',
     experienceYears: '',
     regions: [],
@@ -27,8 +28,8 @@ const CROForm = () => {
     digitalReadiness: '',
     desiredFeatures: [],
     aiToolUsefulness: '',
-    aiToolConcerns: '',
     investInNewPlatforms: '',
+    digitalSystemsOther:'',
     priorities: []
   });
 
@@ -54,7 +55,7 @@ const CROForm = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    
+
     if (type === 'checkbox') {
       setFormData(prev => ({
         ...prev,
@@ -74,37 +75,36 @@ const CROForm = () => {
     }
   };
 
-  const handleRadioChange = (name, value) => {
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+const validateCurrentStep = () => {
+  const key = requiredFields[currentStep];
+  if (!key) return true;
 
-  const validateCurrentStep = () => {
-    const key = requiredFields[currentStep];
-    if (!key) return true;
+  const value = formData[key];
+  let isValid = true;
+  const newErrors = {};
 
-    const value = formData[key];
-    let isValid = true;
-    const newErrors = {};
+  if (Array.isArray(value) && value.length === 0) {
+    newErrors[key] = true; // Just set to true to trigger error state
+    isValid = false;
+  } else if (!value || value === '') {
+    newErrors[key] = true; // Just set to true to trigger error state
+    isValid = false;
+  } else if (currentStep === 17 && formData.hasPrivacyConcerns === 'Yes' && !formData.privacyConcerns) {
+    newErrors.privacyConcerns = true; // Just set to true to trigger error state
+    isValid = false;
+  }
 
-    if (Array.isArray(value) && value.length === 0) {
-      newErrors[key] = 'Please select at least one option';
-      isValid = false;
-    } else if (!value || value === '') {
-      newErrors[key] = 'This field is required';
-      isValid = false;
-    } else if (currentStep === 17 && formData.hasPrivacyConcerns === 'Yes' && !formData.privacyConcerns) {
-      newErrors.privacyConcerns = 'Please describe the privacy concerns';
-      isValid = false;
-    }
-
-    setErrors(newErrors);
-    return isValid;
-  };
+  setErrors(newErrors);
+  return isValid;
+};
 
   const handleNext = () => {
-    // Skip questions 12-13 if they don't use digital tools
     if (currentStep === 11 && formData.useDigitalSystems === 'No') {
-      setCurrentStep(14);
+    setCurrentStep(13);
+      return;
+    }
+    if (currentStep === 16 && formData.useDigitalSystems === 'No' || formData.useDigitalSystems === 'Not sure') {
+    setCurrentStep(18);
       return;
     }
 
@@ -117,9 +117,14 @@ const CROForm = () => {
 
   const handleBack = () => {
     // Handle special back navigation when we've skipped questions
-    if (currentStep === 14 && formData.useDigitalSystems === 'No') {
+    if (currentStep === 13 && formData.useDigitalSystems === 'No') {
       setCurrentStep(11);
-    } else {
+    }
+     if (currentStep === 18 && formData.useDigitalSystems === 'No' || formData.useDigitalSystems === 'Not sure') {
+    setCurrentStep(16);
+      return;
+    }
+    else {
       setCurrentStep(prev => Math.max(prev - 1, 1));
     }
   };
@@ -146,55 +151,55 @@ const CROForm = () => {
 
   const renderQuestion = () => {
     switch (currentStep) {
-      case 1:
-        return (
-          <div className="form-group">
-            <label>1. What is your primary role within your organization? *</label>
-            {['Project Manager / Clinical Study Manager', 'Clinical Operations Lead / Manager', 'Regulatory Affairs Specialist', 'Data Manager / Biostatistician', 'Site Selection / Feasibility Manager', 'Medical Director / Scientific Affairs', 'Other'].map((role, i) => (
-              <div key={i}>
-                <input 
-                  type="radio" 
-                  name="primaryRole" 
-                  value={role} 
-                  checked={formData.primaryRole === role} 
-                  onChange={handleChange} 
-                /> {role}
-              </div>
-            ))}
-            {formData.primaryRole === 'Other' && (
-              <input 
-                type="text" 
-                name="primaryRoleOther" 
-                placeholder="Please specify" 
-                value={formData.primaryRoleOther || ''} 
-                onChange={handleChange} 
-              />
-            )}
-            {errors.primaryRole && <span className="error">{errors.primaryRole}</span>}
-          </div>
-        );
+    case 1:
+  return (
+    <div className="form-group">
+      <label>1. What is your primary role within your organization? </label>
+      {['Project Manager / Clinical Study Manager', 'Clinical Operations Lead / Manager', 'Regulatory Affairs Specialist', 'Data Manager / Biostatistician', 'Site Selection / Feasibility Manager', 'Medical Director / Scientific Affairs', 'Other'].map((option, i) => (
+        <div key={i}>
+          <input 
+            type="radio" 
+            name="primaryRole" 
+            value={option} 
+            checked={formData.primaryRole === option} 
+            onChange={handleChange}
+          /> 
+          <span className="radio-text">{option}</span>
+        </div>
+      ))}
+      {formData.primaryRole === 'Other' && (
+        <input 
+          type="text" 
+          name="primaryRoleOther" 
+          placeholder="Please specify" 
+          value={formData.primaryRoleOther || ''} 
+          onChange={handleChange}
+        />
+      )}
+    </div>
+  );
       case 2:
         return (
           <div className="form-group">
-            <label>2. What type of organization do you primarily represent? *</label>
+            <label>2. What type of organization do you primarily represent?</label>
             {['Pharmaceutical / Biotechnology Company (Sponsor)', 'Contract Research Organization (CRO)', 'Academic / Research Institute', 'Government / Non-Governmental Organization (NGO) involved in clinical research', 'Other'].map((org, i) => (
               <div key={i}>
-                <input 
-                  type="radio" 
-                  name="orgType" 
-                  value={org} 
-                  checked={formData.orgType === org} 
-                  onChange={handleChange} 
+                <input
+                  type="radio"
+                  name="orgType"
+                  value={org}
+                  checked={formData.orgType === org}
+                  onChange={handleChange}
                 /> {org}
               </div>
             ))}
             {formData.orgType === 'Other' && (
-              <input 
-                type="text" 
-                name="orgTypeOther" 
-                placeholder="Please specify" 
-                value={formData.orgTypeOther || ''} 
-                onChange={handleChange} 
+              <input
+                type="text"
+                name="orgTypeOther"
+                placeholder="Please specify"
+                value={formData.orgTypeOther || ''}
+                onChange={handleChange}
               />
             )}
             {errors.orgType && <span className="error">{errors.orgType}</span>}
@@ -206,12 +211,12 @@ const CROForm = () => {
             <label>3. How many years of experience do you have working in clinical trials?</label>
             {['Less than 2 years', '2 - 5 years', '6 - 10 years', 'More than 10 years'].map((years, i) => (
               <div key={i}>
-                <input 
-                  type="radio" 
-                  name="experienceYears" 
-                  value={years} 
-                  checked={formData.experienceYears === years} 
-                  onChange={handleChange} 
+                <input
+                  type="radio"
+                  name="experienceYears"
+                  value={years}
+                  checked={formData.experienceYears === years}
+                  onChange={handleChange}
                 /> {years}
               </div>
             ))}
@@ -223,12 +228,12 @@ const CROForm = () => {
             <label>4. In which regions of Africa does your organization primarily conduct clinical trials? (Select all that apply) *</label>
             {['West Africa (e.g., Nigeria, Ghana)', 'East Africa (e.g., Kenya, Ethiopia)', 'Southern Africa (e.g., South Africa, Zambia)', 'North Africa (e.g., Egypt, Morocco)', 'Central Africa', 'Globally, including Africa', 'Only in Nigeria'].map((region, i) => (
               <div key={i}>
-                <input 
-                  type="checkbox" 
-                  name="regions" 
-                  value={region} 
-                  checked={formData.regions.includes(region)} 
-                  onChange={handleChange} 
+                <input
+                  type="checkbox"
+                  name="regions"
+                  value={region}
+                  checked={formData.regions.includes(region)}
+                  onChange={handleChange}
                 /> {region}
               </div>
             ))}
@@ -241,22 +246,22 @@ const CROForm = () => {
             <label>5. What trial phases does your organization typically manage or sponsor in Africa/Nigeria? (Select all that apply) *</label>
             {['Phase I', 'Phase II', 'Phase III', 'Phase IV (Post-marketing)', 'Observational Studies', 'Other'].map((phase, i) => (
               <div key={i}>
-                <input 
-                  type="checkbox" 
-                  name="trialPhases" 
-                  value={phase} 
-                  checked={formData.trialPhases.includes(phase)} 
-                  onChange={handleChange} 
+                <input
+                  type="checkbox"
+                  name="trialPhases"
+                  value={phase}
+                  checked={formData.trialPhases.includes(phase)}
+                  onChange={handleChange}
                 /> {phase}
               </div>
             ))}
             {formData.trialPhases.includes('Other') && (
-              <input 
-                type="text" 
-                name="trialPhasesOther" 
-                placeholder="Please specify" 
-                value={formData.trialPhasesOther || ''} 
-                onChange={handleChange} 
+              <input
+                type="text"
+                name="trialPhasesOther"
+                placeholder="Please specify"
+                value={formData.trialPhasesOther || ''}
+                onChange={handleChange}
               />
             )}
             {errors.trialPhases && <span className="error">{errors.trialPhases}</span>}
@@ -268,22 +273,22 @@ const CROForm = () => {
             <label>6. How do you currently identify and select suitable clinical trial sites in Nigeria/Africa? (Select all that apply) *</label>
             {['Referrals from existing contacts or investigators', 'Internal site databases or historical data', 'Partnering with local CROs or consultants', 'Direct outreach to hospitals or research institutions', 'Review of publications or public registries', 'Community engagement or outreach activities', 'Other'].map((method, i) => (
               <div key={i}>
-                <input 
-                  type="checkbox" 
-                  name="siteSelectionMethods" 
-                  value={method} 
-                  checked={formData.siteSelectionMethods.includes(method)} 
-                  onChange={handleChange} 
+                <input
+                  type="checkbox"
+                  name="siteSelectionMethods"
+                  value={method}
+                  checked={formData.siteSelectionMethods.includes(method)}
+                  onChange={handleChange}
                 /> {method}
               </div>
             ))}
             {formData.siteSelectionMethods.includes('Other') && (
-              <input 
-                type="text" 
-                name="siteSelectionMethodsOther" 
-                placeholder="Please specify" 
-                value={formData.siteSelectionMethodsOther || ''} 
-                onChange={handleChange} 
+              <input
+                type="text"
+                name="siteSelectionMethodsOther"
+                placeholder="Please specify"
+                value={formData.siteSelectionMethodsOther || ''}
+                onChange={handleChange}
               />
             )}
             {errors.siteSelectionMethods && <span className="error">{errors.siteSelectionMethods}</span>}
@@ -296,18 +301,18 @@ const CROForm = () => {
             <div className="rating-scale">
               {[1, 2, 3, 4, 5].map((num) => (
                 <label key={num}>
-                  <input 
-                    type="radio" 
-                    name="siteActivationChallenge" 
-                    value={num} 
-                    checked={formData.siteActivationChallenge == num} 
-                    onChange={handleChange} 
+                  <input
+                    type="radio"
+                    name="siteActivationChallenge"
+                    value={num}
+                    checked={formData.siteActivationChallenge == num}
+                    onChange={handleChange}
                   /> {num}
                 </label>
               ))}
               <div className="scale-labels">
-                <span>1 = Not Challenging at All</span>
-                <span>5 = Extremely Challenging</span>
+                <span>1=Not Challenging at All </span>
+                <span>5=Extremely Challenging</span>
               </div>
             </div>
           </div>
@@ -315,7 +320,7 @@ const CROForm = () => {
       case 8:
         return (
           <div className="form-group">
-            <label>8. What are the biggest challenges you face when managing ongoing clinical trial operations or communication with sites in Nigeria/Africa? (Select up to 3) *</label>
+            <label>8. What are the biggest challenges you face when managing ongoing clinical trial operations or communication with sites in Nigeria/Africa? (Select up to 3) </label>
             {[
               'Delays or incompleteness in data submission from sites',
               'Inconsistent data quality or accuracy from sites',
@@ -329,23 +334,23 @@ const CROForm = () => {
               'Other'
             ].map((challenge, i) => (
               <div key={i}>
-                <input 
-                  type="checkbox" 
-                  name="challenges" 
-                  value={challenge} 
-                  checked={formData.challenges.includes(challenge)} 
+                <input
+                  type="checkbox"
+                  name="challenges"
+                  value={challenge}
+                  checked={formData.challenges.includes(challenge)}
                   disabled={formData.challenges.length >= 3 && !formData.challenges.includes(challenge)}
-                  onChange={handleChange} 
+                  onChange={handleChange}
                 /> {challenge}
               </div>
             ))}
             {formData.challenges.includes('Other') && (
-              <input 
-                type="text" 
-                name="challengesOther" 
-                placeholder="Please specify" 
-                value={formData.challengesOther || ''} 
-                onChange={handleChange} 
+              <input
+                type="text"
+                name="challengesOther"
+                placeholder="Please specify"
+                value={formData.challengesOther || ''}
+                onChange={handleChange}
               />
             )}
             {errors.challenges && <span className="error">{errors.challenges}</span>}
@@ -358,18 +363,18 @@ const CROForm = () => {
             <div className="rating-scale">
               {[1, 2, 3, 4, 5].map((num) => (
                 <label key={num}>
-                  <input 
-                    type="radio" 
-                    name="patientRecruitmentChallenge" 
-                    value={num} 
-                    checked={formData.patientRecruitmentChallenge == num} 
-                    onChange={handleChange} 
+                  <input
+                    type="radio"
+                    name="patientRecruitmentChallenge"
+                    value={num}
+                    checked={formData.patientRecruitmentChallenge == num}
+                    onChange={handleChange}
                   /> {num}
                 </label>
               ))}
               <div className="scale-labels">
-                <span>1 = Not Challenging at All</span>
-                <span>5 = Extremely Challenging</span>
+                <span>1=Not Challenging at All </span>
+                <span>5=Extremely Challenging</span>
               </div>
             </div>
           </div>
@@ -378,26 +383,26 @@ const CROForm = () => {
         return (
           <div className="form-group">
             <label>10. Please briefly describe a specific data flow bottleneck or communication gap you've encountered that is unique to (or particularly pronounced in) clinical trials conducted in Africa/Nigeria.</label>
-            <textarea 
-              name="dataFlowBottleneck" 
-              value={formData.dataFlowBottleneck || ''} 
-              onChange={handleChange} 
-              rows={4} 
+            <textarea
+              name="dataFlowBottleneck"
+              value={formData.dataFlowBottleneck || ''}
+              onChange={handleChange}
+              rows={4}
             />
           </div>
         );
       case 11:
         return (
           <div className="form-group">
-            <label>11. Do you currently use any digital systems or platforms for managing your clinical trial operations (e.g., EDC, CTMS, mobile data capture, eTMF)? *</label>
+            <label>11. Do you currently use any digital systems or platforms for managing your clinical trial operations (e.g., EDC, CTMS, mobile data capture, eTMF)?</label>
             {['Yes', 'No'].map((option, i) => (
               <div key={i}>
-                <input 
-                  type="radio" 
-                  name="useDigitalSystems" 
-                  value={option} 
-                  checked={formData.useDigitalSystems === option} 
-                  onChange={handleChange} 
+                <input
+                  type="radio"
+                  name="useDigitalSystems"
+                  value={option}
+                  checked={formData.useDigitalSystems === option}
+                  onChange={handleChange}
                 /> {option}
               </div>
             ))}
@@ -421,46 +426,46 @@ const CROForm = () => {
               'Other'
             ].map((system, i) => (
               <div key={i}>
-                <input 
-                  type="checkbox" 
-                  name="digitalSystems" 
-                  value={system} 
-                  checked={formData.digitalSystems.includes(system)} 
-                  onChange={handleChange} 
+                <input
+                  type="checkbox"
+                  name="digitalSystems"
+                  value={system}
+                  checked={formData.digitalSystems.includes(system)}
+                  onChange={handleChange}
                 /> {system}
               </div>
             ))}
             {formData.digitalSystems.includes('Other') && (
-              <input 
-                type="text" 
-                name="digitalSystemsOther" 
-                placeholder="Please specify" 
-                value={formData.digitalSystemsOther || ''} 
-                onChange={handleChange} 
+              <input
+                type="text"
+                name="digitalSystemsOther"
+                placeholder="Please specify"
+                value={formData.digitalSystemsOther || ''}
+                onChange={handleChange}
               />
             )}
           </div>
         );
       case 13:
-        if (formData.useDigitalSystems !== 'Yes') return null;
+          //  if (formData.useDigitalSystems === 'NO') return null;
         return (
           <div className="form-group">
             <label>12. Overall, how well do your current digital systems meet your operational needs for managing clinical trials in Nigeria/Africa?</label>
             <div className="rating-scale">
               {[1, 2, 3, 4, 5].map((num) => (
                 <label key={num}>
-                  <input 
-                    type="radio" 
-                    name="systemEffectiveness" 
-                    value={num} 
-                    checked={formData.systemEffectiveness == num} 
-                    onChange={handleChange} 
+                  <input
+                    type="radio"
+                    name="systemEffectiveness"
+                    value={num}
+                    checked={formData.systemEffectiveness == num}
+                    onChange={handleChange}
                   /> {num}
                 </label>
               ))}
               <div className="scale-labels">
-                <span>1 = Not at all</span>
-                <span>5 = Completely</span>
+                <span>1=Not at All </span>
+                <span>5=Completely</span>
               </div>
             </div>
           </div>
@@ -468,7 +473,7 @@ const CROForm = () => {
       case 14:
         return (
           <div className="form-group">
-            <label>13. What are the main limitations or issues you encounter with your existing digital tools (or reasons you don't use them)? (Select all that apply) *</label>
+            <label>13. What are the main limitations or issues you encounter with your existing digital tools (or reasons you don't use them)? (Select all that apply)</label>
             {[
               'Requires constant internet connectivity (no offline mode)',
               'Limited or no support for local languages/cultural context',
@@ -482,22 +487,22 @@ const CROForm = () => {
               'Other'
             ].map((limitation, i) => (
               <div key={i}>
-                <input 
-                  type="checkbox" 
-                  name="limitations" 
-                  value={limitation} 
-                  checked={formData.limitations.includes(limitation)} 
-                  onChange={handleChange} 
+                <input
+                  type="checkbox"
+                  name="limitations"
+                  value={limitation}
+                  checked={formData.limitations.includes(limitation)}
+                  onChange={handleChange}
                 /> {limitation}
               </div>
             ))}
             {formData.limitations.includes('Other') && (
-              <input 
-                type="text" 
-                name="limitationsOther" 
-                placeholder="Please specify" 
-                value={formData.limitationsOther || ''} 
-                onChange={handleChange} 
+              <input
+                type="text"
+                name="limitationsOther"
+                placeholder="Please specify"
+                value={formData.limitationsOther || ''}
+                onChange={handleChange}
               />
             )}
             {errors.limitations && <span className="error">{errors.limitations}</span>}
@@ -510,56 +515,56 @@ const CROForm = () => {
             <div className="rating-scale">
               {[1, 2, 3, 4, 5].map((num) => (
                 <label key={num}>
-                  <input 
-                    type="radio" 
-                    name="infrastructureReliability" 
-                    value={num} 
-                    checked={formData.infrastructureReliability == num} 
-                    onChange={handleChange} 
+                  <input
+                    type="radio"
+                    name="infrastructureReliability"
+                    value={num}
+                    checked={formData.infrastructureReliability == num}
+                    onChange={handleChange}
                   /> {num}
                 </label>
               ))}
               <div className="scale-labels">
-                <span>1 = Very Unreliable</span>
-                <span>5 = Very Reliable</span>
+                <span>1=Very Unreliable </span>
+                <span>5=Very Reliable</span>
               </div>
             </div>
           </div>
         );
-    case 16:
-  return (
-    <div className="form-group">
-      <label>15. Have staff or participants at your trial sites expressed significant concerns about data privacy or trust when using digital tools for clinical trial activities? *</label>
-      {['Yes', 'No', 'Not sure'].map((option, i) => (
-        <div key={i}>
-          <input 
-            type="radio" 
-            name="hasPrivacyConcerns" 
-            value={option} 
-            checked={formData.hasPrivacyConcerns === option} 
-            onChange={handleChange} 
-          /> {option}
-        </div>
-      ))}
-      {errors.hasPrivacyConcerns && <span className="error">{errors.hasPrivacyConcerns}</span>}
-    </div>
-  );
-case 17:
-  if (formData.hasPrivacyConcerns !== 'Yes') return null;
-  return (
-    <div className="form-group">
-      <label>15a. Please briefly describe the nature of those concerns: *</label>
-      <textarea 
-        name="privacyConcerns" 
-        value={formData.privacyConcerns || ''} 
-        onChange={handleChange} 
-        rows={4} 
-      />
-      {errors.privacyConcerns && (
-        <span className="error">{errors.privacyConcerns}</span>
-      )}
-    </div>
-  );
+      case 16:
+        return (
+          <div className="form-group">
+            <label>15. Have staff or participants at your trial sites expressed significant concerns about data privacy or trust when using digital tools for clinical trial activities? </label>
+            {['Yes', 'No', 'Not sure'].map((option, i) => (
+              <div key={i}>
+                <input
+                  type="radio"
+                  name="hasPrivacyConcerns"
+                  value={option}
+                  checked={formData.hasPrivacyConcerns === option}
+                  onChange={handleChange}
+                /> {option}
+              </div>
+            ))}
+            {errors.hasPrivacyConcerns && <span className="error">{errors.hasPrivacyConcerns}</span>}
+          </div>
+        );
+      case 17:
+        if (formData.hasPrivacyConcerns !== 'Yes') return null;
+        return (
+          <div className="form-group">
+            <label>15a. Please briefly describe the nature of those concerns:</label>
+            <textarea
+              name="privacyConcerns"
+              value={formData.privacyConcerns || ''}
+              onChange={handleChange}
+              rows={4}
+            />
+            {errors.privacyConcerns && (
+              <span className="error">{errors.privacyConcerns}</span>
+            )}
+          </div>
+        );
       case 18:
         return (
           <div className="form-group">
@@ -567,18 +572,18 @@ case 17:
             <div className="rating-scale">
               {[1, 2, 3, 4, 5].map((num) => (
                 <label key={num}>
-                  <input 
-                    type="radio" 
-                    name="digitalReadiness" 
-                    value={num} 
-                    checked={formData.digitalReadiness == num} 
-                    onChange={handleChange} 
+                  <input
+                    type="radio"
+                    name="digitalReadiness"
+                    value={num}
+                    checked={formData.digitalReadiness == num}
+                    onChange={handleChange}
                   /> {num}
                 </label>
               ))}
               <div className="scale-labels">
-                <span>1 = Very Poor Readiness</span>
-                <span>5 = Very Good Readiness</span>
+                <span>1=Very Poor Readiness </span>
+                <span>5=Very Good Readiness</span>
               </div>
             </div>
           </div>
@@ -600,23 +605,23 @@ case 17:
               'Other'
             ].map((feature, i) => (
               <div key={i}>
-                <input 
-                  type="checkbox" 
-                  name="desiredFeatures" 
-                  value={feature} 
-                  checked={formData.desiredFeatures.includes(feature)} 
+                <input
+                  type="checkbox"
+                  name="desiredFeatures"
+                  value={feature}
+                  checked={formData.desiredFeatures.includes(feature)}
                   disabled={formData.desiredFeatures.length >= 3 && !formData.desiredFeatures.includes(feature)}
-                  onChange={handleChange} 
+                  onChange={handleChange}
                 /> {feature}
               </div>
             ))}
             {formData.desiredFeatures.includes('Other') && (
-              <input 
-                type="text" 
-                name="desiredFeaturesOther" 
-                placeholder="Please specify" 
-                value={formData.desiredFeaturesOther || ''} 
-                onChange={handleChange} 
+              <input
+                type="text"
+                name="desiredFeaturesOther"
+                placeholder="Please specify"
+                value={formData.desiredFeaturesOther || ''}
+                onChange={handleChange}
               />
             )}
           </div>
@@ -628,26 +633,26 @@ case 17:
             <div className="rating-scale">
               {[1, 2, 3, 4, 5].map((num) => (
                 <label key={num}>
-                  <input 
-                    type="radio" 
-                    name="aiToolUsefulness" 
-                    value={num} 
-                    checked={formData.aiToolUsefulness == num} 
-                    onChange={handleChange} 
+                  <input
+                    type="radio"
+                    name="aiToolUsefulness"
+                    value={num}
+                    checked={formData.aiToolUsefulness == num}
+                    onChange={handleChange}
                   /> {num}
                 </label>
               ))}
               <div className="scale-labels">
-                <span>1 = Not Useful at All</span>
-                <span>5 = Very Useful</span>
+                <span>1=Not Useful at All </span>
+                <span>5=Very Useful</span>
               </div>
             </div>
-            <input 
-              type="text" 
-              name="aiToolConcerns" 
-              placeholder="I have concerns about this (please specify)" 
-              value={formData.aiToolConcerns || ''} 
-              onChange={handleChange} 
+            <input
+              type="text"
+              name="aiToolConcerns"
+              placeholder=""
+              value={formData.aiToolConcerns || ''}
+              onChange={handleChange}
             />
           </div>
         );
@@ -662,12 +667,12 @@ case 17:
               'No, not at this time'
             ].map((option, i) => (
               <div key={i}>
-                <input 
-                  type="radio" 
-                  name="investInNewPlatforms" 
-                  value={option} 
-                  checked={formData.investInNewPlatforms === option} 
-                  onChange={handleChange} 
+                <input
+                  type="radio"
+                  name="investInNewPlatforms"
+                  value={option}
+                  checked={formData.investInNewPlatforms === option}
+                  onChange={handleChange}
                 /> {option}
               </div>
             ))}
@@ -686,9 +691,9 @@ case 17:
             ].map((area, i) => (
               <div key={i} className="ranking-item">
                 <label>{area}</label>
-                <select 
-                  name={`priorities`} 
-                  value={formData.priorities[i] || ''} 
+                <select
+                  name={`priorities`}
+                  value={formData.priorities[i] || ''}
                   onChange={(e) => {
                     const newPriorities = [...formData.priorities];
                     newPriorities[i] = e.target.value;
@@ -697,8 +702,8 @@ case 17:
                 >
                   <option value="">Select rank</option>
                   {[1, 2, 3, 4].map((rank) => (
-                    <option 
-                      key={rank} 
+                    <option
+                      key={rank}
                       value={rank}
                       disabled={formData.priorities.includes(rank.toString()) && formData.priorities[i] !== rank.toString()}
                     >
@@ -735,7 +740,9 @@ case 17:
           <div className="survey-questions">
             {renderQuestion()}
             {requiredFields[currentStep] && (
-              <p className="required-note">* This question is required</p>
+              <p className={`required-note ${errors[requiredFields[currentStep]] ? 'error' : ''}`}>
+                * This question is required
+              </p>
             )}
           </div>
 
