@@ -21,7 +21,7 @@ const teamMembers = [
     name: 'Ozi Sadiq-Kasai',
     role: 'Frontend & Education Lead',
     position: 'Solutions Architect',
-    image: assets.aliceJohnson,
+    image: assets.ozi,
     dot: 'f18f01'
   },
 ];

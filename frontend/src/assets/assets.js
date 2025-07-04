@@ -11,8 +11,9 @@ import passport from './passport.jpg'
 import x from './x.png'
 import linkedin from './linkedin.png'
 import logowhite from './logo white.png'
-import ami from './Ami.png'
-import sola from './sola.png'
+import ami from './Ami.jpg'
+import ozi from './ozi.jpg'
+import sola from './Sola.jpg'
 import clinical from './Clinical Icon.png'
 import patient from './Patients.png'
 import research from './Research Icon.png'
@@ -35,5 +36,7 @@ export const assets = {
     sola,
     clinical,
     patient,
-    research
+    research,
+    ozi,
+    
 }
