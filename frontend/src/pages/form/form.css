@@ -32,7 +32,7 @@
 }
 
 h2 {
-   color: #343a40;
+  color: #343a40;
   margin-bottom: 1.5rem;
   font-size: 1.8rem;
   text-align: center;
@@ -40,7 +40,7 @@ h2 {
 }
 
 .intro-text {
-   color: #6c757d;
+  color: #6c757d;
   line-height: 1.7;
   margin-bottom: 3rem;
   font-size: 1.1rem;
@@ -95,17 +95,18 @@ h2 {
 
 /* Patient Button */
 .patient-btn {
-  background: linear-gradient(135deg,#837AC1, #52489C);
+  background: linear-gradient(135deg, #837AC1, #52489C);
 }
 
 /* Clinician Button */
 .clinician-btn {
-  background: linear-gradient(135deg,#91C499, #5A8F66);
+
+  background: linear-gradient(135deg, #A5D8FF, #4A90C4);
 }
 
 /* CRO Button */
 .cro-btn {
-  background: linear-gradient(135deg, #A5D8FF, #4A90C4);
+  background: linear-gradient(135deg, #91C499, #5A8F66);
 }
 
 /* Responsive adjustments */
@@ -113,20 +114,20 @@ h2 {
   .form-container {
     padding: 1rem;
   }
-  
+
   .form-card {
     padding: 1.5rem;
   }
-  
+
   h2 {
     font-size: 1.5rem;
   }
-  
+
   .intro-text {
     font-size: 1rem;
     margin-bottom: 2rem;
   }
-  
+
   .form-options {
     grid-template-columns: 1fr;
   }
@@ -136,11 +137,11 @@ h2 {
   .form-card {
     padding: 1.2rem;
   }
-  
+
   .form-btn {
     padding: 1.5rem;
   }
-  
+
   .btn-text {
     font-size: 1.2rem;
   }

@@ -1,31 +1,29 @@
 /* form.css */
+.survey-body {
+  padding: 2rem;
+}
 
 .survey-container {
-  width: 100%;
-  height: 100vh;
+  height: calc(100vh - 4rem);
   background-color: #fff;
-  border: 1px solid #ddd;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-y: auto;
 }
 
 .survey-form {
-  width: 50%;
-  padding: 2rem;
+  width: 60%;
   background-color: #ffffff;
-  border: 2px solid #198754;
+  border: 2px solid #52489c;
   border-radius: 8px;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
 }
 
-.back-link {
+.arrow-link {
   display: inline-block;
-  margin-bottom: 1rem;
-  color: #007bff;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  color: #52489c;
 }
 
 .back-link:hover {
@@ -34,28 +32,27 @@
 
 .survey-header {
   text-align: center;
-  margin-bottom: 2rem;
-  background-color: green;
-  padding: 2rem 0;
-  color:white;
+  background-color: #52489c;
+  padding: 3rem 0;
+  color: whitesmoke;
 }
 
 .survey-header h1 {
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 
-.intro-text {
+.survey-header p {
   font-size: 1rem;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 .progress-tracker {
-  margin-bottom: 1.5rem;
+ padding: 2rem ;
 }
 
 .progress-tracker p {
   font-weight: 500;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.4rem;;
 }
 
 .progress-bar {
@@ -68,25 +65,44 @@
 
 .progress-bar-fill {
   height: 100%;
-  background-color: #007bff;
+  background-color: #91c499;
   transition: width 0.3s ease;
 }
 
-.form-group {
-  margin-bottom: 1.5rem;
+.survey-questions{
+  padding: 2rem;
 }
+
+/* .form-group {
+  border: 1px solid red;
+} */
 
 .form-group label {
   font-weight: 600;
+  font-size: 1.25rem;
   display: block;
-  margin-bottom: 0.5rem;
-  color: #333;
+  margin-bottom: 1rem; 
+}
+.form-group-span{
+   color: #a6a6a6;
+   display: inline-block;
+   font-size: 15px;
 }
 
 .form-group input[type="radio"],
 .form-group input[type="checkbox"] {
-  margin-right: 8px;
+  transform: scale(1.4); /* Increases size */
+  margin-right: 10px;
+  cursor: pointer;
+  accent-color: #91c499; 
+  border: none;
+  margin-bottom: 0.5rem;
 }
+.radio-text {
+  color: #4b4a4a;
+  font-size: 1.1rem;
+}
+
 
 .form-group textarea,
 .form-group select {
@@ -101,24 +117,83 @@
 
 .form-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-top: 2rem;
 }
 
 .form-footer button {
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    padding: 0.7rem 0;
+    width: 200px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #52489c;
+    border-radius: 2px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 1rem;
+    border: 0;
 }
 
 .form-footer button:hover {
-  background-color: #0056b3;
+    background-color: #91c499;
+    color: #52489c;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-card {
+  background-color: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.modal-card h2 {
+  margin-bottom: 1rem;
+  color: #2e7d32;
+}
+
+.modal-btn {
+  display: inline-block;
+  margin-top: 1.2rem;
+  padding: 0.6rem 1.4rem;
+  background-color: #2e7d32;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.error-message {
+  margin: 1rem auto;
+  background-color: #ffe5e5;
+  color: #d8000c;
+  padding: 1rem;
+  width: 80%;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
 
 @media (max-width: 500px) {
   .survey-container {
