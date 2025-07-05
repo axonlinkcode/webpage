@@ -7,7 +7,6 @@ import axios from 'axios';
 
 const CROForm = () => {
   const [formData, setFormData] = useState({
-    // priorities: [undefined, undefined, undefined, undefined],
     primaryRole: '',
     primaryRoleOther: '',
     orgType: '',
@@ -231,7 +230,7 @@ const CROForm = () => {
       case 4:
         return (
           <div className="form-group">
-            <label>4. In which regions of Africa does your organization primarily conduct clinical trials? (Select all that apply) *</label>
+            <label>4. In which regions of Africa does your organization primarily conduct clinical trials? (Select all that apply)</label>
             {['West Africa (e.g., Nigeria, Ghana)', 'East Africa (e.g., Kenya, Ethiopia)', 'Southern Africa (e.g., South Africa, Zambia)', 'North Africa (e.g., Egypt, Morocco)', 'Central Africa', 'Globally, including Africa', 'Only in Nigeria'].map((region, i) => (
               <div key={i}>
                 <input
@@ -758,7 +757,7 @@ const CROForm = () => {
       <div className="survey-container">
         <form onSubmit={handleSubmit} className="survey-form">
           <div className="survey-header">
-            <h1>Survey for Clinical Research Organizations (CROs) / Trial Sponsors</h1>
+            <h1>Clinical Research Organizations (CROs)/Trial Sponsors</h1>
             <p>Your expertise as a clinical trial manager or sponsor operating in Nigeria is critical. We are developing an innovative IT system to streamline clinical trial operations, enhance patient engagement, and improve connectivity within the Nigerian healthcare and research ecosystem. </p>
             <p>Your valuable insights will directly inform the features and functionality of this system. Your answers will be kept confidential. </p>
           </div>
@@ -791,8 +790,6 @@ const CROForm = () => {
              {currentStep < 22 && (
     <button type="button" onClick={handleNext}>Next</button>
   )}
-
-
          
           </div>
 

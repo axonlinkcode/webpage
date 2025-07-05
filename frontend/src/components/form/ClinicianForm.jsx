@@ -4,6 +4,10 @@ import './form.css';
 import axios from 'axios';
 
 const ClinicianForm = () => {
+  const [currentStep, setCurrentStep] = useState(1);
+  const [showModal, setShowModal] = useState(false);
+  const [submissionError, setSubmissionError] = useState('');
+  const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     professionalRole: '',
     facilityTypes: [],
@@ -21,11 +25,7 @@ const ClinicianForm = () => {
     desiredFeatures: []
   });
 
-  const [currentStep, setCurrentStep] = useState(1);
-  const [showModal, setShowModal] = useState(false);
-  const [submissionError, setSubmissionError] = useState('');
-
-  const totalSteps = 14;
+  const totalSteps = 13;
 
   const requiredFields = {
     1: 'professionalRole',
@@ -35,13 +35,14 @@ const ClinicianForm = () => {
     5: 'referralDifficulty',
     6: 'careCoordinationChallenges',
     7: 'trialChallenges',
-    9: 'usesDigitalTools',
+    8: 'usesDigitalTools',
     12: 'toolImprovementSuggestions',
-    15: 'desiredFeatures'
+    13: 'desiredFeatures'
   };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+
     if (type === 'checkbox') {
       setFormData(prev => ({
         ...prev,
@@ -55,52 +56,82 @@ const ClinicianForm = () => {
         [name]: value
       }));
     }
+
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
   };
 
   const handleRadioChange = (name, value) => {
     setFormData(prev => ({ ...prev, [name]: value }));
+    
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const validateCurrentStep = () => {
+    const key = requiredFields[currentStep];
+    if (!key) return true;
+
+    const value = formData[key];
+    let isValid = true;
+    const newErrors = {};
+
+    if (Array.isArray(value) && value.length === 0) {
+      newErrors[key] = true; // Just set to true to trigger error state
+      isValid = false;
+    } else if (!value || value === '') {
+      newErrors[key] = true; // Just set to true to trigger error state
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
   };
 
   const handleNext = () => {
-    const key = requiredFields[currentStep];
-    const value = formData[key];
-
     if (currentStep === 8 && formData.usesDigitalTools === 'No') {
-      // Skip 8a and 8b if they don't use digital tools
-      setCurrentStep(11); // jump to step 11 (question 14)
+      setCurrentStep(11);
       return;
     }
 
-    if (key && (value === '' || (Array.isArray(value) && value.length === 0))) {
-      alert('Please answer this question before proceeding.');
+    if (!validateCurrentStep()) {
       return;
     }
 
     setCurrentStep(prev => prev + 1);
   };
 
-
   const handleBack = () => {
+    if (currentStep === 11 && formData.usesDigitalTools === 'No') {
+      setCurrentStep(8);
+      return;
+    }
+    
     setCurrentStep(prev => Math.max(prev - 1, 1));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    // Simulate success
-    setShowModal(true);
-    setSubmissionError('');
-    // Uncomment below to use API
-    // const API = import.meta.env.VITE_API_BASE_URL;
-    // axios.post(`${API}/clinician`, formData)
-    //   .then(() => {
-    //     setShowModal(true);
-    //     setSubmissionError('');
-    //   })
-    //   .catch(err => {
-    //     console.error('Submission error', err);
-    //     setSubmissionError('Something went wrong. Please try again.');
-    //   });
+    
+    if (validateCurrentStep()) {
+      console.log('Form submitted:', formData);
+      setShowModal(true);
+      setSubmissionError('');
+      
+      // Uncomment for actual API submission
+      // const API = import.meta.env.VITE_API_BASE_URL;
+      // axios.post(`${API}/clinician`, formData)
+      //   .then(() => {
+      //     setShowModal(true);
+      //     setSubmissionError('');
+      //   })
+      //   .catch(err => {
+      //     console.error('Submission error', err);
+      //     setSubmissionError('Something went wrong. Please try again.');
+      //   });
+    }
   };
 
   const renderQuestion = () => {
@@ -120,6 +151,9 @@ const ClinicianForm = () => {
                 /> <span className="radio-text">{option}</span>
               </div>
             ))}
+            {errors.professionalRole && (
+              <span className="error">{errors.professionalRole}</span>
+            )}
           </div>
         );
       case 2:
@@ -137,6 +171,9 @@ const ClinicianForm = () => {
                 /> <span className="radio-text">{option}</span>
               </div>
             ))}
+            {errors.facilityTypes && (
+              <span className="error">{errors.facilityTypes}</span>
+            )}
           </div>
         );
       case 3:
@@ -154,6 +191,9 @@ const ClinicianForm = () => {
                 /> <span className="radio-text">{option}</span>
               </div>
             ))}
+            {errors.trialInvolvement && (
+              <span className="error">{errors.trialInvolvement}</span>
+            )}
           </div>
         );
       case 4:
@@ -171,6 +211,9 @@ const ClinicianForm = () => {
                 /> <span className="radio-text">{option}</span>
               </div>
             ))}
+            {errors.workDevices && (
+              <span className="error">{errors.workDevices}</span>
+            )}
           </div>
         );
       case 5:
@@ -183,6 +226,9 @@ const ClinicianForm = () => {
               onChange={handleChange}
               rows={4}
             />
+            {errors.referralDifficulty && (
+              <span className="error">{errors.referralDifficulty}</span>
+            )}
           </div>
         );
       case 6:
@@ -195,6 +241,9 @@ const ClinicianForm = () => {
               onChange={handleChange}
               rows={4}
             />
+            {errors.careCoordinationChallenges && (
+              <span className="error">{errors.careCoordinationChallenges}</span>
+            )}
           </div>
         );
       case 7:
@@ -207,6 +256,9 @@ const ClinicianForm = () => {
               onChange={handleChange}
               rows={4}
             />
+            {errors.trialChallenges && (
+              <span className="error">{errors.trialChallenges}</span>
+            )}
           </div>
         );
       case 8:
@@ -224,6 +276,9 @@ const ClinicianForm = () => {
                 /> <span className="radio-text">{option}</span>
               </div>
             ))}
+            {errors.usesDigitalTools && (
+              <span className="error">{errors.usesDigitalTools}</span>
+            )}
           </div>
         );
       case 9:
@@ -272,6 +327,9 @@ const ClinicianForm = () => {
               onChange={handleChange}
               rows={3}
             />
+            {errors.toolImprovementSuggestions && (
+              <span className="error">{errors.toolImprovementSuggestions}</span>
+            )}
           </div>
         );
       case 13:
@@ -290,6 +348,9 @@ const ClinicianForm = () => {
                 /> <span className="radio-text">{option}</span>
               </div>
             ))}
+            {errors.desiredFeatures && (
+              <span className="error">{errors.desiredFeatures}</span>
+            )}
           </div>
         );
       default:
@@ -303,8 +364,10 @@ const ClinicianForm = () => {
       <div className="survey-container">
         <form onSubmit={handleSubmit} className="survey-form">
           <div className="survey-header">
-            <h1>Clinician Experience Survey</h1>
-            <p>Help us understand your challenges and improve digital tools for clinical work in Nigeria.</p>
+            <h1>Clinicians</h1>
+            <h2>(Specialists, Doctors, Research Nurses, Principal Investigators)</h2>
+            <p>As a Clinician, your insights are invaluable. We are developing an innovative online system to improve the connection between specialist care and clinical trial opportunities in Nigeria.</p>
+            <p>Your feedback on current workflows, technology use, and unmet needs will directly inform the design of features tailored to Nigeria's healthcare context.</p>
           </div>
 
           <div className="progress-tracker">
@@ -317,17 +380,33 @@ const ClinicianForm = () => {
             </div>
           </div>
 
-          <div className="survey-questions">{renderQuestion()}</div>
+          <div className="survey-questions">
+            {renderQuestion()}
+            {requiredFields[currentStep] && (
+              <p className={`required-note ${errors[requiredFields[currentStep]] ? 'error' : ''}`}>
+                * This question is required
+              </p>
+            )}
+          </div>
 
           <div className="form-footer">
             {currentStep > 1 && (
               <button type="button" onClick={handleBack}>Back</button>
             )}
-            {currentStep < totalSteps ? (
+            {/* {currentStep < totalSteps ? (
               <button type="button" onClick={handleNext}>Next</button>
             ) : (
               <button type="submit">Submit</button>
+            )} */}
+
+                       {currentStep === 13 && (
+              <button type="submit">Submit</button>
             )}
+
+             {currentStep < 13 && (
+    <button type="button" onClick={handleNext}>Next</button>
+  )}
+      
           </div>
         </form>
       </div>
