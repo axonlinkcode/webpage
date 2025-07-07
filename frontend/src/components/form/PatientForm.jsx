@@ -154,23 +154,23 @@ const PatientForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-     if (validateCurrentStep()) {
+    if (validateCurrentStep()) {
       console.log('Submitted:', formData);
       setShowModal(true);
       setSubmissionError('');
 
-    // if (validateCurrentStep()) {
-    //   const API = import.meta.env.VITE_API_BASE_URL;
-    //   axios.post(`${API}/patient`, formData)
-    //     .then(() => {
-    //       setShowModal(true);
-    //       setSubmissionError('');
-    //     })
-    //     .catch(err => {
-    //       console.error('Submission error', err);
-    //       setSubmissionError('Something went wrong. Please try again.');
-    //     });
-     }
+      // if (validateCurrentStep()) {
+      //   const API = import.meta.env.VITE_API_BASE_URL;
+      //   axios.post(`${API}/patient`, formData)
+      //     .then(() => {
+      //       setShowModal(true);
+      //       setSubmissionError('');
+      //     })
+      //     .catch(err => {
+      //       console.error('Submission error', err);
+      //       setSubmissionError('Something went wrong. Please try again.');
+      //     });
+    }
   };
 
   const renderQuestion = () => {
@@ -313,7 +313,7 @@ const PatientForm = () => {
               </div>
             ))}
             {errors.onlineActivities && (
-              <span className="error">{errors.onlineActivities}</span>          
+              <span className="error">{errors.onlineActivities}</span>
             )}
           </div>
         );
@@ -423,7 +423,10 @@ const PatientForm = () => {
           <div className="survey-header">
             <h1>Patient Experience Survey</h1>
             <p>
-              Help us design a better system for healthcare and trials in Nigeria.
+              Your experience and insights are crucial! We are developing a new mobile-friendly system to help patients in Nigeria more easily find specialist care and discover relevant clinical trials.
+            </p>
+            <p>
+              Your responses will directly inform how we build this system to meet your needs. All your answers will be kept confidential.
             </p>
           </div>
 
