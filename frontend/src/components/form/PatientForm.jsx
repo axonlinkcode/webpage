@@ -4,6 +4,10 @@ import './form.css';
 import axios from 'axios';
 
 const PatientForm = () => {
+  const [currentStep, setCurrentStep] = useState(1);
+  const [showModal, setShowModal] = useState(false);
+  const [submissionError, setSubmissionError] = useState('');
+  const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     deviceType: '',
     location: '',
@@ -23,24 +27,23 @@ const PatientForm = () => {
     systemPriorities: []
   });
 
-  const [currentStep, setCurrentStep] = useState(1);
-  const totalSteps = 13;
-  const [showModal, setShowModal] = useState(false);
-  const [submissionError, setSubmissionError] = useState('');
+  const totalSteps = 13; // Changed from 14 to 13 since you only have 13 steps
 
   const requiredFields = {
     1: 'deviceType',
     2: 'location',
     3: 'infoSources',
     4: 'trialParticipation',
-    5: 'accessDifficulty',
     7: 'usesInternetHealth',
-    8: 'comfortLevel',
-    9: 'internetReliability'
+    8: 'onlineActivities',
+    9: 'noInternetReasons',
+    10: 'comfortLevel',
+    11: 'internetReliability'
   };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+
     if (type === 'checkbox') {
       setFormData(prev => ({
         ...prev,
@@ -54,58 +57,121 @@ const PatientForm = () => {
         [name]: type === 'number' ? parseInt(value) : value
       }));
     }
+
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
   };
 
   const handleRadioChange = (name, value) => {
     setFormData(prev => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const validateCurrentStep = () => {
+    const key = requiredFields[currentStep];
+    if (!key) return true;
+
+    const value = formData[key];
+    let isValid = true;
+    const newErrors = {};
+
+    if (Array.isArray(value) && value.length === 0) {
+      newErrors[key] = 'Please select at least one option';
+      isValid = false;
+    } else if (!value || value === '' || value === 0) {
+      newErrors[key] = 'This field is required';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
   };
 
   const handleNext = () => {
-    const key = requiredFields[currentStep];
-    const value = formData[key];
+    if (!validateCurrentStep()) return;
 
-    if (currentStep === 8) {
-      if (formData.usesInternetHealth === 'Yes' && formData.onlineActivities.length === 0) {
-        alert('Please select at least one health-related activity you have done online.');
+    // Branching logic
+    if (currentStep === 7) {
+      if (formData.usesInternetHealth === 'Yes') {
+        setCurrentStep(8); // Go to 7a
         return;
       }
-      if (formData.usesInternetHealth === 'No' && formData.noInternetReasons.length === 0) {
-        alert('Please select at least one reason you do not use online services.');
+      if (formData.usesInternetHealth === 'No') {
+        setCurrentStep(9); // Go to 7b
         return;
       }
-    } else if (key && (value === '' || (Array.isArray(value) && value.length === 0))) {
-      alert('Please answer this question before proceeding.');
+    }
+
+    // After answering 7a (onlineActivities), go to question 10
+    if (currentStep === 8 && formData.usesInternetHealth === 'Yes') {
+      if (formData.onlineActivities.length === 0) {
+        setErrors({ onlineActivities: 'Please select at least one option' });
+        return;
+      }
+      setCurrentStep(10);
       return;
     }
 
+    // After answering 7b (noInternetReasons), go to question 10
+    if (currentStep === 9 && formData.usesInternetHealth === 'No') {
+      if (formData.noInternetReasons.length === 0) {
+        setErrors({ noInternetReasons: 'Please select at least one option' });
+        return;
+      }
+      setCurrentStep(10);
+      return;
+    }
+
+    // Default behavior
     setCurrentStep(prev => prev + 1);
   };
 
   const handleBack = () => {
+    // Go back to 7a or 7b depending on what was shown
+    if (currentStep === 10) {
+      if (formData.usesInternetHealth === 'Yes') {
+        setCurrentStep(8);
+        return;
+      }
+      if (formData.usesInternetHealth === 'No') {
+        setCurrentStep(9);
+        return;
+      }
+    }
+
+    // Going back from 8 or 9 to 7
+    if ((currentStep === 8 || currentStep === 9)) {
+      setCurrentStep(7);
+      return;
+    }
+
     setCurrentStep(prev => Math.max(prev - 1, 1));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const API = import.meta.env.VITE_API_BASE_URL;
-    axios.post(`${API}/patient`, formData)
-      .then(() => {
-        setShowModal(true); // Show thank you modal
-        setSubmissionError('');
-      })
-      .catch(err => {
-        console.error('Submission error', err);
-        setSubmissionError('Something went wrong. Please try again.');
-      });
+
+     if (validateCurrentStep()) {
+      console.log('Submitted:', formData);
+      setShowModal(true);
+      setSubmissionError('');
+
+    // if (validateCurrentStep()) {
+    //   const API = import.meta.env.VITE_API_BASE_URL;
+    //   axios.post(`${API}/patient`, formData)
+    //     .then(() => {
+    //       setShowModal(true);
+    //       setSubmissionError('');
+    //     })
+    //     .catch(err => {
+    //       console.error('Submission error', err);
+    //       setSubmissionError('Something went wrong. Please try again.');
+    //     });
+     }
   };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log('Form submitted:', formData);
-  //   setShowModal(true);
-  //   setSubmissionError('');
-  // };
-
 
   const renderQuestion = () => {
     switch (currentStep) {
@@ -158,6 +224,9 @@ const PatientForm = () => {
                 /> <span className="radio-text">{option}</span>
               </div>
             ))}
+            {errors.infoSources && (
+              <span className="error">{errors.infoSources}</span>
+            )}
           </div>
         );
       case 4:
@@ -175,6 +244,9 @@ const PatientForm = () => {
                 /> <span className="radio-text">{option}</span>
               </div>
             ))}
+            {errors.trialParticipation && (
+              <span className="error">{errors.trialParticipation}</span>
+            )}
           </div>
         );
       case 5:
@@ -226,7 +298,7 @@ const PatientForm = () => {
           </div>
         );
       case 8:
-        return formData.usesInternetHealth === 'Yes' ? (
+        return (
           <div className="form-group">
             <label>7a. What health-related activities have you done online?</label>
             {['Visit hospital site', 'Health app', 'WhatsApp group', 'SMS alerts', 'Search info', 'Book appointment', 'Lab results', 'Chat with doctor', 'Other'].map((option, i) => (
@@ -240,10 +312,15 @@ const PatientForm = () => {
                 /> <span className="radio-text">{option}</span>
               </div>
             ))}
+            {errors.onlineActivities && (
+              <span className="error">{errors.onlineActivities}</span>          
+            )}
           </div>
-        ) : (
+        );
+      case 9:
+        return (
           <div className="form-group">
-            <label>7b. Why don’t you use online services?</label>
+            <label>7b. Why don't you use online services?</label>
             {['Cost', 'Network issue', 'Tech difficulty', 'Prefer in-person', 'Not aware', 'Privacy concern', 'Language barrier', 'Not interested', 'Other'].map((option, i) => (
               <div key={i}>
                 <input
@@ -255,9 +332,12 @@ const PatientForm = () => {
                 /> <span className="radio-text">{option}</span>
               </div>
             ))}
+            {/* {errors.noInternetReasons && (
+              <span className="error">{errors.noInternetReasons}</span>
+            )} */}
           </div>
         );
-      case 9:
+      case 10:
         return (
           <div className="form-group">
             <label>8. How comfortable are you with mobile apps for healthcare?
@@ -276,7 +356,7 @@ const PatientForm = () => {
             ))}
           </div>
         );
-      case 10:
+      case 11:
         return (
           <div className="form-group">
             <label>9. How reliable is internet in your area?
@@ -295,7 +375,7 @@ const PatientForm = () => {
             ))}
           </div>
         );
-      case 11:
+      case 12:
         return (
           <div className="form-group">
             <label>10. What features would help you most? (Select up to 3)</label>
@@ -313,7 +393,7 @@ const PatientForm = () => {
             ))}
           </div>
         );
-      case 12:
+      case 13:
         return (
           <div className="form-group">
             <label>11. Would you use SMS for health updates if internet is unreliable?</label>
@@ -356,6 +436,11 @@ const PatientForm = () => {
 
           <div className="survey-questions">
             {renderQuestion()}
+            {requiredFields[currentStep] && (
+              <p className={`required-note ${errors[requiredFields[currentStep]] ? 'error' : ''}`}>
+                * This question is required
+              </p>
+            )}
           </div>
 
           <div className="form-footer">
@@ -383,10 +468,8 @@ const PatientForm = () => {
           <p>{submissionError}</p>
         </div>
       )}
-
     </div>
   );
 };
 
 export default PatientForm;
-
