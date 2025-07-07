@@ -15,11 +15,11 @@ const LandingPage = () => {
         <Services />
       </FadeInOnScroll>
 
-      <FadeInOnScroll delay={0.2}>
+      <FadeInOnScroll delay={0.15}>
         <Products />
       </FadeInOnScroll>
 
-      <FadeInOnScroll delay={0.3}>
+      <FadeInOnScroll delay={0.19}>
         <Team />
       </FadeInOnScroll>
     </>
