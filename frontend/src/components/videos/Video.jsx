@@ -28,7 +28,7 @@ const Video = ({className}) => {
                         ) : (
                             <video
                                 ref={mainRef}
-                                src={assets.meds}
+                                src={assets.loop}
                                 muted
                                 autoPlay
                                 playsInline

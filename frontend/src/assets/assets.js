@@ -1,6 +1,6 @@
 import logo from './logo.png'
 import links from './links.mp4'
-import meds from './meds.mp4'
+import loop from './loop.mp4'
 import placeholder from './video-placeholder.jpg'
 import consult from './consult.png'
 import Frame from './Frame.png'
@@ -21,7 +21,7 @@ import research from './Research Icon.png'
 export const assets = {
     logo,
     links,
-    meds,
+    loop,
     placeholder,
     consult,
     Frame,
