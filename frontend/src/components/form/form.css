@@ -1,6 +1,8 @@
 /* form.css */
+
 .survey-body {
   padding: 2rem;
+  height: 100vh;
 }
 
 .survey-container {
@@ -13,6 +15,7 @@
 
 .survey-form {
   width: 60%;
+  height: auto;
   background-color: #ffffff;
   border: 2px solid #52489c;
   border-radius: 8px;
@@ -36,9 +39,11 @@
   padding: 3rem 0;
   color: whitesmoke;
 }
+
 .survey-header h1 {
   font-size: 2rem;
 }
+
 .survey-header h2 {
   font-size: 1.2rem;
 }
@@ -50,17 +55,19 @@
   text-align: left;
   padding: 0 1rem;
 }
-.survey-header p br{
+
+.survey-header p br {
   margin-top: 1rem;
 }
 
 .progress-tracker {
- padding: 2rem ;
+  padding: 2rem;
 }
 
 .progress-tracker p {
   font-weight: 500;
-  margin-bottom: 0.4rem;;
+  margin-bottom: 0.4rem;
+
 }
 
 .progress-bar {
@@ -77,7 +84,7 @@
   transition: width 0.3s ease;
 }
 
-.survey-questions{
+.survey-questions {
   padding: 2rem;
 }
 
@@ -89,27 +96,31 @@
   font-weight: 600;
   font-size: 1.25rem;
   display: block;
-  margin-bottom: 1rem; 
+  margin-bottom: 1rem;
 }
-.form-group-span{
-   color: #a6a6a6;
-   display: inline-block;
-   font-size: 15px;
+
+.form-group-span {
+  color: #a6a6a6;
+  display: inline-block;
+  font-size: 15px;
 }
 
 .form-group input[type="radio"],
 .form-group input[type="checkbox"] {
-  transform: scale(1.4); /* Increases size */
+  transform: scale(1.4);
+  /* Increases size */
   margin-right: 10px;
   cursor: pointer;
-  accent-color: #91c499; 
+  accent-color: #91c499;
   border: none;
   margin-bottom: 0.5rem;
 }
-.scale-labels{
+
+.scale-labels {
   font-size: 12px;
-  color: #91c499; 
+  color: #91c499;
 }
+
 .radio-text {
   color: #4b4a4a;
   font-size: 1.1rem;
@@ -134,25 +145,25 @@
 }
 
 .form-footer button {
-    padding: 0.7rem 0;
-    width: 200px;
-    text-decoration: none;
-    font-size: 1.2rem;
-    color: white;
-    background-color: #52489c;
-    border-radius: 2px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    font-weight: 400;
-    text-align: center;
-    margin-bottom: 1rem;
-    border: 0;
+  padding: 0.7rem 0;
+  width: 200px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: white;
+  background-color: #52489c;
+  border-radius: 2px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 1rem;
+  border: 0;
 }
 
 .form-footer button:hover {
-    background-color: #91c499;
-    color: #52489c;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
+  background-color: #91c499;
+  color: #52489c;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 /* MODAL */
@@ -208,23 +219,86 @@
 
 
 /* REQUIRED */
-.required-note{
+.required-note {
   margin-top: 12px;
   color: #91c499;
   font-size: 12px;
   transition: color 0.3s ease;
 }
+
 .required-note.error {
-  color: #dc3545; /* Red color for error state */
+  color: #dc3545;
+  /* Red color for error state */
 }
 
-@media (max-width: 500px) {
-  .survey-container {
+/* QUERIES */
+@media screen and (max-width: 767px) and (min-width:320px){
+  .survey-header {
+    padding: 1rem 0;
+
+  }
+
+  .survey-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .survey-header p {
+    margin-top: 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .survey-body {
     padding: 1rem;
   }
 
-  .form-footer {
-    flex-direction: column;
-    gap: 1rem;
+  .progress-bar {
+    height: 5px;
   }
+
+  .progress-tracker {
+    padding: 0.7rem;
+  }
+
+  .progress-tracker p {
+    font-size: 13px;
+    margin-bottom: 0.2rem;
+
+  }
+
+  .survey-questions {
+    padding: 0 0.5rem 0.5rem 0.5rem;
+  }
+
+  .survey-form {
+    width: 100%;
+    height: auto;
+  }
+
+  .form-footer {
+    /* flex-direction: column; */
+    gap: 1rem;
+    margin-top: 0.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .form-group label {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .radio-text {
+    font-size: 0.9rem;
+  }
+
+  .form-footer button {
+    margin-bottom: 0rem;
+    width: 100px;
+    padding: 0.5rem 0;
+  }
+  .form-group input[type="radio"],
+.form-group input[type="checkbox"] {
+  transform: none;
+  /* Increases size */
+  margin-right: 5px;
+}
 }

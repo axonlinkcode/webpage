@@ -1,10 +1,9 @@
-/* form.css */
+
 
 .form-container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 2rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .back-link {
