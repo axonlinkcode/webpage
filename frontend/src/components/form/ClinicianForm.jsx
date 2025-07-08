@@ -121,16 +121,16 @@ const ClinicianForm = () => {
       setSubmissionError('');
       
       // Uncomment for actual API submission
-      // const API = import.meta.env.VITE_API_BASE_URL;
-      // axios.post(`${API}/clinician`, formData)
-      //   .then(() => {
-      //     setShowModal(true);
-      //     setSubmissionError('');
-      //   })
-      //   .catch(err => {
-      //     console.error('Submission error', err);
-      //     setSubmissionError('Something went wrong. Please try again.');
-      //   });
+      const API = import.meta.env.VITE_API_BASE_URL;
+      axios.post(`${API}/clinician`, formData)
+        .then(() => {
+          setShowModal(true);
+          setSubmissionError('');
+        })
+        .catch(err => {
+          console.error('Submission error', err);
+          setSubmissionError('Something went wrong. Please try again.');
+        });
     }
   };
 

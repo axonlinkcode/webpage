@@ -4,6 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import ReactCountryFlag from 'react-country-flag';
 
+
 // Country data with ISO codes and phone prefixes
 const africanCountries = [
   { name: 'Algeria', code: 'DZ', phoneCode: '+213' },

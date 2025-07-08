@@ -27,7 +27,7 @@ const PatientForm = () => {
     systemPriorities: []
   });
 
-  const totalSteps = 13; // Changed from 14 to 13 since you only have 13 steps
+  const totalSteps = 14; // Changed from 14 to 13 since you only have 13 steps
 
   const requiredFields = {
     1: 'deviceType',
@@ -155,24 +155,24 @@ const PatientForm = () => {
     e.preventDefault();
 
     if (validateCurrentStep()) {
-      console.log('Submitted:', formData);
+      // console.log('Submitted:', formData);
       setShowModal(true);
       setSubmissionError('');
 
-      // if (validateCurrentStep()) {
-      //   const API = import.meta.env.VITE_API_BASE_URL;
-      //   axios.post(`${API}/patient`, formData)
-      //     .then(() => {
-      //       setShowModal(true);
-      //       setSubmissionError('');
-      //     })
-      //     .catch(err => {
-      //       console.error('Submission error', err);
-      //       setSubmissionError('Something went wrong. Please try again.');
-      //     });
+      if (validateCurrentStep()) {
+        const API = import.meta.env.VITE_API_BASE_URL;
+        axios.post(`${API}/patient`, formData)
+          .then(() => {
+            setShowModal(true);
+            setSubmissionError('');
+          })
+          .catch(err => {
+            console.error('Submission error', err);
+            setSubmissionError('Something went wrong. Please try again.');
+          });
     }
-  };
-
+  }}
+  
   const renderQuestion = () => {
     switch (currentStep) {
       case 1:
@@ -475,4 +475,4 @@ const PatientForm = () => {
   );
 };
 
-export default PatientForm;
+export default PatientForm
