@@ -120,7 +120,6 @@ const ClinicianForm = () => {
       setShowModal(true);
       setSubmissionError('');
       
-      // Uncomment for actual API submission
       const API = import.meta.env.VITE_API_BASE_URL;
       axios.post(`${API}/api/clinician`, formData)
         .then(() => {
