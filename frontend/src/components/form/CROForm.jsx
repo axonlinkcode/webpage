@@ -135,12 +135,12 @@ const CROForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateCurrentStep()) {
-      // console.log('Submitted:', formData);
+      console.log('CRO Submitted:', formData);
       setShowModal(true);
       setSubmissionError('');
       // Uncomment below to use API
       const API = import.meta.env.VITE_API_BASE_URL;
-      axios.post(`${API}/cro`, formData)
+      axios.post(`${API}/api/cro`, formData)
         .then(() => {
           setShowModal(true);
           setSubmissionError('');

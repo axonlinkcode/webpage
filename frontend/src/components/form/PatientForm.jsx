@@ -155,13 +155,13 @@ const PatientForm = () => {
     e.preventDefault();
 
     if (validateCurrentStep()) {
-      // console.log('Submitted:', formData);
+      console.log('Patient Submitted:', formData);
       setShowModal(true);
       setSubmissionError('');
 
       if (validateCurrentStep()) {
         const API = import.meta.env.VITE_API_BASE_URL;
-        axios.post(`${API}/patient`, formData)
+        axios.post(`${API}/api/patient`, formData)
           .then(() => {
             setShowModal(true);
             setSubmissionError('');

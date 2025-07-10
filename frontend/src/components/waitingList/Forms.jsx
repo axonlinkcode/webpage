@@ -128,7 +128,7 @@ const Form = () => {
         // Include full phone number with country code in submission
         phone: selectedCountry ? selectedCountry.phoneCode + formData.phone : formData.phone
       };
-      const response = await axios.post(`${API}/waitinglist`, dataToSend);
+      const response = await axios.post(`${API}/api/waitinglist`, dataToSend);
       if (response.status === 200 || response.status === 201) {
         alert('Successfully joined the waiting list!');
         // Reset form
