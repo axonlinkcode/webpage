@@ -122,13 +122,13 @@ const ClinicianForm = () => {
       
       // Uncomment for actual API submission
       const API = import.meta.env.VITE_API_BASE_URL;
-      axios.post(`${API}/clinician`, formData)
+      axios.post(`${API}/api/clinician`, formData)
         .then(() => {
           setShowModal(true);
           setSubmissionError('');
         })
         .catch(err => {
-          console.error('Submission error', err);
+          console.error('Submission error:', err.response?.data || err.message || err);
           setSubmissionError('Something went wrong. Please try again.');
         });
     }
