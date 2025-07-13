@@ -6,8 +6,6 @@
  }
 
  .survey-form {
-   /* width: 60%; */
-   /* height: auto; */
    background-color: #ffffff;
    box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
  }
@@ -31,15 +29,6 @@
    text-align: left;
  }
 
- /* .progress-tracker {
-  padding: 2rem;
-} */
-
- /* .progress-tracker p {
-  font-weight: 500;
-  margin-bottom: 0.4rem;
-
-} */
  .progress-bar {
    width: 100%;
    height: 10px;
@@ -56,9 +45,7 @@
 
  .form-group label {
    font-weight: 600;
-   /* font-size: 1.25rem; */
    display: block;
-   /* margin-bottom: 1rem; */
  }
 
  .form-group-span {
@@ -72,9 +59,7 @@
 
  .radio-text {
    color: #4b4a4a;
-   /* font-size: 1.4rem; */
    display: inline-block;
-   /* margin-bottom: 0.6rem; */
  }
 
  .form-group input[type="radio"],
@@ -203,17 +188,23 @@
    text-decoration: underline;
  }
 
+ .form-email{
+  border: 1px solid #a5d8ff;
+  padding: 10px 5px;
+  width: 30%;
+ }
+.form-email:focus {
+  outline: none;
+  border-color: #339af0; /* Optional: to change border color on focus */
+}
 
- /* ____________ */
+ /* __QUERIES__________ */
  /* small screens */
  @media (max-width:479px) {
    .survey-body {
      padding: 0.5rem;
    }
 
-   /* .survey-form {
-    width: 100%;
-  } */
 
    .arrow-link {
      font-size: 0.7rem;
@@ -256,9 +247,6 @@
      margin-bottom: 0.7rem;
    }
 
-   /* .form-group-span {
-  font-size: 10px;
-} */
    .radio-text {
      font-size: 0.9rem;
      display: inline-block;
@@ -331,10 +319,6 @@
      margin-bottom: 0.7rem;
    }
 
-   /* .form-group-span {
-  font-size: 10px;
-  border: 1px solid red;
-} */
    .radio-text {
      font-size: 1rem;
      display: inline-block;
@@ -554,12 +538,14 @@
    .progress-tracker {
      padding: 1rem 1rem 1.5rem 1rem;
    }
+
    .progress-tracker p {
      font-weight: 600;
      font-size: 18px;
      margin-bottom: 0.2rem;
    }
-    .survey-questions {
+
+   .survey-questions {
      padding: 0 1.2rem 1.2rem;
    }
 
@@ -567,11 +553,13 @@
      font-size: 1.5rem;
      margin-bottom: 1rem;
    }
-    .radio-text {
+
+   .radio-text {
      font-size: 1.5rem;
      margin-bottom: 1rem;
    }
-    .form-group input[type="radio"],
+
+   .form-group input[type="radio"],
    .form-group input[type="checkbox"] {
      transform: scale(1.4);
      margin-right: 8px;

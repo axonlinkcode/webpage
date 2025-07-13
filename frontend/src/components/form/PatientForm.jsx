@@ -24,7 +24,8 @@ const PatientForm = () => {
     desiredFeatures: [],
     privacyConcerns: '',
     smsWillingness: '',
-    systemPriorities: []
+    systemPriorities: [],
+    email:''
   });
 
   const totalSteps = 13; // Changed from 14 to 13 since you only have 13 steps
@@ -408,6 +409,7 @@ const PatientForm = () => {
                 /> <span className="radio-text">{option}</span>
               </div>
             ))}
+            <input type="email" placeholder='Please Enter Email' className='form-email'/>
           </div>
         );
       default:
