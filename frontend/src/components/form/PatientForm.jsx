@@ -25,7 +25,7 @@ const PatientForm = () => {
     privacyConcerns: '',
     smsWillingness: '',
     systemPriorities: [],
-    email:''
+    email: ''
   });
 
   const totalSteps = 13; // Changed from 14 to 13 since you only have 13 steps
@@ -161,7 +161,7 @@ const PatientForm = () => {
 
       if (validateCurrentStep()) {
         const API = import.meta.env.VITE_API_BASE_URL;
-         console.log("API in use:", API);
+        console.log("API in use:", API);
         axios.post(`${API}/patient`, formData)
           .then(() => {
             setShowModal(true);
@@ -410,7 +410,16 @@ const PatientForm = () => {
                 /> <span className="radio-text">{option}</span>
               </div>
             ))}
-            <input type="email" placeholder='Please Enter Email' className='form-email'/>
+
+            <input
+              type="email"
+              name="email"
+              placeholder="Please Enter Email"
+              className="form-email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+
           </div>
         );
       default:
