@@ -195,7 +195,7 @@
  }
 .form-email:focus {
   outline: none;
-  border-color: #339af0; /* Optional: to change border color on focus */
+  border-color: #339af0; 
 }
 
  /* __QUERIES__________ */
