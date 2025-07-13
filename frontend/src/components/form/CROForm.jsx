@@ -139,7 +139,7 @@ const CROForm = () => {
       setSubmissionError('');
       // Uncomment below to use API
       const API = import.meta.env.VITE_API_BASE_URL;
-      axios.post(`${API}/api/cro`, formData)
+      axios.post(`${API}/cro`, formData)
         .then(() => {
           setShowModal(true);
           setSubmissionError('');

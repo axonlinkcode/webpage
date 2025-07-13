@@ -160,7 +160,7 @@ const PatientForm = () => {
 
       if (validateCurrentStep()) {
         const API = import.meta.env.VITE_API_BASE_URL;
-        axios.post(`${API}/api/patient`, formData)
+        axios.post(`${API}/patient`, formData)
           .then(() => {
             setShowModal(true);
             setSubmissionError('');
