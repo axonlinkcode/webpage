@@ -191,7 +191,7 @@
  .form-email{
   border: 1px solid #a5d8ff;
   padding: 10px 5px;
-  width: 30%;
+  max-width: 45%;
  }
 .form-email:focus {
   outline: none;
