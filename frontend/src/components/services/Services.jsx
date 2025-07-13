@@ -40,7 +40,9 @@ const Services = () => {
             From workflow automation to Electronic Health Record integration and AI-driven
             trial matching, we build scalable tools that improve efficiency, accuracy,
             and access.</p>
-          <a href="#">Get in touch</a>
+          <a href="mailto:axonlink@axonlink.ai?subject=Hello%20Axonlink&body=I%20would%20like%20to%20know%20more%20about%20your%20services.">
+            Get in touch
+          </a>
         </div>
       </div>
       <div className="services__bottom">
@@ -57,11 +59,11 @@ const Services = () => {
                     }}
                   ></div>
                 </div>
-                  <div className='div__content'>
-                    <img src={item.img} alt="" />
-                    <h3>{item.header}</h3>
-                    <p>{item.description}</p>
-                  </div>
+                <div className='div__content'>
+                  <img src={item.img} alt="" />
+                  <h3>{item.header}</h3>
+                  <p>{item.description}</p>
+                </div>
               </li>
             ))
           }

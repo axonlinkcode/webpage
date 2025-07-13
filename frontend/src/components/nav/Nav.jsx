@@ -9,13 +9,10 @@ const Nav = () => {
       <div className="nav-inner">
         {/* Logo + Button (mobile only) */}
         <div className="nav__container--logo">
-            <img src={assets.logo} alt="Logo" />
-          <Button
-            name="Get in touch"
-            link="mailto:axonlink@axonlink.ai"
-            className="btn__component"
-            />
-            </div>
+          <img src={assets.logo} alt="Logo" />
+          <Button name='Take survey' link='/forms'
+            className="btn__component" />
+        </div>
 
 
         {/* Nav Links */}
@@ -38,7 +35,8 @@ const Nav = () => {
 
         {/* Button (desktop only) */}
         {/* <div className="nav__container--btn"> */}
-        <Button name="Get in touch" link="mailto:axonlink@axonlink.ai" className="btn__component-list" />
+        <Button name='Take survey' link='/forms'
+          className="btn__component-list" />
         {/* </div> */}
       </div>
     </nav>
