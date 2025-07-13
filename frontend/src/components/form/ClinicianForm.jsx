@@ -64,7 +64,7 @@ const ClinicianForm = () => {
 
   const handleRadioChange = (name, value) => {
     setFormData(prev => ({ ...prev, [name]: value }));
-    
+
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -108,20 +108,19 @@ const ClinicianForm = () => {
       setCurrentStep(8);
       return;
     }
-    
+
     setCurrentStep(prev => Math.max(prev - 1, 1));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (validateCurrentStep()) {
-      console.log('Form submitted:', formData);
       setShowModal(true);
       setSubmissionError('');
 
       const API = import.meta.env.VITE_API_BASE_URL;
-      console.log("API in use:", API); 
+      console.log("API in use:", API);
       axios.post(`${API}/clinician`, formData)
         .then(() => {
           setShowModal(true);
@@ -360,56 +359,48 @@ const ClinicianForm = () => {
 
   return (
     <div className='survey-body'>
-      <Link to='/forms' className="arrow-link">← Back to Forms</Link>
-      <div className="survey-container">
-        <form onSubmit={handleSubmit} className="survey-form">
-          <div className="survey-header">
-            <h1>Clinicians</h1>
-            <h2>(Specialists, Doctors, Research Nurses, Principal Investigators)</h2>
-            <p>As a Clinician, your insights are invaluable. We are developing an innovative online system to improve the connection between specialist care and clinical trial opportunities in Nigeria.</p>
-            <p>Your feedback on current workflows, technology use, and unmet needs will directly inform the design of features tailored to Nigeria's healthcare context.</p>
+      <form onSubmit={handleSubmit} className="survey-form">
+        <Link to='/forms' className="arrow-link">← Back to Forms</Link>
+        <div className="survey-header">
+          <h1>Clinicians</h1>
+          <h2>(Specialists, Doctors, Research Nurses, Principal Investigators)</h2>
+          <p>As a Clinician, your insights are invaluable. We are developing an innovative online system to improve the connection between specialist care and clinical trial opportunities in Africa.</p>
+          <p>Your feedback on current workflows, technology use, and unmet needs will directly inform the design of features tailored to Nigeria's healthcare context.</p>
+        </div>
+
+        <div className="progress-tracker">
+          <p>Question {currentStep} of {totalSteps}</p>
+          <div className="progress-bar">
+            <div
+              className="progress-bar-fill"
+              style={{ width: `${(currentStep / totalSteps) * 100}%` }}
+            ></div>
           </div>
+        </div>
 
-          <div className="progress-tracker">
-            <p>Question {currentStep} of {totalSteps}</p>
-            <div className="progress-bar">
-              <div
-                className="progress-bar-fill"
-                style={{ width: `${(currentStep / totalSteps) * 100}%` }}
-              ></div>
-            </div>
-          </div>
+        <div className="survey-questions">
+          {renderQuestion()}
+          {requiredFields[currentStep] && (
+            <p className={`required-note ${errors[requiredFields[currentStep]] ? 'error' : ''}`}>
+              * This question is required
+            </p>
+          )}
+        </div>
 
-          <div className="survey-questions">
-            {renderQuestion()}
-            {requiredFields[currentStep] && (
-              <p className={`required-note ${errors[requiredFields[currentStep]] ? 'error' : ''}`}>
-                * This question is required
-              </p>
-            )}
-          </div>
+        <div className="form-footer">
+          {currentStep > 1 && (
+            <button type="button" onClick={handleBack}>Back</button>
+          )}
 
-          <div className="form-footer">
-            {currentStep > 1 && (
-              <button type="button" onClick={handleBack}>Back</button>
-            )}
-            {/* {currentStep < totalSteps ? (
-              <button type="button" onClick={handleNext}>Next</button>
-            ) : (
-              <button type="submit">Submit</button>
-            )} */}
+          {currentStep === 13 && (
+            <button type="submit">Submit</button>
+          )}
 
-                       {currentStep === 13 && (
-              <button type="submit">Submit</button>
-            )}
-
-             {currentStep < 13 && (
-    <button type="button" onClick={handleNext}>Next</button>
-  )}
-      
-          </div>
-        </form>
-      </div>
+          {currentStep < 13 && (
+            <button type="button" onClick={handleNext}>Next</button>
+          )}
+        </div>
+      </form>
 
       {showModal && (
         <div className="modal-overlay">

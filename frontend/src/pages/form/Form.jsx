@@ -12,7 +12,7 @@ const Form = () => {
             <div className='form-card'>
                 <h2>Your experience and insights are crucial!</h2>
                 <p className="intro-text">
-                    We are developing a new mobile-friendly system to help patients in Nigeria more easily
+                    We are developing a new mobile-friendly system to help patients in Africa more easily
                     find specialist care and discover relevant clinical trials.
                     Your responses will directly inform how we build this system to meet your needs.
                     All your answers will be kept confidential.

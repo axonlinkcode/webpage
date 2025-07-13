@@ -41,7 +41,7 @@ const CROForm = () => {
   const [submissionError, setSubmissionError] = useState('');
   const [errors, setErrors] = useState({});
 
-  const totalSteps = 23;
+  const totalSteps = 22;
 
   const requiredFields = {
     1: 'primaryRole',
@@ -135,7 +135,6 @@ const CROForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateCurrentStep()) {
-      console.log('CRO Submitted:', formData);
       setShowModal(true);
       setSubmissionError('');
       // Uncomment below to use API
@@ -567,7 +566,6 @@ const CROForm = () => {
           </div>
         );
       case 17:
-        if (formData.hasPrivacyConcerns !== 'Yes') return null;
         return (
           <div className="form-group">
             <label>15a. Please briefly describe the nature of those concerns:</label>
@@ -753,48 +751,46 @@ const CROForm = () => {
 
   return (
     <div className='survey-body'>
-      <Link to='/forms' className="arrow-link">← Back to Forms</Link>
-      <div className="survey-container">
-        <form onSubmit={handleSubmit} className="survey-form">
-          <div className="survey-header">
-            <h1>Clinical Research Organizations (CROs)/Trial Sponsors</h1>
-            <p>Your expertise as a clinical trial manager or sponsor operating in Nigeria is critical. We are developing an innovative IT system to streamline clinical trial operations, enhance patient engagement, and improve connectivity within the Nigerian healthcare and research ecosystem. </p>
-            <p>Your valuable insights will directly inform the features and functionality of this system. Your answers will be kept confidential. </p>
+      <form onSubmit={handleSubmit} className="survey-form">
+        <Link to='/forms' className="arrow-link">← Back to Forms</Link>
+        <div className="survey-header">
+          <h1>Clinical Research Organizations (CROs)/Trial Sponsors</h1>
+          <p>Your expertise as a clinical trial manager or sponsor operating in Africa is critical. We are developing an innovative IT system to streamline clinical trial operations, enhance patient engagement, and improve connectivity within the Nigerian healthcare and research ecosystem. </p>
+          <p>Your valuable insights will directly inform the features and functionality of this system. Your answers will be kept confidential. </p>
+        </div>
+
+        <div className="progress-tracker">
+          <p>Question {currentStep} of {totalSteps}</p>
+          <div className="progress-bar">
+            <div className="progress-bar-fill" style={{ width: `${(currentStep / totalSteps) * 100}%` }}></div>
           </div>
+        </div>
 
-          <div className="progress-tracker">
-            <p>Question {currentStep} of {totalSteps}</p>
-            <div className="progress-bar">
-              <div className="progress-bar-fill" style={{ width: `${(currentStep / totalSteps) * 100}%` }}></div>
-            </div>
-          </div>
+        <div className="survey-questions">
+          {renderQuestion()}
+          {requiredFields[currentStep] && (
+            <p className={`required-note ${errors[requiredFields[currentStep]] ? 'error' : ''}`}>
+              * This question is required
+            </p>
+          )}
+        </div>
 
-          <div className="survey-questions">
-            {renderQuestion()}
-            {requiredFields[currentStep] && (
-              <p className={`required-note ${errors[requiredFields[currentStep]] ? 'error' : ''}`}>
-                * This question is required
-              </p>
-            )}
-          </div>
+           <div className="form-footer">
+          {currentStep > 1 && (
+            <button type="button" onClick={handleBack}>Back</button>
+          )}
 
-          <div className="form-footer">
-            {currentStep > 1 && (
-              <button type="button" onClick={handleBack}>Back</button>
-            )}
+          {currentStep === 22 && (
+            <button type="submit">Submit</button>
+          )}
 
-               {currentStep === 22 && (
-              <button type="submit">Submit</button>
-            )}
+          {currentStep < 22 && (
+            <button type="button" onClick={handleNext}>Next</button>
+          )}
 
-             {currentStep < 22 && (
-    <button type="button" onClick={handleNext}>Next</button>
-  )}
-         
-          </div>
+        </div>
 
-        </form>
-      </div>
+      </form>
 
       {showModal && (
         <div className="modal-overlay">

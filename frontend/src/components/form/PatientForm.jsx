@@ -27,7 +27,7 @@ const PatientForm = () => {
     systemPriorities: []
   });
 
-  const totalSteps = 14; // Changed from 14 to 13 since you only have 13 steps
+  const totalSteps = 13; // Changed from 14 to 13 since you only have 13 steps
 
   const requiredFields = {
     1: 'deviceType',
@@ -155,7 +155,6 @@ const PatientForm = () => {
     e.preventDefault();
 
     if (validateCurrentStep()) {
-      console.log('Patient Submitted:', formData);
       setShowModal(true);
       setSubmissionError('');
 
@@ -170,9 +169,10 @@ const PatientForm = () => {
             console.error('Submission error', err);
             setSubmissionError('Something went wrong. Please try again.');
           });
+      }
     }
-  }}
-  
+  }
+
   const renderQuestion = () => {
     switch (currentStep) {
       case 1:
@@ -417,45 +417,50 @@ const PatientForm = () => {
 
   return (
     <div className='survey-body'>
-      <Link to='/forms' className="arrow-link">← Back to Forms</Link>
-      <div className="survey-container">
-        <form onSubmit={handleSubmit} className="survey-form">
-          <div className="survey-header">
-            <h1>Patient Experience Survey</h1>
-            <p>
-              Your experience and insights are crucial! We are developing a new mobile-friendly system to help patients in Nigeria more easily find specialist care and discover relevant clinical trials.
+      {/* <div className="survey-container"> */}
+      <form onSubmit={handleSubmit} className="survey-form">
+        <Link to='/forms' className="arrow-link">← Back to Forms</Link>
+        <div className="survey-header">
+          <h1>Patient Experience Survey</h1>
+          <p>
+            Your experience and insights are crucial! We are developing a new mobile-friendly system to help patients in Africa more easily find specialist care and discover relevant clinical trials.
+          </p>
+          <p>
+            Your responses will directly inform how we build this system to meet your needs. All your answers will be kept confidential.
+          </p>
+        </div>
+
+        <div className="progress-tracker">
+          <p>Question {currentStep} of {totalSteps}</p>
+          <div className="progress-bar">
+            <div className="progress-bar-fill" style={{ width: `${(currentStep / totalSteps) * 100}%` }}></div>
+          </div>
+        </div>
+
+        <div className="survey-questions">
+          {renderQuestion()}
+          {requiredFields[currentStep] && (
+            <p className={`required-note ${errors[requiredFields[currentStep]] ? 'error' : ''}`}>
+              * This question is required
             </p>
-            <p>
-              Your responses will directly inform how we build this system to meet your needs. All your answers will be kept confidential.
-            </p>
-          </div>
+          )}
+        </div>
 
-          <div className="progress-tracker">
-            <p>Question {currentStep} of {totalSteps}</p>
-            <div className="progress-bar">
-              <div className="progress-bar-fill" style={{ width: `${(currentStep / totalSteps) * 100}%` }}></div>
-            </div>
-          </div>
+        <div className="form-footer">
+          {currentStep > 1 && (
+            <button type="button" onClick={handleBack}>Back</button>
+          )}
 
-          <div className="survey-questions">
-            {renderQuestion()}
-            {requiredFields[currentStep] && (
-              <p className={`required-note ${errors[requiredFields[currentStep]] ? 'error' : ''}`}>
-                * This question is required
-              </p>
-            )}
-          </div>
+          {currentStep === 13 && (
+            <button type="submit">Submit</button>
+          )}
 
-          <div className="form-footer">
-            {currentStep > 1 && <button type="button" onClick={handleBack}>Back</button>}
-            {currentStep < totalSteps ? (
-              <button type="button" onClick={handleNext}>Next</button>
-            ) : (
-              <button type="submit">Submit</button>
-            )}
-          </div>
-        </form>
-      </div>
+          {currentStep < 13 && (
+            <button type="button" onClick={handleNext}>Next</button>
+          )}
+        </div>
+      </form>
+      {/* </div> */}
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-card">
