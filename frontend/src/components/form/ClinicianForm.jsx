@@ -120,7 +120,7 @@ const ClinicianForm = () => {
       setSubmissionError('');
 
       const API = import.meta.env.VITE_API_BASE_URL;
-      console.log("API in use:", API);
+      // console.log("API in use:", API);
       axios.post(`${API}/clinician`, formData)
         .then(() => {
           setShowModal(true);

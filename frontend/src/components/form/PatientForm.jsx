@@ -161,6 +161,7 @@ const PatientForm = () => {
 
       if (validateCurrentStep()) {
         const API = import.meta.env.VITE_API_BASE_URL;
+         console.log("API in use:", API);
         axios.post(`${API}/patient`, formData)
           .then(() => {
             setShowModal(true);
