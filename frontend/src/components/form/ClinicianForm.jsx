@@ -22,7 +22,8 @@ const ClinicianForm = () => {
     trainingReceived: '',
     toolImprovementSuggestions: '',
     smsWillingness: '',
-    desiredFeatures: []
+    desiredFeatures: [],
+    email:''
   });
 
   const totalSteps = 13;
@@ -350,6 +351,14 @@ const ClinicianForm = () => {
             {errors.desiredFeatures && (
               <span className="error">{errors.desiredFeatures}</span>
             )}
+             <input
+              type="email"
+              name="email"
+              placeholder="Please Enter Email"
+              className="form-email"
+              value={formData.email}
+              onChange={handleChange}
+            />
           </div>
         );
       default:

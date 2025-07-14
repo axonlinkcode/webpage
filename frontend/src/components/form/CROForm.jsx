@@ -33,7 +33,8 @@ const CROForm = () => {
     priorities: [],
     trialPhasesOther: '',
     limitationsOther: '',
-    siteSelectionMethodsOther: ''
+    siteSelectionMethodsOther: '',
+    email:''
   });
 
   const [currentStep, setCurrentStep] = useState(1);
@@ -742,6 +743,14 @@ const CROForm = () => {
                 )}
               </div>
             ))}
+             <input
+              type="email"
+              name="email"
+              placeholder="Please Enter Email"
+              className="form-email"
+              value={formData.email}
+              onChange={handleChange}
+            />
           </div>
         );
       default:

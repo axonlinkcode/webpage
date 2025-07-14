@@ -192,14 +192,6 @@ const PatientForm = () => {
                 /> <span className="radio-text">{option}</span>
               </div>
             ))}
-            <input
-              type="email"
-              name="email"
-              placeholder="Please Enter Email"
-              className="form-email"
-              value={formData.email}
-              onChange={handleChange}
-            />
           </div>
         );
       case 2:
@@ -418,16 +410,14 @@ const PatientForm = () => {
                 /> <span className="radio-text">{option}</span>
               </div>
             ))}
-
-            {/* <input
+            <input
               type="email"
               name="email"
               placeholder="Please Enter Email"
               className="form-email"
               value={formData.email}
               onChange={handleChange}
-            /> */}
-
+            />
           </div>
         );
       default:
