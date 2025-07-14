@@ -34,7 +34,7 @@ const CROForm = () => {
     trialPhasesOther: '',
     limitationsOther: '',
     siteSelectionMethodsOther: '',
-    email:''
+    email: ''
   });
 
   const [currentStep, setCurrentStep] = useState(1);
@@ -305,7 +305,9 @@ const CROForm = () => {
       case 7:
         return (
           <div className="form-group">
-            <label>7. How challenging is the process of identifying and activating suitable clinical trial sites in Nigeria/Africa?</label>
+            <label>7. How challenging is the process of identifying and activating suitable clinical trial sites in Africa?
+              <span className='form-group-span'>(5.Extremely Challenging, 1.Not Challenging)</span>
+            </label>
             <div className="rating-scale">
               {[1, 2, 3, 4, 5].map((num) => (
                 <label key={num}>
@@ -319,10 +321,6 @@ const CROForm = () => {
                   <span className="radio-text">{num}</span>
                 </label>
               ))}
-              <div className="scale-labels">
-                <span>1=Not Challenging at All </span>
-                <span>5=Extremely Challenging</span>
-              </div>
             </div>
           </div>
         );
@@ -369,7 +367,9 @@ const CROForm = () => {
       case 9:
         return (
           <div className="form-group">
-            <label>9. How challenging is patient recruitment and enrolment for your trials in Nigeria/Africa?</label>
+            <label>9. How challenging is patient recruitment and enrolment for your trials in Africa?
+              <span className='form-group-span'> (5.Extremely Challenging, 1.Not Challenging)</span>
+            </label>
             <div className="rating-scale">
               {[1, 2, 3, 4, 5].map((num) => (
                 <label key={num}>
@@ -383,17 +383,13 @@ const CROForm = () => {
                   <span className="radio-text">{num}</span>
                 </label>
               ))}
-              <div className="scale-labels">
-                <span>1=Not Challenging at All </span>
-                <span>5=Extremely Challenging</span>
-              </div>
             </div>
           </div>
         );
       case 10:
         return (
           <div className="form-group">
-            <label>10. Please briefly describe a specific data flow bottleneck or communication gap you've encountered that is unique to (or particularly pronounced in) clinical trials conducted in Africa/Nigeria.</label>
+            <label>10. Please briefly describe a specific data flow bottleneck or communication gap you've encountered that is unique to (or particularly pronounced in) clinical trials conducted in Africa.</label>
             <textarea
               name="dataFlowBottleneck"
               value={formData.dataFlowBottleneck || ''}
@@ -463,7 +459,9 @@ const CROForm = () => {
         //  if (formData.useDigitalSystems === 'NO') return null;
         return (
           <div className="form-group">
-            <label>12. Overall, how well do your current digital systems meet your operational needs for managing clinical trials in Nigeria/Africa?</label>
+            <label>12. Overall, how well do your current digital systems meet your operational needs for managing clinical trials in Africa?
+              <span className='form-group-span'>(5.Completely, 1.Not at All)</span>
+            </label>
             <div className="rating-scale">
               {[1, 2, 3, 4, 5].map((num) => (
                 <label key={num}>
@@ -526,7 +524,9 @@ const CROForm = () => {
       case 15:
         return (
           <div className="form-group">
-            <label>14. How reliable are internet and power at the clinical trial sites you work with in Nigeria/Africa?</label>
+            <label>14. How reliable are internet and power at the clinical trial sites you work with in Africa?
+              <span className='form-group-span'>(5.Very Reliable, 1.Unreliable)</span>
+            </label>
             <div className="rating-scale">
               {[1, 2, 3, 4, 5].map((num) => (
                 <label key={num}>
@@ -540,10 +540,6 @@ const CROForm = () => {
                   <span className="radio-text">{num}</span>
                 </label>
               ))}
-              <div className="scale-labels">
-                <span>1=Very Unreliable </span>
-                <span>5=Very Reliable</span>
-              </div>
             </div>
           </div>
         );
@@ -584,7 +580,9 @@ const CROForm = () => {
       case 18:
         return (
           <div className="form-group">
-            <label>16. What are your general perceptions of the current IT infrastructure and digital readiness of healthcare facilities and professionals at clinical trial sites in Nigeria/Africa?</label>
+            <label>16. What are your general perceptions of the current IT infrastructure and digital readiness of healthcare facilities and professionals at clinical trial sites in Africa?
+              <span className='form-group-span'>(5.High Readiness, 1.Poor Readiness)</span>
+            </label>
             <div className="rating-scale">
               {[1, 2, 3, 4, 5].map((num) => (
                 <label key={num}>
@@ -598,10 +596,6 @@ const CROForm = () => {
                   <span className="radio-text">{num}</span>
                 </label>
               ))}
-              <div className="scale-labels">
-                <span>1=Very Poor Readiness </span>
-                <span>5=Very Good Readiness</span>
-              </div>
             </div>
           </div>
         );
@@ -647,7 +641,9 @@ const CROForm = () => {
       case 20:
         return (
           <div className="form-group">
-            <label>18. How useful would an AI tool be to help match local patient data to study eligibility criteria (assuming robust data privacy and ethical considerations are in place)?</label>
+            <label>18. How useful would an AI tool be to help match local patient data to study eligibility criteria (assuming robust data privacy and ethical considerations are in place)?
+              <span className='form-group-span'>(5.Very Usefull, 1.Not Usefull)</span>
+            </label>
             <div className="rating-scale">
               {[1, 2, 3, 4, 5].map((num) => (
                 <label key={num}>
@@ -661,24 +657,13 @@ const CROForm = () => {
                   <span className="radio-text">{num}</span>
                 </label>
               ))}
-              <div className="scale-labels">
-                <span>1=Not Useful at All </span>
-                <span>5=Very Useful</span>
-              </div>
             </div>
-            <input
-              type="text"
-              name="aiToolConcerns"
-              placeholder=""
-              value={formData.aiToolConcerns || ''}
-              onChange={handleChange}
-            />
           </div>
         );
       case 21:
         return (
           <div className="form-group">
-            <label>19. Are you open to investing in and integrating with new digital platforms developed specifically for the unique context and challenges of clinical research in Africa? *</label>
+            <label>19. Are you open to investing in and integrating with new digital platforms developed specifically for the unique context and challenges of clinical research in Africa? </label>
             {[
               'Yes, definitely',
               'Yes, if it demonstrates clear ROI and addresses key challenges',
@@ -743,7 +728,7 @@ const CROForm = () => {
                 )}
               </div>
             ))}
-             <input
+            <input
               type="email"
               name="email"
               placeholder="Please Enter Email"
@@ -764,7 +749,7 @@ const CROForm = () => {
         <Link to='/forms' className="arrow-link">← Back to Forms</Link>
         <div className="survey-header">
           <h1>Clinical Research Organizations (CROs)/Trial Sponsors</h1>
-          <p>Your expertise as a clinical trial manager or sponsor operating in Africa is critical. We are developing an innovative IT system to streamline clinical trial operations, enhance patient engagement, and improve connectivity within the Nigerian healthcare and research ecosystem. </p>
+          <p>Your expertise as a clinical trial manager or sponsor operating in Africa is critical. We are developing an innovative IT system to streamline clinical trial operations, enhance patient engagement, and improve connectivity within the African healthcare and research ecosystem. </p>
           <p>Your valuable insights will directly inform the features and functionality of this system. Your answers will be kept confidential. </p>
         </div>
 
@@ -784,7 +769,7 @@ const CROForm = () => {
           )}
         </div>
 
-           <div className="form-footer">
+        <div className="form-footer">
           {currentStep > 1 && (
             <button type="button" onClick={handleBack}>Back</button>
           )}

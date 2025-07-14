@@ -190,8 +190,9 @@
 
  .form-email{
   border: 1px solid #a5d8ff;
-  padding: 10px 5px;
-  max-width: 45%;
+  padding: 7px 5px;
+  min-width: 25%;
+  margin-bottom: 10px;
  }
 .form-email:focus {
   outline: none;
@@ -267,9 +268,9 @@
 
    .form-footer button {
      padding: 0.5rem 0;
-     font-size: 1rem;
-     width: 160px;
-     margin-bottom: 0rem;
+     font-size: 12px;
+     width: 140px;
+     margin-bottom: 1rem;
    }
  }
 
