@@ -134,7 +134,7 @@ const CROForm = () => {
   };
 
   const handleSubmit = async (e) => {
-
+  e.preventDefault();
     if (validateCurrentStep()) {
 
       if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) {
@@ -751,7 +751,7 @@ const CROForm = () => {
           </div>
         );
       default:
-        return <p>Survey completed!</p>;
+        return null;
     }
   };
 
