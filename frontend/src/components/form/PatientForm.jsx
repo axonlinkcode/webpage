@@ -163,6 +163,7 @@ const PatientForm = () => {
         const API = import.meta.env.VITE_API_BASE_URL;
         console.log("API in use:", API);
         axios.post(`${API}/patient`, formData)
+        console.log('Form data submitted:', formData)
           .then(() => {
             setShowModal(true);
             setSubmissionError('');
