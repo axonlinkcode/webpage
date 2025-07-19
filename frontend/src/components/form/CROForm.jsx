@@ -133,22 +133,29 @@ const CROForm = () => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+
     if (validateCurrentStep()) {
+
+      if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) {
+        setSubmissionError('Please enter a valid email address.');
+        return;
+      }
+
       setShowModal(true);
       setSubmissionError('');
-      // Uncomment below to use API
+
       const API = import.meta.env.VITE_API_BASE_URL;
-      axios.post(`${API}/cro`, formData)
-        .then(() => {
-          setShowModal(true);
-          setSubmissionError('');
-        })
-        .catch(err => {
-          console.error('Submission error', err);
-          setSubmissionError('Something went wrong. Please try again.');
-        });
+      console.log("API in use:", API);
+      try {
+        const res = await axios.post(`${API}/cro`, formData);
+        console.log('Form submitted successfully:', res.data);
+        setShowModal(true);
+        setSubmissionError('');
+      } catch (err) {
+        console.error('Submission error', err.response?.data || err.message);
+        setSubmissionError('Something went wrong. Please try again.');
+      }
     }
   };
 
@@ -728,14 +735,19 @@ const CROForm = () => {
                 )}
               </div>
             ))}
-            <input
-              type="email"
-              name="email"
-              placeholder="Please Enter Email"
-              className="form-email"
-              value={formData.email}
-              onChange={handleChange}
-            />
+           
+            <div className='email-input'>
+              <input
+                type="email"
+                name="email"
+                placeholder="Please Enter Email"
+                className="form-email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
+
+
           </div>
         );
       default:
