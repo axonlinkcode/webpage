@@ -167,6 +167,29 @@
    text-align: center;
    font-weight: 500;
  }
+.email-input {
+  display: flex;
+  flex-direction: column;
+  /* padding: 0.5rem; */
+  margin-top: 1rem;
+}
+
+.form-email {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.error {
+  color: red;
+  font-size: 5px;
+}
+
+.error-message {
+  color: red;
+  background-color: #ffe5e5;
+  padding: 0;
+  margin: 1rem 0;
+}
 
  .scale-labels {
    font-size: 12px;
