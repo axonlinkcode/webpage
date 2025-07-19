@@ -113,24 +113,50 @@ const ClinicianForm = () => {
     setCurrentStep(prev => Math.max(prev - 1, 1));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    
+
+    // if (validateCurrentStep()) {
+    //   setShowModal(true);
+    //   setSubmissionError('');
+
+    //   const API = import.meta.env.VITE_API_BASE_URL;
+    //   // console.log("API in use:", API);
+    //   axios.post(`${API}/clinician`, formData)
+    //     .then(() => {
+    //       setShowModal(true);
+    //       setSubmissionError('');
+    //     })
+    //     .catch(err => {
+    //       console.error('Submission error:', err.response?.data || err.message || err);
+    //       setSubmissionError('Something went wrong. Please try again.');
+    //     });
+    // }
+
+    
     if (validateCurrentStep()) {
+
+      if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) {
+        setSubmissionError('Please enter a valid email address.');
+        return;
+      }
+
       setShowModal(true);
       setSubmissionError('');
 
       const API = import.meta.env.VITE_API_BASE_URL;
-      // console.log("API in use:", API);
-      axios.post(`${API}/clinician`, formData)
-        .then(() => {
-          setShowModal(true);
-          setSubmissionError('');
-        })
-        .catch(err => {
-          console.error('Submission error:', err.response?.data || err.message || err);
-          setSubmissionError('Something went wrong. Please try again.');
-        });
+      console.log("API in use:", API);
+      try {
+        const res = await axios.post(`${API}/clinician`, formData);
+        console.log('Form submitted successfully:', res.data);
+        setShowModal(true);
+        setSubmissionError('');
+      } catch (err) {
+        console.error('Submission error', err.response?.data || err.message);
+        setSubmissionError('Something went wrong. Please try again.');
+      }
     }
   };
 
@@ -351,14 +377,17 @@ const ClinicianForm = () => {
             {errors.desiredFeatures && (
               <span className="error">{errors.desiredFeatures}</span>
             )}
-             <input
-              type="email"
-              name="email"
-              placeholder="Please Enter Email"
-              className="form-email"
-              value={formData.email}
-              onChange={handleChange}
-            />
+               <div className='email-input'>
+              <input
+                type="email"
+                name="email"
+                placeholder="Please Enter Email"
+                className="form-email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
+
           </div>
         );
       default:
