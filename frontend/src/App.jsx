@@ -8,11 +8,14 @@ import CROForm from "./components/form/CROForm";
 import Form from "./pages/form/Form";
 import WaitingListForm from './components/waitingList/Forms'
 
+import Admin from "./pages/admin/Admin";
+
 const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<LandingPage />} />
+        <Route path='/axonNifemi' element={<Admin/>}/>
       </Route>
 
       {/* <Route path="/form" element={<FormLayout />}> */}

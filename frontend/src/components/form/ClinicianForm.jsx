@@ -115,26 +115,6 @@ const ClinicianForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    
-
-    // if (validateCurrentStep()) {
-    //   setShowModal(true);
-    //   setSubmissionError('');
-
-    //   const API = import.meta.env.VITE_API_BASE_URL;
-    //   // console.log("API in use:", API);
-    //   axios.post(`${API}/clinician`, formData)
-    //     .then(() => {
-    //       setShowModal(true);
-    //       setSubmissionError('');
-    //     })
-    //     .catch(err => {
-    //       console.error('Submission error:', err.response?.data || err.message || err);
-    //       setSubmissionError('Something went wrong. Please try again.');
-    //     });
-    // }
-
     
     if (validateCurrentStep()) {
 
@@ -147,7 +127,7 @@ const ClinicianForm = () => {
       setSubmissionError('');
 
       const API = import.meta.env.VITE_API_BASE_URL;
-      console.log("API in use:", API);
+      // console.log("API in use:", API);
       try {
         const res = await axios.post(`${API}/clinician`, formData);
         console.log('Form submitted successfully:', res.data);

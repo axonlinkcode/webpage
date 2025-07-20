@@ -203,7 +203,7 @@ const PatientForm = () => {
         return (
           <div className="form-group">
             <label>2. Where do you live?</label>
-            {['Urban', 'Suburban', 'Rural'].map((option, i) => (
+            {['City', 'Town', 'Village'].map((option, i) => (
               <div key={i}>
                 <input
                   type="radio"
