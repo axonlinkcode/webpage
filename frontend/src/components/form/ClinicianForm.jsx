@@ -382,7 +382,7 @@ const ClinicianForm = () => {
         <div className="survey-header">
           <h1>Clinicians</h1>
           <h2>(Specialists, Doctors, Research Nurses, Principal Investigators)</h2>
-          <p>As a Clinician, your insights are invaluable. We are developing an innovative online system to improve the connection between specialist care and clinical trial opportunities in Africa.</p>
+          <p>As a Clinician, your insights are invaluable. We are developing an innovative online system to improve the connection between specialist care and clinical trial opportunities in Nigeria and across Africa.</p>
           <p>Your feedback on current workflows, technology use, and unmet needs will directly inform the design of features tailored to Nigeria's healthcare context.</p>
         </div>
 

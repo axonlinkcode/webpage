@@ -443,7 +443,7 @@ const PatientForm = () => {
         <div className="survey-header">
           <h1>Patient Experience Survey</h1>
           <p>
-            Your experience and insights are crucial! We are developing a new mobile-friendly system to help patients in Africa more easily find specialist care and discover relevant clinical trials.
+            Your experience and insights are crucial! We are developing a new mobile-friendly system to help patients in Nigeria and across Africa more easily find specialist care and discover relevant clinical trials.
           </p>
           <p>
             Your responses will directly inform how we build this system to meet your needs. All your answers will be kept confidential.

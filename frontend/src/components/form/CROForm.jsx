@@ -256,7 +256,7 @@ const CROForm = () => {
       case 5:
         return (
           <div className="form-group">
-            <label>5. What trial phases does your organization typically manage or sponsor in Africa/Nigeria? (Select all that apply) </label>
+            <label>5. What trial phases does your organization typically manage or sponsor in Nigeria/Africa ? (Select all that apply) </label>
             {['Phase I', 'Phase II', 'Phase III', 'Phase IV (Post-marketing)', 'Observational Studies', 'Other'].map((phase, i) => (
               <div key={i}>
                 <input
@@ -312,7 +312,7 @@ const CROForm = () => {
       case 7:
         return (
           <div className="form-group">
-            <label>7. How challenging is the process of identifying and activating suitable clinical trial sites in Africa?
+            <label>7. How challenging is the process of identifying and activating suitable clinical trial sites in Nigeria or across Africa?
               <span className='form-group-span'>(5.Extremely Challenging, 1.Not Challenging)</span>
             </label>
             <div className="rating-scale">
@@ -374,7 +374,7 @@ const CROForm = () => {
       case 9:
         return (
           <div className="form-group">
-            <label>9. How challenging is patient recruitment and enrolment for your trials in Africa?
+            <label>9. How challenging is patient recruitment and enrolment for your trials in Nigeria or across Africa?
               <span className='form-group-span'> (5.Extremely Challenging, 1.Not Challenging)</span>
             </label>
             <div className="rating-scale">
@@ -466,7 +466,7 @@ const CROForm = () => {
         //  if (formData.useDigitalSystems === 'NO') return null;
         return (
           <div className="form-group">
-            <label>12. Overall, how well do your current digital systems meet your operational needs for managing clinical trials in Africa?
+            <label>12. Overall, how well do your current digital systems meet your operational needs for managing clinical trials in Nigeria or across Africa?
               <span className='form-group-span'>(5.Completely, 1.Not at All)</span>
             </label>
             <div className="rating-scale">
@@ -531,7 +531,7 @@ const CROForm = () => {
       case 15:
         return (
           <div className="form-group">
-            <label>14. How reliable are internet and power at the clinical trial sites you work with in Africa?
+            <label>14. How reliable are internet and power at the clinical trial sites you work with in Nigeria or across Africa?
               <span className='form-group-span'>(5.Very Reliable, 1.Unreliable)</span>
             </label>
             <div className="rating-scale">
@@ -587,7 +587,7 @@ const CROForm = () => {
       case 18:
         return (
           <div className="form-group">
-            <label>16. What are your general perceptions of the current IT infrastructure and digital readiness of healthcare facilities and professionals at clinical trial sites in Africa?
+            <label>16. What are your general perceptions of the current IT infrastructure and digital readiness of healthcare facilities and professionals at clinical trial sites in Nigeria or across Africa?
               <span className='form-group-span'>(5.High Readiness, 1.Poor Readiness)</span>
             </label>
             <div className="rating-scale">
@@ -670,7 +670,7 @@ const CROForm = () => {
       case 21:
         return (
           <div className="form-group">
-            <label>19. Are you open to investing in and integrating with new digital platforms developed specifically for the unique context and challenges of clinical research in Africa? </label>
+            <label>19. Are you open to investing in and integrating with new digital platforms developed specifically for the unique context and challenges of clinical research in Nigeria or across Africa? </label>
             {[
               'Yes, definitely',
               'Yes, if it demonstrates clear ROI and addresses key challenges',
@@ -761,7 +761,7 @@ const CROForm = () => {
         <Link to='/forms' className="arrow-link">← Back to Forms</Link>
         <div className="survey-header">
           <h1>Clinical Research Organizations (CROs)/Trial Sponsors</h1>
-          <p>Your expertise as a clinical trial manager or sponsor operating in Africa is critical. We are developing an innovative IT system to streamline clinical trial operations, enhance patient engagement, and improve connectivity within the African healthcare and research ecosystem. </p>
+          <p>Your expertise as a clinical trial manager or sponsor operating in Africa is critical. We are developing an innovative IT system to streamline clinical trial operations, enhance patient engagement, and improve connectivity within Nigeria and across the African healthcare and research ecosystem. </p>
           <p>Your valuable insights will directly inform the features and functionality of this system. Your answers will be kept confidential. </p>
         </div>
 
