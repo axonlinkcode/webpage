@@ -15,6 +15,7 @@ const PatientForm = () => {
     trialParticipation: '',
     accessDifficulty: 0,
     biggestChallenge: '',
+
     knowClinicalTrial: '',
     usesInternetHealth: '',
     onlineActivities: [],
@@ -525,7 +526,7 @@ const PatientForm = () => {
       case 14:
         return (
           <div className="form-group">
-            <label>9. How reliable is internet in your area?
+            <label>10. How reliable is internet in your area?
               <span className='form-group-span'>(5.Very Reliable,1.Not Reliable)</span>
             </label>
             {[1, 2, 3, 4, 5].map(num => (
@@ -544,7 +545,7 @@ const PatientForm = () => {
       case 15:
         return (
           <div className="form-group">
-            <label>10. What features would help you most? (Select up to 3)</label>
+            <label>11. What features would help you most? (Select up to 3)</label>
             {['Info on doctors', 'Trial alerts', 'Book appointment', 'Reminders', 'Chat with doctor', 'Track referrals', 'View records', 'Understand info', 'Transport help', 'Other'].map((option, i) => (
               <div key={i}>
                 <input
@@ -562,7 +563,7 @@ const PatientForm = () => {
       case 16:
         return (
           <div className="form-group">
-            <label>11. Would you use SMS for health updates if internet is unreliable?</label>
+            <label>12. Would you use SMS for health updates if internet is unreliable?</label>
             {['Yes', 'No', 'Maybe'].map((option, i) => (
               <div key={i}>
                 <input
