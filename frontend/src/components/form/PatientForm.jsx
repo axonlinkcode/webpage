@@ -153,6 +153,12 @@ const PatientForm = () => {
         setCurrentStep(12);
         return;
       }   
+
+      //STEP 12
+if (currentStep === 11 && formData.usesInternetHealth === 'Yes' ){
+        setCurrentStep(13);
+        return;
+      }
         setCurrentStep(prev => prev + 1);
   }
 
