@@ -8,6 +8,9 @@ const PatientForm = () => {
   const [showModal, setShowModal] = useState(false);
   // const [submissionError, setSubmissionError] = useState('');
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+
+
   const [formData, setFormData] = useState({
     deviceType: '',
     location: '',
@@ -263,6 +266,7 @@ const PatientForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+       setLoading(true);
 
     if (validateCurrentStep()) {
 
@@ -270,9 +274,6 @@ const PatientForm = () => {
      alert('Please enter a valid email address.');
         return;
       }
-
-      // setShowModal(true);
-      // setSubmissionError('');
 
       const API = import.meta.env.VITE_API_BASE_URL;
       try {
@@ -284,7 +285,9 @@ const PatientForm = () => {
         console.error('Submission error', err.response?.data || err.message);
         setShowModal(false);
         alert('Something went wrong. Please try again.');
-      }
+      }finally {
+      setLoading(false);
+    }
     }
   };
 
@@ -634,11 +637,13 @@ const PatientForm = () => {
           )}
 
           {currentStep === 16 && (
-            <button type="submit">Submit</button>
+            <button type="submit" disabled={loading}>
+                   {loading ? 'Submitting...' : 'Submit'}
+            </button>
           )}
 
           {currentStep < 16 && (
-            <button type="button" onClick={handleNext}>Next</button>
+            <button type="button"  onClick={handleNext}>Next</button>
           )}
         </div>
       </form>
