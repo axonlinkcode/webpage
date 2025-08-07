@@ -43,8 +43,8 @@ const PatientForm = () => {
     2: 'location',
     3: 'infoSources',
     4: 'knowClinicalTrial',
-    5: 'trialParticipation', 
-    6: 'enrollDifficulty',  
+    5: 'trialParticipation',
+    6: 'enrollDifficulty',
     7: 'accessDifficulty',
     8: 'biggestChallenge',
     9: 'consultantChallenge',
@@ -110,180 +110,189 @@ const PatientForm = () => {
 
     // STEP 4 ANS(No)
     if (currentStep === 4 && formData.knowClinicalTrial === 'No') {
-        setCurrentStep(7);
-        return;
+      setCurrentStep(7);
+      return;
     }
     if (currentStep === 7 && formData.knowClinicalTrial === 'No') {
-      setCurrentStep(9); 
+      setCurrentStep(9);
       return;
     }
 
     // STEP 4 ANS(Yes)
-    if (currentStep === 4 && formData.knowClinicalTrial === 'Yes' ){
-        setCurrentStep(5);
-        return;
-      }
-    if (currentStep === 5 && formData.knowClinicalTrial === 'Yes' ){
-        setCurrentStep(6);
-        return;
-      }
-    if (currentStep === 6 && formData.knowClinicalTrial === 'Yes' ){
-        setCurrentStep(8);
-        return;
-      }
-    if (currentStep === 8 && formData.knowClinicalTrial === 'Yes' ){
-        setCurrentStep(7);
-        return;
-      }
-    
-    if (currentStep === 7 && formData.knowClinicalTrial === 'Yes' ){
-        setCurrentStep(9);
-        return;
-      }
-    
-    if (currentStep === 9 && formData.knowClinicalTrial === 'Yes' ){
-        setCurrentStep(10);
-        return;
-      }
-    if (currentStep === 11 && formData.knowClinicalTrial === 'Yes' ){
-        setCurrentStep(13);
-        return;
-      }
-    if (currentStep === 10 && formData.usesInternetHealth === 'No' ){
-        setCurrentStep(12);
-        return;
-      }   
-
-      //STEP 12
-if (currentStep === 11 && formData.usesInternetHealth === 'Yes' ){
-        setCurrentStep(13);
-        return;
-      }
-        setCurrentStep(prev => prev + 1);
-  }
-
-
-
- const handleBack = () => {
-  // Case 16 → 15
-  if (currentStep === 16) {
-    setCurrentStep(15);
-    return;
-  }
-
-  // Case 15 → 14
-  if (currentStep === 15) {
-    setCurrentStep(14);
-    return;
-  }
-
-  // Case 14 → 13
-  if (currentStep === 14) {
-    setCurrentStep(13);
-    return;
-  }
-
-  // Case 13 → 12 or 11 based on internet usage
-  if (currentStep === 13) {
-    if (formData.usesInternetHealth === 'No') {
-      setCurrentStep(12);
-      return;
-    } else {
-      setCurrentStep(11);
+    if (currentStep === 4 && formData.knowClinicalTrial === 'Yes') {
+      setCurrentStep(5);
       return;
     }
-  }
-
-  // Case 12 → 10 (no internet users skipped 11)
-  if (currentStep === 12) {
-    setCurrentStep(10);
-    return;
-  }
-
-  // Case 11 → 10
-  if (currentStep === 11) {
-    setCurrentStep(10);
-    return;
-  }
-
-  // Case 10 → 9
-  if (currentStep === 10) {
-    setCurrentStep(9);
-    return;
-  }
-
-  // Case 9 → 7 (both yes/no go to 7 before 9)
-  if (currentStep === 9) {
-    setCurrentStep(7);
-    return;
-  }
-
-  // Case 7 → 8 (Yes), → 4 (No)
-  if (currentStep === 7) {
-    if (formData.knowClinicalTrial === 'Yes') {
+    if (currentStep === 5 && formData.knowClinicalTrial === 'Yes') {
+      setCurrentStep(6);
+      return;
+    }
+    if (currentStep === 6 && formData.knowClinicalTrial === 'Yes') {
       setCurrentStep(8);
       return;
-    } else {
+    }
+    if (currentStep === 8 && formData.knowClinicalTrial === 'Yes') {
+      setCurrentStep(7);
+      return;
+    }
+
+    if (currentStep === 7 && formData.knowClinicalTrial === 'Yes') {
+      setCurrentStep(9);
+      return;
+    }
+
+    if (currentStep === 9 && formData.knowClinicalTrial === 'Yes') {
+      setCurrentStep(10);
+      return;
+    }
+    if (currentStep === 11 && formData.knowClinicalTrial === 'Yes') {
+      setCurrentStep(13);
+      return;
+    }
+    if (currentStep === 10 && formData.usesInternetHealth === 'No') {
+      setCurrentStep(12);
+      return;
+    }
+
+    //STEP 12
+    if (currentStep === 11 && formData.usesInternetHealth === 'Yes') {
+      setCurrentStep(13);
+      return;
+    }
+    setCurrentStep(prev => prev + 1);
+  }
+
+
+
+  const handleBack = () => {
+    // Case 16 → 15
+    if (currentStep === 16) {
+      setCurrentStep(15);
+      return;
+    }
+
+    // Case 15 → 14
+    if (currentStep === 15) {
+      setCurrentStep(14);
+      return;
+    }
+
+    // Case 14 → 13
+    if (currentStep === 14) {
+      setCurrentStep(13);
+      return;
+    }
+
+    // Case 13 → 12 or 11 based on internet usage
+    if (currentStep === 13) {
+      if (formData.usesInternetHealth === 'No') {
+        setCurrentStep(12);
+        return;
+      } else {
+        setCurrentStep(11);
+        return;
+      }
+    }
+
+    // Case 12 → 10 (no internet users skipped 11)
+    if (currentStep === 12) {
+      setCurrentStep(10);
+      return;
+    }
+
+    // Case 11 → 10
+    if (currentStep === 11) {
+      setCurrentStep(10);
+      return;
+    }
+
+    // Case 10 → 9
+    if (currentStep === 10) {
+      setCurrentStep(9);
+      return;
+    }
+
+    // Case 9 → 7 (both yes/no go to 7 before 9)
+    if (currentStep === 9) {
+      setCurrentStep(7);
+      return;
+    }
+
+    // Case 7 → 8 (Yes), → 4 (No)
+    if (currentStep === 7) {
+      if (formData.knowClinicalTrial === 'Yes') {
+        setCurrentStep(8);
+        return;
+      } else {
+        setCurrentStep(4);
+        return;
+      }
+    }
+
+    // Case 8 → 6 (Yes)
+    if (currentStep === 8) {
+      setCurrentStep(6);
+      return;
+    }
+
+    // Case 6 → 5
+    if (currentStep === 6) {
+      setCurrentStep(5);
+      return;
+    }
+
+    // Case 5 → 4
+    if (currentStep === 5) {
       setCurrentStep(4);
       return;
     }
-  }
 
-  // Case 8 → 6 (Yes)
-  if (currentStep === 8) {
-    setCurrentStep(6);
-    return;
-  }
+    // Case 4 → 3
+    if (currentStep === 4) {
+      setCurrentStep(3);
+      return;
+    }
 
-  // Case 6 → 5
-  if (currentStep === 6) {
-    setCurrentStep(5);
-    return;
-  }
+    // Case 3 → 2
+    if (currentStep === 3) {
+      setCurrentStep(2);
+      return;
+    }
 
-  // Case 5 → 4
-  if (currentStep === 5) {
-    setCurrentStep(4);
-    return;
-  }
+    // Case 2 → 1
+    if (currentStep === 2) {
+      setCurrentStep(1);
+      return;
+    }
 
-  // Case 4 → 3
-  if (currentStep === 4) {
-    setCurrentStep(3);
-    return;
-  }
-
-  // Case 3 → 2
-  if (currentStep === 3) {
-    setCurrentStep(2);
-    return;
-  }
-
-  // Case 2 → 1
-  if (currentStep === 2) {
-    setCurrentStep(1);
-    return;
-  }
-
-  // Default fallback (e.g., already at 1)
-  setCurrentStep(prev => Math.max(prev - 1, 1));
-};
+    // Default fallback (e.g., already at 1)
+    setCurrentStep(prev => Math.max(prev - 1, 1));
+  };
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-       setLoading(true);
+    setLoading(true);
 
     if (validateCurrentStep()) {
 
       if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) {
-     alert('Please enter a valid email address.');
+        alert('Please enter a valid email address.');
+        setLoading(false);
         return;
       }
 
       const API = import.meta.env.VITE_API_BASE_URL;
+
+      // Filter out empty or null values
+      const filteredData = Object.fromEntries(
+        Object.entries(formData).filter(
+          ([key, value]) => value !== '' && value !== null
+        )
+      );
+
       try {
-        const res = await axios.post(`${API}/patient`, formData);
+        const res = await axios.post(`${API}/patient`, filteredData);
         // console.log('Form submitted successfully:', res.data);
         setShowModal(true);
         // setSubmissionError('');
@@ -291,9 +300,9 @@ if (currentStep === 11 && formData.usesInternetHealth === 'Yes' ){
         console.error('Submission error', err.response?.data || err.message);
         setShowModal(false);
         alert('Something went wrong. Please try again.');
-      }finally {
-      setLoading(false);
-    }
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
@@ -444,7 +453,7 @@ if (currentStep === 11 && formData.usesInternetHealth === 'Yes' ){
             />
           </div>
         );
-    
+
       case 9:
         return (
           <div className="form-group">
@@ -457,7 +466,7 @@ if (currentStep === 11 && formData.usesInternetHealth === 'Yes' ){
             />
           </div>
         );
-    
+
 
       case 10:
         return (
@@ -644,12 +653,12 @@ if (currentStep === 11 && formData.usesInternetHealth === 'Yes' ){
 
           {currentStep === 16 && (
             <button type="submit" disabled={loading}>
-                   {loading ? 'Submitting...' : 'Submit'}
+              {loading ? 'Submitting...' : 'Submit'}
             </button>
           )}
 
           {currentStep < 16 && (
-            <button type="button"  onClick={handleNext}>Next</button>
+            <button type="button" onClick={handleNext}>Next</button>
           )}
         </div>
       </form>
