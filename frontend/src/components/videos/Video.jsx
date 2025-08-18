@@ -1,6 +1,6 @@
 import './video.css'
 import { useState, useRef } from 'react';
-import { assets } from '../../assets/assets'
+import video from '../../assets/axonLogo.mp4'
 
 const Video = ({className}) => {
      const introRef = useRef(null);
@@ -13,30 +13,28 @@ const Video = ({className}) => {
     };
   return (
    <div className={`hero__content-video ${className}`}>
-                        {!showMainVideo ? (
+                         {!showMainVideo ? (
                             <video
                                 ref={introRef}
-                                src={assets.links}
+                                src={video}
                                 autoPlay
                                 muted
                                 playsInline
                                 onEnded={handleIntroEnd}
                                 className="video"
                                 preload="metadata"
-                                // loop
                             />
                         ) : (
                             <video
                                 ref={mainRef}
-                                src={assets.loop}
+                                src={video}
                                 muted
                                 autoPlay
                                 playsInline
                                 className="video"
                                 preload="metadata"
-                                // loop
                             />
-                        )}
+                        )} 
                     </div>
   )
 }

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import './form.css'
 import "remixicon/fonts/remixicon.css";
-import { assets } from '../../assets/assets';
 
 
 const Form = () => {

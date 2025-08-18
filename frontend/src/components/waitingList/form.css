@@ -1,12 +1,11 @@
-/* Base Styles */
 .waiting-list-container {
   background-color: #f5f7fa;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 30px;
 }
 
 .waiting-list {
@@ -18,7 +17,6 @@
   max-width: 500px;
 }
 
-/* Header Styles */
 .waiting-header {
   margin-bottom: 2rem;
   text-align: center;
@@ -31,18 +29,13 @@
   font-weight: 600;
 }
 
-.back-link {
-  color: #4a90e2;
+.waiting-back-link {
   text-decoration: none;
-  font-size: 0.95rem;
-  display: inline-flex;
-  align-items: center;
-  margin-bottom: 1rem;
   transition: color 0.2s;
-}
-
-.back-link:hover {
-  color: #2a6fc9;
+  margin-bottom: 5px;
+  width: 100%;
+    color: #4a90e2;
+  font-size: 0.8rem;
 }
 
 /* Form Styles */
@@ -120,12 +113,11 @@
 .phone-prefix {
   display: flex;
   align-items: center;
-  padding: 0 14px;
   background: #f8fafc;
   border: 1px solid #e0e6ed;
   height: 50px;
-  min-width: 90px;
-  gap: 8px;
+  min-width: 100px;
+  gap: 2px;
 }
 
 .phone-input-container input {
@@ -155,24 +147,29 @@
 /* Responsive Styles */
 @media (max-width: 600px) {
   .waiting-list {
-    padding: 1.5rem;
+    padding: 1rem;
   }
-  
+
   .waiting-header h3 {
     font-size: 1.5rem;
+  }
+  .waiting-back-link {
+    font-size: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .waiting-list-container {
-    padding: 15px;
+    padding: 20px;
   }
-  
+.waiting-header h3 {
+    font-size: 1.2rem;
+  }
   .phone-prefix {
     min-width: 80px;
-    padding: 0 10px;
+    padding: 0 4px;
   }
-  
+
   .waiting-list-fields input {
     padding: 12px;
   }
