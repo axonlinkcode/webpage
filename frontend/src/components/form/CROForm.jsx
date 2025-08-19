@@ -163,12 +163,10 @@ const CROForm = () => {
       );
 
       try {
-        const res = await axios.post(`${API}/cro`, filteredData);
+         await axios.post(`${API}/cro`, filteredData);
 
         setShowModal(true);
-        setSubmissionError("");
       } catch (err) {
-        console.error("Submission error", err.response?.data || err.message);
         setShowModal(false);
         alert("Something went wrong. Please try again.");
       } finally {

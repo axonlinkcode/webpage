@@ -286,7 +286,7 @@ const PatientForm = () => {
       );
 
       try {
-        const res = await axios.post(`${API}/patient`, filteredData);
+         await axios.post(`${API}/patient`, filteredData);
         setShowModal(true);
       } catch (err) {
         setShowModal(false);
