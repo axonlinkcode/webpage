@@ -489,7 +489,7 @@ const ClinicianForm = () => {
             </button>
           )}
 
-          {currentStep === 16 && (
+          {currentStep === 13 && (
             <button type="submit" disabled={loading}>
               {loading ? "Submitting..." : "Submit"}
             </button>
