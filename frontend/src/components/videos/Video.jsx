@@ -1,42 +1,22 @@
-import './video.css'
-import { useState, useRef } from 'react';
-import video from '../../assets/axonLogo.mp4'
+import "./video.css";
 
-const Video = ({className}) => {
-     const introRef = useRef(null);
-    const mainRef = useRef(null);
-    const [showMainVideo, setShowMainVideo] = useState(false)
+const Video = ({ className }) => {
+  const videoUrl =
+    "https://res.cloudinary.com/dyn5ath7a/video/upload/f_auto,q_auto/v1755601854/axonLogo_vrd96d.mp4";
 
-    const handleIntroEnd = () => {
-        setShowMainVideo(true);
-        
-    };
   return (
-   <div className={`hero__content-video ${className}`}>
-                         {!showMainVideo ? (
-                            <video
-                                ref={introRef}
-                                src={video}
-                                autoPlay
-                                muted
-                                playsInline
-                                onEnded={handleIntroEnd}
-                                className="video"
-                                preload="metadata"
-                            />
-                        ) : (
-                            <video
-                                ref={mainRef}
-                                src={video}
-                                muted
-                                autoPlay
-                                playsInline
-                                className="video"
-                                preload="metadata"
-                            />
-                        )} 
-                    </div>
-  )
-}
+    <div className={`hero__content-video ${className}`}>
+      <video
+        src={videoUrl}
+        autoPlay
+        muted
+        playsInline
+        className="video"
+        preload="metadata"
+        loop
+      />
+    </div>
+  );
+};
 
-export default Video
+export default Video;

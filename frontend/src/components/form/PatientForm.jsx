@@ -1,87 +1,85 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './form.css';
-import axios from 'axios';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import "./form.css";
+import axios from "axios";
+import axonLogo from "../../assets/logo.png";
 
 const PatientForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [showModal, setShowModal] = useState(false);
-  // const [submissionError, setSubmissionError] = useState('');
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-
   const [formData, setFormData] = useState({
-    deviceType: '',
-    location: '',
+    deviceType: "",
+    location: "",
     infoSources: [],
-    trialParticipation: '',
+    trialParticipation: "",
     accessDifficulty: 0,
-    biggestChallenge: '',
+    biggestChallenge: "",
 
-    knowClinicalTrial: '',
-    usesInternetHealth: '',
+    knowClinicalTrial: "",
+    usesInternetHealth: "",
     onlineActivities: [],
     noInternetReasons: [],
     comfortLevel: 0,
     internetReliability: 0,
     communicationPreferences: [],
     desiredFeatures: [],
-    privacyConcerns: '',
-    smsWillingness: '',
+    privacyConcerns: "",
+    smsWillingness: "",
     systemPriorities: [],
-    email: '',
+    email: "",
     enrollDifficulty: 0,
-    trialChallenge: '',
-    consultantChallenge: ''
+    trialChallenge: "",
+    consultantChallenge: "",
   });
 
   const totalSteps = 16;
 
   const requiredFields = {
-    1: 'deviceType',
-    2: 'location',
-    3: 'infoSources',
-    4: 'knowClinicalTrial',
-    5: 'trialParticipation',
-    6: 'enrollDifficulty',
-    7: 'accessDifficulty',
-    8: 'biggestChallenge',
-    9: 'consultantChallenge',
-    10: 'usesInternetHealth',
-    11: 'onlineActivities',
-    12: 'noInternetReasons',
-    13: 'comfortLevel',
-    14: 'internetReliability'
+    1: "deviceType",
+    2: "location",
+    3: "infoSources",
+    4: "knowClinicalTrial",
+    5: "trialParticipation",
+    6: "enrollDifficulty",
+    7: "accessDifficulty",
+    8: "biggestChallenge",
+    9: "consultantChallenge",
+    10: "usesInternetHealth",
+    11: "onlineActivities",
+    12: "noInternetReasons",
+    13: "comfortLevel",
+    14: "internetReliability",
   };
-
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
-    if (type === 'checkbox') {
-      setFormData(prev => ({
+    if (type === "checkbox") {
+      setFormData((prev) => ({
         ...prev,
         [name]: checked
           ? [...prev[name], value]
-          : prev[name].filter(item => item !== value)
+          : prev[name].filter((item) => item !== value),
       }));
     } else {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
-        [name]: type === 'number' ? parseInt(value) : value
+        [name]: type === "number" ? parseInt(value) : value,
       }));
     }
 
     if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
+      setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
 
   const handleRadioChange = (name, value) => {
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
+      setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
 
@@ -94,10 +92,10 @@ const PatientForm = () => {
     const newErrors = {};
 
     if (Array.isArray(value) && value.length === 0) {
-      newErrors[key] = 'Please select at least one option';
+      newErrors[key] = "Please select at least one option";
       isValid = false;
-    } else if (!value || value === '' || value === 0) {
-      newErrors[key] = 'This field is required';
+    } else if (!value || value === "" || value === 0) {
+      newErrors[key] = "This field is required";
       isValid = false;
     }
 
@@ -109,60 +107,58 @@ const PatientForm = () => {
     if (!validateCurrentStep()) return;
 
     // STEP 4 ANS(No)
-    if (currentStep === 4 && formData.knowClinicalTrial === 'No') {
+    if (currentStep === 4 && formData.knowClinicalTrial === "No") {
       setCurrentStep(7);
       return;
     }
-    if (currentStep === 7 && formData.knowClinicalTrial === 'No') {
+    if (currentStep === 7 && formData.knowClinicalTrial === "No") {
       setCurrentStep(9);
       return;
     }
 
     // STEP 4 ANS(Yes)
-    if (currentStep === 4 && formData.knowClinicalTrial === 'Yes') {
+    if (currentStep === 4 && formData.knowClinicalTrial === "Yes") {
       setCurrentStep(5);
       return;
     }
-    if (currentStep === 5 && formData.knowClinicalTrial === 'Yes') {
+    if (currentStep === 5 && formData.knowClinicalTrial === "Yes") {
       setCurrentStep(6);
       return;
     }
-    if (currentStep === 6 && formData.knowClinicalTrial === 'Yes') {
+    if (currentStep === 6 && formData.knowClinicalTrial === "Yes") {
       setCurrentStep(8);
       return;
     }
-    if (currentStep === 8 && formData.knowClinicalTrial === 'Yes') {
+    if (currentStep === 8 && formData.knowClinicalTrial === "Yes") {
       setCurrentStep(7);
       return;
     }
 
-    if (currentStep === 7 && formData.knowClinicalTrial === 'Yes') {
+    if (currentStep === 7 && formData.knowClinicalTrial === "Yes") {
       setCurrentStep(9);
       return;
     }
 
-    if (currentStep === 9 && formData.knowClinicalTrial === 'Yes') {
+    if (currentStep === 9 && formData.knowClinicalTrial === "Yes") {
       setCurrentStep(10);
       return;
     }
-    if (currentStep === 11 && formData.knowClinicalTrial === 'Yes') {
+    if (currentStep === 11 && formData.knowClinicalTrial === "Yes") {
       setCurrentStep(13);
       return;
     }
-    if (currentStep === 10 && formData.usesInternetHealth === 'No') {
+    if (currentStep === 10 && formData.usesInternetHealth === "No") {
       setCurrentStep(12);
       return;
     }
 
     //STEP 12
-    if (currentStep === 11 && formData.usesInternetHealth === 'Yes') {
+    if (currentStep === 11 && formData.usesInternetHealth === "Yes") {
       setCurrentStep(13);
       return;
     }
-    setCurrentStep(prev => prev + 1);
-  }
-
-
+    setCurrentStep((prev) => prev + 1);
+  };
 
   const handleBack = () => {
     // Case 16 → 15
@@ -185,7 +181,7 @@ const PatientForm = () => {
 
     // Case 13 → 12 or 11 based on internet usage
     if (currentStep === 13) {
-      if (formData.usesInternetHealth === 'No') {
+      if (formData.usesInternetHealth === "No") {
         setCurrentStep(12);
         return;
       } else {
@@ -220,7 +216,7 @@ const PatientForm = () => {
 
     // Case 7 → 8 (Yes), → 4 (No)
     if (currentStep === 7) {
-      if (formData.knowClinicalTrial === 'Yes') {
+      if (formData.knowClinicalTrial === "Yes") {
         setCurrentStep(8);
         return;
       } else {
@@ -266,18 +262,16 @@ const PatientForm = () => {
     }
 
     // Default fallback (e.g., already at 1)
-    setCurrentStep(prev => Math.max(prev - 1, 1));
+    setCurrentStep((prev) => Math.max(prev - 1, 1));
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     if (validateCurrentStep()) {
-
       if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) {
-        alert('Please enter a valid email address.');
+        alert("Please enter a valid email address.");
         setLoading(false);
         return;
       }
@@ -287,25 +281,21 @@ const PatientForm = () => {
       // Filter out empty or null values
       const filteredData = Object.fromEntries(
         Object.entries(formData).filter(
-          ([key, value]) => value !== '' && value !== null
+          ([key, value]) => value !== "" && value !== null
         )
       );
 
       try {
         const res = await axios.post(`${API}/patient`, filteredData);
-        // console.log('Form submitted successfully:', res.data);
         setShowModal(true);
-        // setSubmissionError('');
       } catch (err) {
-        console.error('Submission error', err.response?.data || err.message);
         setShowModal(false);
-        alert('Something went wrong. Please try again.');
+        alert("Something went wrong. Please try again.");
       } finally {
         setLoading(false);
       }
     }
   };
-
 
   const renderQuestion = () => {
     switch (currentStep) {
@@ -313,15 +303,21 @@ const PatientForm = () => {
         return (
           <div className="form-group">
             <label>1. What kind of mobile device do you mainly use?</label>
-            {['Basic phone', 'Smartphone', 'Tablet/computer', 'No regular device'].map((option, i) => (
+            {[
+              "Basic phone",
+              "Smartphone",
+              "Tablet/computer",
+              "No regular device",
+            ].map((option, i) => (
               <div key={i}>
                 <input
                   type="radio"
                   name="deviceType"
                   value={option}
                   checked={formData.deviceType === option}
-                  onChange={() => handleRadioChange('deviceType', option)}
-                /> <span className="radio-text">{option}</span>
+                  onChange={() => handleRadioChange("deviceType", option)}
+                />{" "}
+                <span className="radio-text">{option}</span>
               </div>
             ))}
           </div>
@@ -330,15 +326,16 @@ const PatientForm = () => {
         return (
           <div className="form-group">
             <label>2. Where do you live?</label>
-            {['City', 'Town', 'Village'].map((option, i) => (
+            {["City", "Town", "Village"].map((option, i) => (
               <div key={i}>
                 <input
                   type="radio"
                   name="location"
                   value={option}
                   checked={formData.location === option}
-                  onChange={() => handleRadioChange('location', option)}
-                /> <span className="radio-text">{option}</span>
+                  onChange={() => handleRadioChange("location", option)}
+                />{" "}
+                <span className="radio-text">{option}</span>
               </div>
             ))}
           </div>
@@ -346,8 +343,19 @@ const PatientForm = () => {
       case 3:
         return (
           <div className="form-group">
-            <label>3. How do you find info about doctors/trials? (Select all that apply)</label>
-            {['Referral', 'Internet search', 'Social media', 'Radio/TV', 'Family/friends', 'Research org', 'Other'].map((option, i) => (
+            <label>
+              3. How do you find info about doctors/trials? (Select all that
+              apply)
+            </label>
+            {[
+              "Referral",
+              "Internet search",
+              "Social media",
+              "Radio/TV",
+              "Family/friends",
+              "Research org",
+              "Other",
+            ].map((option, i) => (
               <div key={i}>
                 <input
                   type="checkbox"
@@ -355,7 +363,8 @@ const PatientForm = () => {
                   value={option}
                   checked={formData.infoSources.includes(option)}
                   onChange={handleChange}
-                /> <span className="radio-text">{option}</span>
+                />{" "}
+                <span className="radio-text">{option}</span>
               </div>
             ))}
             {errors.infoSources && (
@@ -367,15 +376,18 @@ const PatientForm = () => {
         return (
           <div className="form-group">
             <label>4. Do you know what a clinical trial is ?</label>
-            {['Yes', 'No'].map((option, i) => (
+            {["Yes", "No"].map((option, i) => (
               <div key={i}>
                 <input
                   type="radio"
                   name="knowClinicalTrial"
                   value={option}
                   checked={formData.knowClinicalTrial === option}
-                  onChange={() => handleRadioChange('knowClinicalTrial', option)}
-                /> <span className="radio-text">{option}</span>
+                  onChange={() =>
+                    handleRadioChange("knowClinicalTrial", option)
+                  }
+                />{" "}
+                <span className="radio-text">{option}</span>
               </div>
             ))}
             {errors.knowClinicalTrial && (
@@ -386,16 +398,21 @@ const PatientForm = () => {
       case 5:
         return (
           <div className="form-group">
-            <label>5. Have you ever considered or joined a clinical trial?</label>
-            {['Yes - joined', 'Yes - considered', 'No'].map((option, i) => (
+            <label>
+              5. Have you ever considered or joined a clinical trial?
+            </label>
+            {["Yes - joined", "Yes - considered", "No"].map((option, i) => (
               <div key={i}>
                 <input
                   type="radio"
                   name="trialParticipation"
                   value={option}
                   checked={formData.trialParticipation === option}
-                  onChange={() => handleRadioChange('trialParticipation', option)}
-                /> <span className="radio-text">{option}</span>
+                  onChange={() =>
+                    handleRadioChange("trialParticipation", option)
+                  }
+                />{" "}
+                <span className="radio-text">{option}</span>
               </div>
             ))}
             {errors.trialParticipation && (
@@ -406,18 +423,20 @@ const PatientForm = () => {
       case 6:
         return (
           <div className="form-group">
-            <label>5a. How difficult is it to be enrolled into a Clinical trial?
-              <span className='form-group-span'>(5.Very difficult,1.Easy)</span>
+            <label>
+              5a. How difficult is it to be enrolled into a Clinical trial?
+              <span className="form-group-span">(5.Very difficult,1.Easy)</span>
             </label>
-            {[1, 2, 3, 4, 5].map(num => (
+            {[1, 2, 3, 4, 5].map((num) => (
               <label key={num}>
                 <input
                   type="radio"
                   name="enrollDifficulty"
                   value={num}
                   checked={formData.enrollDifficulty === num}
-                  onChange={() => handleRadioChange('enrollDifficulty', num)}
-                /> <span className="radio-text">{num}</span>
+                  onChange={() => handleRadioChange("enrollDifficulty", num)}
+                />{" "}
+                <span className="radio-text">{num}</span>
               </label>
             ))}
           </div>
@@ -425,18 +444,20 @@ const PatientForm = () => {
       case 7:
         return (
           <div className="form-group">
-            <label>6. How difficult is it to access Consultant(Specialist) care?
-              <span className='form-group-span'>(5.Very difficult,1.Easy)</span>
+            <label>
+              6. How difficult is it to access Consultant(Specialist) care?
+              <span className="form-group-span">(5.Very difficult,1.Easy)</span>
             </label>
-            {[1, 2, 3, 4, 5].map(num => (
+            {[1, 2, 3, 4, 5].map((num) => (
               <label key={num}>
                 <input
                   type="radio"
                   name="accessDifficulty"
                   value={num}
                   checked={formData.accessDifficulty === num}
-                  onChange={() => handleRadioChange('accessDifficulty', num)}
-                /> <span className="radio-text">{num}</span>
+                  onChange={() => handleRadioChange("accessDifficulty", num)}
+                />{" "}
+                <span className="radio-text">{num}</span>
               </label>
             ))}
           </div>
@@ -444,7 +465,9 @@ const PatientForm = () => {
       case 8:
         return (
           <div className="form-group">
-            <label>5b. What was your biggest challenge accessing Clinical trial?</label>
+            <label>
+              5b. What was your biggest challenge accessing Clinical trial?
+            </label>
             <textarea
               name="biggestChallenge"
               value={formData.biggestChallenge}
@@ -457,7 +480,10 @@ const PatientForm = () => {
       case 9:
         return (
           <div className="form-group">
-            <label>7. What was your biggest challenge accessing Consultant (Specialist) care?</label>
+            <label>
+              7. What was your biggest challenge accessing Consultant
+              (Specialist) care?
+            </label>
             <textarea
               name="consultantChallenge"
               value={formData.consultantChallenge}
@@ -467,20 +493,22 @@ const PatientForm = () => {
           </div>
         );
 
-
       case 10:
         return (
           <div className="form-group">
             <label>8. Do you use the internet for health activities?</label>
-            {['Yes', 'No'].map((option, i) => (
+            {["Yes", "No"].map((option, i) => (
               <div key={i}>
                 <input
                   type="radio"
                   name="usesInternetHealth"
                   value={option}
                   checked={formData.usesInternetHealth === option}
-                  onChange={() => handleRadioChange('usesInternetHealth', option)}
-                /> <span className="radio-text">{option}</span>
+                  onChange={() =>
+                    handleRadioChange("usesInternetHealth", option)
+                  }
+                />{" "}
+                <span className="radio-text">{option}</span>
               </div>
             ))}
           </div>
@@ -488,8 +516,20 @@ const PatientForm = () => {
       case 11:
         return (
           <div className="form-group">
-            <label>8a. What health-related activities have you done online?</label>
-            {['Visit hospital site', 'Health app', 'WhatsApp group', 'SMS alerts', 'Search info', 'Book appointment', 'Lab results', 'Chat with doctor', 'Other'].map((option, i) => (
+            <label>
+              8a. What health-related activities have you done online?
+            </label>
+            {[
+              "Visit hospital site",
+              "Health app",
+              "WhatsApp group",
+              "SMS alerts",
+              "Search info",
+              "Book appointment",
+              "Lab results",
+              "Chat with doctor",
+              "Other",
+            ].map((option, i) => (
               <div key={i}>
                 <input
                   type="checkbox"
@@ -497,7 +537,8 @@ const PatientForm = () => {
                   value={option}
                   checked={formData.onlineActivities.includes(option)}
                   onChange={handleChange}
-                /> <span className="radio-text">{option}</span>
+                />{" "}
+                <span className="radio-text">{option}</span>
               </div>
             ))}
             {errors.onlineActivities && (
@@ -509,7 +550,17 @@ const PatientForm = () => {
         return (
           <div className="form-group">
             <label>8b. Why don't you use online services?</label>
-            {['Cost', 'Network issue', 'Tech difficulty', 'Prefer in-person', 'Not aware', 'Privacy concern', 'Language barrier', 'Not interested', 'Other'].map((option, i) => (
+            {[
+              "Cost",
+              "Network issue",
+              "Tech difficulty",
+              "Prefer in-person",
+              "Not aware",
+              "Privacy concern",
+              "Language barrier",
+              "Not interested",
+              "Other",
+            ].map((option, i) => (
               <div key={i}>
                 <input
                   type="checkbox"
@@ -517,7 +568,8 @@ const PatientForm = () => {
                   value={option}
                   checked={formData.noInternetReasons.includes(option)}
                   onChange={handleChange}
-                /> <span className="radio-text">{option}</span>
+                />{" "}
+                <span className="radio-text">{option}</span>
               </div>
             ))}
           </div>
@@ -525,18 +577,22 @@ const PatientForm = () => {
       case 13:
         return (
           <div className="form-group">
-            <label>9. How comfortable are you with mobile apps for healthcare?
-              <span className='form-group-span'>(5.Very Comfortable,1.Not Comfortable)</span>
+            <label>
+              9. How comfortable are you with mobile apps for healthcare?
+              <span className="form-group-span">
+                (5.Very Comfortable,1.Not Comfortable)
+              </span>
             </label>
-            {[1, 2, 3, 4, 5].map(num => (
+            {[1, 2, 3, 4, 5].map((num) => (
               <label key={num}>
                 <input
                   type="radio"
                   name="comfortLevel"
                   value={num}
                   checked={formData.comfortLevel === num}
-                  onChange={() => handleRadioChange('comfortLevel', num)}
-                /> <span className="radio-text">{num}</span>
+                  onChange={() => handleRadioChange("comfortLevel", num)}
+                />{" "}
+                <span className="radio-text">{num}</span>
               </label>
             ))}
           </div>
@@ -544,18 +600,22 @@ const PatientForm = () => {
       case 14:
         return (
           <div className="form-group">
-            <label>10. How reliable is internet in your area?
-              <span className='form-group-span'>(5.Very Reliable,1.Not Reliable)</span>
+            <label>
+              10. How reliable is internet in your area?
+              <span className="form-group-span">
+                (5.Very Reliable,1.Not Reliable)
+              </span>
             </label>
-            {[1, 2, 3, 4, 5].map(num => (
+            {[1, 2, 3, 4, 5].map((num) => (
               <label key={num}>
                 <input
                   type="radio"
                   name="internetReliability"
                   value={num}
                   checked={formData.internetReliability === num}
-                  onChange={() => handleRadioChange('internetReliability', num)}
-                /> <span className="radio-text">{num}</span>
+                  onChange={() => handleRadioChange("internetReliability", num)}
+                />{" "}
+                <span className="radio-text">{num}</span>
               </label>
             ))}
           </div>
@@ -563,17 +623,34 @@ const PatientForm = () => {
       case 15:
         return (
           <div className="form-group">
-            <label>11. What features would help you most? (Select up to 3)</label>
-            {['Info on doctors', 'Trial alerts', 'Book appointment', 'Reminders', 'Chat with doctor', 'Track referrals', 'View records', 'Understand info', 'Transport help', 'Other'].map((option, i) => (
+            <label>
+              11. What features would help you most? (Select up to 3)
+            </label>
+            {[
+              "Info on doctors",
+              "Trial alerts",
+              "Book appointment",
+              "Reminders",
+              "Chat with doctor",
+              "Track referrals",
+              "View records",
+              "Understand info",
+              "Transport help",
+              "Other",
+            ].map((option, i) => (
               <div key={i}>
                 <input
                   type="checkbox"
                   name="desiredFeatures"
                   value={option}
                   checked={formData.desiredFeatures.includes(option)}
-                  disabled={formData.desiredFeatures.length >= 3 && !formData.desiredFeatures.includes(option)}
+                  disabled={
+                    formData.desiredFeatures.length >= 3 &&
+                    !formData.desiredFeatures.includes(option)
+                  }
                   onChange={handleChange}
-                /> <span className="radio-text">{option}</span>
+                />{" "}
+                <span className="radio-text">{option}</span>
               </div>
             ))}
           </div>
@@ -581,20 +658,24 @@ const PatientForm = () => {
       case 16:
         return (
           <div className="form-group">
-            <label>12. Would you use SMS for health updates if internet is unreliable?</label>
-            {['Yes', 'No', 'Maybe'].map((option, i) => (
+            <label>
+              12. Would you use SMS for health updates if internet is
+              unreliable?
+            </label>
+            {["Yes", "No", "Maybe"].map((option, i) => (
               <div key={i}>
                 <input
                   type="radio"
                   name="smsWillingness"
                   value={option}
                   checked={formData.smsWillingness === option}
-                  onChange={() => handleRadioChange('smsWillingness', option)}
-                /> <span className="radio-text">{option}</span>
+                  onChange={() => handleRadioChange("smsWillingness", option)}
+                />{" "}
+                <span className="radio-text">{option}</span>
               </div>
             ))}
 
-            <div className='email-input'>
+            <div className="email-input">
               <input
                 type="email"
                 name="email"
@@ -604,8 +685,6 @@ const PatientForm = () => {
                 onChange={handleChange}
               />
             </div>
-
-
           </div>
         );
       default:
@@ -614,31 +693,52 @@ const PatientForm = () => {
   };
 
   return (
-    <div className='survey-body'>
-      {/* <div className="survey-container"> */}
+    <div className="survey-body">
+      <div className="survey-header-link">
+        <Link to="/forms" className="arrow-link">
+          ← Back to Forms
+        </Link>
+      </div>
+
       <form onSubmit={handleSubmit} className="survey-form">
-        <Link to='/forms' className="arrow-link">← Back to Forms</Link>
+        <div className="survey-body-image">
+          <img src={axonLogo} alt="axon logo" />
+        </div>
+
         <div className="survey-header">
           <h1>Patient Experience Survey</h1>
           <p>
-            Your experience and insights are crucial! We are developing a new mobile-friendly system to help patients in Nigeria and across Africa more easily find specialist care and discover relevant clinical trials.
+            Your experience and insights are crucial! We are developing a new
+            mobile-friendly system to help patients in Nigeria and across Africa
+            more easily find specialist care and discover relevant clinical
+            trials.
           </p>
           <p>
-            Your responses will directly inform how we build this system to meet your needs. All your answers will be kept confidential.
+            Your responses will directly inform how we build this system to meet
+            your needs. All your answers will be kept confidential.
           </p>
         </div>
 
         <div className="progress-tracker">
-          <p>Question {currentStep} of {totalSteps}</p>
+          <p>
+            Question {currentStep} of {totalSteps}
+          </p>
           <div className="progress-bar">
-            <div className="progress-bar-fill" style={{ width: `${(currentStep / totalSteps) * 100}%` }}></div>
+            <div
+              className="progress-bar-fill"
+              style={{ width: `${(currentStep / totalSteps) * 100}%` }}
+            ></div>
           </div>
         </div>
 
         <div className="survey-questions">
           {renderQuestion()}
           {requiredFields[currentStep] && (
-            <p className={`required-note ${errors[requiredFields[currentStep]] ? 'error' : ''}`}>
+            <p
+              className={`required-note ${
+                errors[requiredFields[currentStep]] ? "error" : ""
+              }`}
+            >
               * This question is required
             </p>
           )}
@@ -648,39 +748,38 @@ const PatientForm = () => {
 
         <div className="form-footer">
           {currentStep > 1 && (
-            <button type="button" onClick={handleBack}>Back</button>
+            <button type="button" onClick={handleBack}>
+              Back
+            </button>
           )}
 
           {currentStep === 16 && (
             <button type="submit" disabled={loading}>
-              {loading ? 'Submitting...' : 'Submit'}
+              {loading ? "Submitting..." : "Submit"}
             </button>
           )}
 
           {currentStep < 16 && (
-            <button type="button" onClick={handleNext}>Next</button>
+            <button type="button" onClick={handleNext}>
+              Next
+            </button>
           )}
         </div>
       </form>
-      {/* </div> */}
+
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-card">
             <h2>Thank you!</h2>
             <p>Your responses have been recorded.</p>
-            <Link to="/" className="modal-btn">← Back to Home</Link>
+            <Link to="/" className="modal-btn">
+              ← Back to Home
+            </Link>
           </div>
         </div>
       )}
-
-      {/* {submissionError && (
-        <div className="error-message">
-          <p>{submissionError}</p>
-        </div>
-      )} */}
     </div>
   );
 };
 
-export default PatientForm
-
+export default PatientForm;
