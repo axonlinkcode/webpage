@@ -34,7 +34,7 @@
   transition: color 0.2s;
   margin-bottom: 5px;
   width: 100%;
-    color: #4a90e2;
+  color: #4a90e2;
   font-size: 0.8rem;
 }
 
@@ -128,7 +128,7 @@
 /* Button Styles */
 .join-button {
   width: 100%;
-  padding: 14px;
+  padding: 12px;
   background: #4a90e2;
   color: white;
   border: none;
@@ -138,11 +138,103 @@
   margin-top: 1.5rem;
   cursor: pointer;
   transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.join-button:disabled {
+  background: #7fb1e9;
+  cursor: not-allowed;
+}
+
+.btn-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-text {
+  font-size: 1rem;
+  font-weight: 600;
+}
+.spinner {
+  border: 3px solid #f3f3f3; /* Light gray */
+  border-top: 3px solid white; /* White spinner to contrast button */
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 6px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .join-button:hover {
-  background: #3a7bc8;
+  background: #6f94c2;
 }
+
+/* Modal */
+/* Modal overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal box */
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.modal-content h3 {
+  margin-bottom: 1rem;
+}
+
+.modal-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-buttons .yes-btn,
+.modal-buttons .no-btn {
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.modal-buttons .yes-btn {
+  background: #4caf50;
+  color: white;
+}
+
+.modal-buttons .no-btn {
+  background: #f44336;
+  color: white;
+}
+
 
 /* Responsive Styles */
 @media (max-width: 600px) {
@@ -162,7 +254,7 @@
   .waiting-list-container {
     padding: 20px;
   }
-.waiting-header h3 {
+  .waiting-header h3 {
     font-size: 1.2rem;
   }
   .phone-prefix {

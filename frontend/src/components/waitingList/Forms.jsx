@@ -4,66 +4,11 @@ import { useState } from "react";
 import axios from "axios";
 import ReactCountryFlag from "react-country-flag";
 import Logo from "../../assets/logo.png";
-
-// Country data with ISO codes and phone prefixes
-const africanCountries = [
-  { name: "Algeria", code: "DZ", phoneCode: "+213" },
-  { name: "Angola", code: "AO", phoneCode: "+244" },
-  { name: "Benin", code: "BJ", phoneCode: "+229" },
-  { name: "Botswana", code: "BW", phoneCode: "+267" },
-  { name: "Burkina Faso", code: "BF", phoneCode: "+226" },
-  { name: "Burundi", code: "BI", phoneCode: "+257" },
-  { name: "Cabo Verde", code: "CV", phoneCode: "+238" },
-  { name: "Cameroon", code: "CM", phoneCode: "+237" },
-  { name: "Central African Republic", code: "CF", phoneCode: "+236" },
-  { name: "Chad", code: "TD", phoneCode: "+235" },
-  { name: "Comoros", code: "KM", phoneCode: "+269" },
-  { name: "Congo (Congo-Brazzaville)", code: "CG", phoneCode: "+242" },
-  { name: "Democratic Republic of the Congo", code: "CD", phoneCode: "+243" },
-  { name: "Djibouti", code: "DJ", phoneCode: "+253" },
-  { name: "Egypt", code: "EG", phoneCode: "+20" },
-  { name: "Equatorial Guinea", code: "GQ", phoneCode: "+240" },
-  { name: "Eritrea", code: "ER", phoneCode: "+291" },
-  { name: "Eswatini", code: "SZ", phoneCode: "+268" },
-  { name: "Ethiopia", code: "ET", phoneCode: "+251" },
-  { name: "Gabon", code: "GA", phoneCode: "+241" },
-  { name: "Gambia", code: "GM", phoneCode: "+220" },
-  { name: "Ghana", code: "GH", phoneCode: "+233" },
-  { name: "Guinea", code: "GN", phoneCode: "+224" },
-  { name: "Guinea-Bissau", code: "GW", phoneCode: "+245" },
-  { name: "Ivory Coast (Côte d'Ivoire)", code: "CI", phoneCode: "+225" },
-  { name: "Kenya", code: "KE", phoneCode: "+254" },
-  { name: "Lesotho", code: "LS", phoneCode: "+266" },
-  { name: "Liberia", code: "LR", phoneCode: "+231" },
-  { name: "Libya", code: "LY", phoneCode: "+218" },
-  { name: "Madagascar", code: "MG", phoneCode: "+261" },
-  { name: "Malawi", code: "MW", phoneCode: "+265" },
-  { name: "Mali", code: "ML", phoneCode: "+223" },
-  { name: "Mauritania", code: "MR", phoneCode: "+222" },
-  { name: "Mauritius", code: "MU", phoneCode: "+230" },
-  { name: "Morocco", code: "MA", phoneCode: "+212" },
-  { name: "Mozambique", code: "MZ", phoneCode: "+258" },
-  { name: "Namibia", code: "NA", phoneCode: "+264" },
-  { name: "Niger", code: "NE", phoneCode: "+227" },
-  { name: "Nigeria", code: "NG", phoneCode: "+234" },
-  { name: "Rwanda", code: "RW", phoneCode: "+250" },
-  { name: "Sao Tome and Principe", code: "ST", phoneCode: "+239" },
-  { name: "Senegal", code: "SN", phoneCode: "+221" },
-  { name: "Seychelles", code: "SC", phoneCode: "+248" },
-  { name: "Sierra Leone", code: "SL", phoneCode: "+232" },
-  { name: "Somalia", code: "SO", phoneCode: "+252" },
-  { name: "South Africa", code: "ZA", phoneCode: "+27" },
-  { name: "South Sudan", code: "SS", phoneCode: "+211" },
-  { name: "Sudan", code: "SD", phoneCode: "+249" },
-  { name: "Tanzania", code: "TZ", phoneCode: "+255" },
-  { name: "Togo", code: "TG", phoneCode: "+228" },
-  { name: "Tunisia", code: "TN", phoneCode: "+216" },
-  { name: "Uganda", code: "UG", phoneCode: "+256" },
-  { name: "Zambia", code: "ZM", phoneCode: "+260" },
-  { name: "Zimbabwe", code: "ZW", phoneCode: "+263" },
-];
+import countries from "../../data/countries";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -71,9 +16,11 @@ const Form = () => {
     phone: "",
   });
   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
-  const [filteredCountries, setFilteredCountries] = useState(africanCountries);
+  const [filteredCountries, setFilteredCountries] = useState(countries);
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -84,14 +31,14 @@ const Form = () => {
     setFormData((prev) => ({ ...prev, country: value }));
 
     if (value) {
-      const filtered = africanCountries.filter(
+      const filtered = countries.filter(
         (country) =>
           country.name.toLowerCase().includes(value.toLowerCase()) ||
           country.phoneCode.includes(value)
       );
       setFilteredCountries(filtered);
     } else {
-      setFilteredCountries(africanCountries);
+      setFilteredCountries(countries);
     }
   };
 
@@ -121,19 +68,24 @@ const Form = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const API = import.meta.env.VITE_API_BASE_URL;
+
       const dataToSend = {
-        ...formData,
-        // Include full phone number with country code in submission
+        name: formData.name,
+        email: formData.email,
+        country: selectedCountry ? selectedCountry.name : formData.country,
         phone: selectedCountry
           ? selectedCountry.phoneCode + formData.phone
           : formData.phone,
       };
+
       const response = await axios.post(`${API}/waitinglist`, dataToSend);
       if (response.status === 200 || response.status === 201) {
-        alert("Successfully joined the waiting list!");
-        // Reset form
+        // alert("Successfully joined the waiting list!");
+        setShowModal(true);
+
         setFormData({
           name: "",
           email: "",
@@ -146,11 +98,12 @@ const Form = () => {
     } catch (error) {
       alert("Error joining the waiting list. Please try again later.");
       console.error("Submission error:", error);
+    } finally {
+      setLoading(false); // ✅ stop loading
     }
   };
 
   return (
-    
     <div className="waiting-list-container">
       <Link to="/" className="waiting-back-link">
         ← Back Home
@@ -247,11 +200,37 @@ const Form = () => {
               />
             </div>
           </div>
-          <button type="submit" className="join-button">
-            Join Waiting List
+
+          <button type="submit" className="join-button" disabled={loading}>
+            {loading ? (
+              <div className="btn-loading">
+                <span className="btn-text">Submitting</span>
+                <span className="spinner"></span>
+              </div>
+            ) : (
+              "Join Waiting List"
+            )}
           </button>
         </form>
       </div>
+
+      {/* Modal */}
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>Thank you for joining the waiting list!</h3>
+            <p>Would you like to take our survey?</p>
+            <div className="modal-buttons">
+              <button onClick={() => navigate("/forms")} className="yes-btn">
+                Yes, take me to the survey
+              </button>
+              <button onClick={() => navigate("/")} className="no-btn">
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
