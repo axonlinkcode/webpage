@@ -42,17 +42,15 @@ const Form = () => {
     }
   };
 
-const selectCountry = (country) => {
-  setFormData((prev) => ({
-    ...prev,
-    country: country.name,  
-    phone: country.phoneCode,
-  }));
-  setSelectedCountry(country);
-  setShowCountryDropdown(false);
-  setPhoneNumber("");
-};
-
+  // ✅ Select Country - only updates formData.country, no overwriting phone
+  const selectCountry = (country) => {
+    setSelectedCountry(country);
+    setFormData((prev) => ({
+      ...prev,
+      country: country.name, // always stored
+    }));
+    setShowCountryDropdown(false);
+  };
 
   const handlePhoneChange = (e) => {
     const value = e.target.value;
@@ -76,11 +74,14 @@ const selectCountry = (country) => {
       const dataToSend = {
         name: formData.name,
         email: formData.email,
-        country: formData.country,
+        country:
+          formData.country || (selectedCountry ? selectedCountry.name : ""),
         phone: selectedCountry
           ? selectedCountry.phoneCode + formData.phone
           : formData.phone,
       };
+
+      console.log("📦 Sending payload:", dataToSend);
 
       const response = await axios.post(`${API}/waitinglist`, dataToSend);
 
