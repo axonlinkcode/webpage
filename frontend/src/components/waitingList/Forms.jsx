@@ -82,6 +82,7 @@ const Form = () => {
       };
 
       const response = await axios.post(`${API}/waitinglist`, dataToSend);
+      console.log(dataToSend)
       if (response.status === 200 || response.status === 201) {
         // alert("Successfully joined the waiting list!");
         setShowModal(true);
