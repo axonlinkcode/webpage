@@ -42,16 +42,17 @@ const Form = () => {
     }
   };
 
-  const selectCountry = (country) => {
-    setFormData((prev) => ({
-      ...prev,
-      country: country.name,
-      phone: country.phoneCode, // Set phone code in form data
-    }));
-    setSelectedCountry(country);
-    setShowCountryDropdown(false);
-    setPhoneNumber(""); // Initialize phone input with country code
-  };
+const selectCountry = (country) => {
+  setFormData((prev) => ({
+    ...prev,
+    country: country.name,  
+    phone: country.phoneCode,
+  }));
+  setSelectedCountry(country);
+  setShowCountryDropdown(false);
+  setPhoneNumber("");
+};
+
 
   const handlePhoneChange = (e) => {
     const value = e.target.value;
@@ -75,14 +76,14 @@ const Form = () => {
       const dataToSend = {
         name: formData.name,
         email: formData.email,
-        country: selectedCountry ? selectedCountry.name : formData.country,
+        country: formData.country,
         phone: selectedCountry
           ? selectedCountry.phoneCode + formData.phone
           : formData.phone,
       };
 
       const response = await axios.post(`${API}/waitinglist`, dataToSend);
-      console.log(dataToSend)
+
       if (response.status === 200 || response.status === 201) {
         // alert("Successfully joined the waiting list!");
         setShowModal(true);
